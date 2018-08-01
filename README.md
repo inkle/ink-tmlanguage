@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/ephread/ink-tmlanguage.svg?branch=master)](https://travis-ci.org/ephread/ink-tmlanguage)
 [![npm version](https://img.shields.io/npm/v/ink-tmlanguage.svg)](https://www.npmjs.com/package/ink-tmlanguage)
 [![Install Size](https://packagephobia.now.sh/badge?p=ink-tmlanguage)](https://packagephobia.now.sh/result?p=ink-tmlanguage)
-[![Licence](https://img.shields.io/npm/l/ink-tmlanguage.svg)](https://github.com/ephread/ink-tmlanguage/blob/master/LICENSE.md)
+[![Licence](https://img.shields.io/npm/l/ink-tmlanguage.svg)](https://github.com/ephread/ink-tmlanguage/blob/master/LICENSE)
 [![Dependencies](https://david-dm.org/ephread/ink-tmlanguage/status.svg)](https://david-dm.org/ephread/ink-tmlanguage)
 
 Brings syntax highlighting for inkle's Ink, in your editor of choice (as long as
@@ -50,4 +50,4 @@ When working on the grammar, you may want to use `npm run watch`, which will reb
 
 The grammar description is released under the MIT license. See LICENSE for details.
 
-This project borrows some code from [TypeScript-TmLanguage](https://github.com/Microsoft/TypeScript-TmLanguage), licensed under the [MIT licence](https://github.com/Microsoft/TypeScript-TmLanguage/blob/4a620294f8652e4e3a4a605308650a52773ccec6/LICENSE.txt).
+This project borrows some code from [TypeScript-TmLanguage](https://github.com/Microsoft/TypeScript-TmLanguage), licensed under the [MIT license](https://github.com/Microsoft/TypeScript-TmLanguage/blob/4a620294f8652e4e3a4a605308650a52773ccec6/LICENSE.txt).
