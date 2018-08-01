@@ -34,13 +34,13 @@ Building the grammar is easy, you need the latest version of node.js and your fa
 
 ## Limitations
 
-There are currently a number of limitations in the grammar, which may or may not be overcome in the future.
+There are currently a number of limitations in the grammar.
 
 ### Ambiguity of `{ }` constructs
 
-In Ink, `{ }` can hold a lot of different things. In particular, the construct can either be an alternative or a conditional substitution. Due to current limitations, expressions will not be properly highlighted in conditionals, as they lead to false-positive in the first elements of alternatives.
+In Ink, `{ }` can hold a lot of different things. In particular, the construct can either be an alternative or a conditional substitution. Due to current limitations, expressions will not be properly highlighted in conditionals, as they lead to false-positives for operators, in the first elements of alternatives.
 
-In these constructs, all the elements contained in the first expression (`x == 0:`) will be named with the same scope.
+In these constructs, all the items contained in the first expression (`x == 0:`) will be named with the same scope.
 
 ```ink
 { x == 0: Hello }
@@ -52,7 +52,7 @@ In these constructs, all the elements contained in the first expression (`x == 0
 }
 ```
 
-This is not the case in the following example, where each element of the full expression will be named with their own scopes.
+This is not the case in the following example, where all items will be named with their own scopes.
 
 ```ink
 {
@@ -61,6 +61,14 @@ This is not the case in the following example, where each element of the full ex
 }
 ~ y = (x == 0)
 ~ myFunction(x == 0)
+```
+
+Similarly, the following construct will not be highlighted correctly, as there is an ambiguity between an empty alternative item and the _logical or_ operator (they are both written: `||`).
+
+```ink
+{ window_opts < 2 || learnt(fingerprints_on_glass) || GlassState ? steamed:
+	I looked away from the dreary glass.
+}
 ```
 
 ### Text suppression
@@ -79,7 +87,7 @@ In the example above, only `[."]` should be highlighted.
 
 All the captures support the generic scopes recommended by the [Sublime Text documentation](https://www.sublimetext.com/docs/3/scope_naming.html), narrowed down to `.ink`. This means that the grammar will work out of box with existing themes.
 
-Most of the captures are multi-scoped, with the first scope defined by the theme being used. Some of these multi-scoped captures support ink-specific scopes, which can be implemented by your custom theme. They are described as follows:
+Most of the captures are multi-scoped, with the first scope defined by the theme being used. Some of these multi-scoped captures support ink-specific scopes, which can be implemented by your custom theme. They are described below:
 
 - `string.label.ink` → `(label)`
 - `string.tag.ink` → `#tag`
@@ -93,7 +101,7 @@ Most of the captures are multi-scoped, with the first scope defined by the theme
 - `keyword.alternative.type.ink` → `&` or `~` or `!` inside `{ }`
 - `storage.knot.ink` → Identifier after / between `=`
 
-## Availability through NPM
+## Availability through npm
 
 As a convenience, the grammar is also available through the npm registry. If you're building an extension for Atom or VS Code, you may want to depend on this package.
 
