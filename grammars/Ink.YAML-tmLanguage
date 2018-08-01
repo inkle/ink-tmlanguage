@@ -200,7 +200,7 @@ repository:
   tag:
     patterns: # # tag content • Cannot exist within a comment.
     - match: ((?<!\\)\#)(.*)$
-      name: tag.ink string.unquoted.ink
+      name: string.tag.ink string.unquoted.ink
 
 # ##############################################################################
 # Choice
@@ -208,28 +208,29 @@ repository:
 
   choice:
     patterns: # * (foo) {bar} content [content] content
-    - begin: (?:^)\s*((\s*[\*\+]\s*)+)
+    - begin: (?:^)\s*(((\s*[\*]\s*)+)|((\s*[\+]\s*)+))
       beginCaptures:
-        '1': { name: keyword.choice.ink keyword.operator.arithmetic.ink }
+        '2': { name: keyword.choice.ink keyword.operator.arithmetic.ink }
+        '4': { name: keyword.choice.sticky.ink keyword.operator.arithmetic.ink }
       end: (?=(^\s*(\-|\*|\+|\=)))
       patterns:
         - include: "#comment"
         - include: "#label"
-        - include: "#weave"
+        - include: "#textSuppression"
         - include: "#divert"
         - include: '#tag'
         - include: "#glue"
         - include: "#logic"
         - include: "#interpolevaluablock"
 
-  weave:
+  textSuppression:
     patterns: # [content]
     - begin: (\[)
       beginCaptures:
-        '1': { name: keyword.weave.ink keyword.control.ink }
+        '1': { name: keyword.choice.suppression.ink keyword.control.ink }
       end: (\])
       endCaptures:
-        '1': { name: keyword.weave.ink keyword.control.ink }
+        '1': { name: keyword.choice.suppression.ink keyword.control.ink }
       patterns:
         - include: "#interpolevaluablock"
 
