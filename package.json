@@ -1,0 +1,44 @@
+{
+  "name": "ink-tmlanguage",
+  "version": "0.1.0",
+  "description": "TextMate grammar files for Ink. (VS Code, Sublime Text, and Atom)",
+  "keywords": [
+    "ink",
+    "inkle",
+    "inky",
+    "TextMate Language",
+    "TMLanguage",
+    "TextMate Grammar",
+    "Grammar",
+    "Syntax Highlighting"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ephread/ink-tmlanguage.git"
+  },
+  "author": "Frédéric Maquin <fred@ephread.com> (https://ephread.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ephread/ink-tmlanguage/issues"
+  },
+  "homepage": "https://github.com/ephread/ink-tmlanguage#readme",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "tsc -p build && node build/build.js",
+    "watch": "npm run build && chokidar 'grammars/*.YAML-tmLanguage' -c 'npm run build'"
+  },
+  "files": [
+    "grammar/Ink.tmLanguage"
+  ],
+  "devDependencies": {
+    "@types/js-yaml": "latest",
+    "@types/node": "latest",
+    "chokidar": "latest",
+    "chokidar-cli": "latest",
+    "js-yaml": "latest",
+    "plist": "latest",
+    "tslint": "latest",
+    "tslint-config-prettier": "latest",
+    "typescript": "latest"
+  }
+}

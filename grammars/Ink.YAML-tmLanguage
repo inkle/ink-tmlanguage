@@ -1,0 +1,685 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: ink
+scopeName: source.ink
+fileTypes: [ink, ink2]
+uuid: a29ac98e-945f-4e6e-87b7-ad099d460683
+
+# This is a non standard extension which makes the grammar more readable.
+# The variables declared here will be interpolated in regular expressions,
+# (e. g. \s*{{variableName}}\s*)
+variables:
+  # Identifier can't start with a number…
+  indentifierBeginCharacter: '[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]'
+  # Identifier characters can anything within these unicode blocks
+  indentifierCharacter: '[a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]'
+
+  anyNonIdentifierCharacter: '[^a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]'
+  validIdentifier: '{{indentifierBeginCharacter}}{{indentifierCharacter}}*'
+
+  standardFunctions: 'LIST_COUNT|LIST_MIN|LIST_MAX|LIST_ALL|LIST_INVERT|CHOICE_COUNT|TURNS_SINCE'
+
+# Before we dive into the meat, a bit of syntax to remember:
+#
+# (?<=): Positive lookbehind, non capturing unless it's within a group
+# (?!=): Negative lookbehind, non capturing unless it's within a group
+# (?=): Positive lookahead, non capturing unless it's within a group
+# (?!): Negative lookahead, non capturing unless it's within a group
+# (?:): Non capturing group
+# (?x): Ignore subsequent spaces (useful for multiline-formatted regex)
+#
+# >-: YAML multi-line string, turning line breaks into spaces
+patterns:
+- include: '#comment'
+- include: '#import'
+- include: '#declaration'
+- include: '#knot'
+- include: '#stitch'
+- include: '#choice'
+- include: '#divert'
+- include: '#gather'
+- include: '#logic'
+- include: '#glue'
+- include: '#tag'
+- include: '#interpolevaluablock'
+
+repository:
+
+# ##############################################################################
+# Comments
+# ##############################################################################
+
+  comment: # Inline (//) and block (/* */) comments. Comments can happen anywhere.
+    patterns:
+    - name: comment.block.ink
+      begin: (/\*)
+      beginCaptures:
+        '1': { name: 'punctuation.definition.comment.ink' }
+      end: (\*/)
+      endCaptures:
+        '1': { name: 'punctuation.definition.comment.ink' }
+    - name: comment.line.ink
+      begin: (\/\/)
+      beginCaptures:
+        '1': { name: 'punctuation.definition.comment.ink' }
+      end: (?=$)
+
+# ##############################################################################
+# Includes
+# ##############################################################################
+
+  import: # INCLUDE a/b/c.ink
+    patterns:
+    - match: (?:^)\s*(INCLUDE)(?:\s*)(.*)$
+      captures:
+        '1': { name: keyword.control.import.ink }
+        '2': { name: string.quoted.other.ink }
+
+# ##############################################################################
+# Variable declaration / Assignment
+# ##############################################################################
+
+  declaration: # VAR foo = "bar"
+    patterns:
+    - begin: (?:^)\s*((VAR)|(LIST))\s*
+      beginCaptures:
+        '1': { name: storage.type.ink }
+        '2': { name: storage.type.var.ink }
+        '3': { name: storage.type.list.ink }
+      end: (?=$)
+      patterns:
+        - include: '#assignment'
+    - begin: (?:^)\s*(CONST)\s*
+      beginCaptures:
+        '1': { name: storage.type.const.ink }
+      end: (?=$)
+      patterns:
+        - include: '#constAssignment'
+
+  assignment: # foo = "bar"
+    patterns:
+    - begin: ({{validIdentifier}})\s*(=)
+      beginCaptures:
+        '1': { name: variable.other.ink }
+        '2': { name: keyword.operator.assignment.ink }
+      end: (?=$)
+      patterns:
+        - include: '#languageLiteral'
+        - include: '#numberLiteral'
+        - include: '#stringLiteral'
+        - include: '#divert'
+        - include: '#expressionIdentifier'
+
+  constAssignment: # foo = "bar"
+    patterns:
+    - begin: ({{validIdentifier}})\s*(=)
+      beginCaptures:
+        '1': { name: variable.other.constant.ink }
+        '2': { name: keyword.operator.assignment.ink }
+      end: (?=$)
+      patterns:
+        - include: '#languageLiteral'
+        - include: '#numberLiteral'
+        - include: '#stringLiteral'
+        - include: '#divert'
+
+  tempDeclaration:
+    patterns:
+    - begin: >-
+        (?x)
+         ^
+         \s*
+         (temp)
+         \s*
+         ({{validIdentifier}})
+         \s*
+         (=)
+      beginCaptures:
+        '1': { name: storage.modifier.ink }
+        '2': { name: variable.other.stitch.ink }
+        '3': { name: keyword.assignment.ink }
+      end: (?=$)
+      patterns:
+        - include: '#expression'
+
+# ##############################################################################
+# Language literals
+# ##############################################################################
+
+  languageLiteral:
+    patterns:
+    - match: \s*(false|true)\s*
+      captures:
+        '1': { name: constant.language.ink }
+
+  numberLiteral:
+    patterns:
+    - match: \s*([0-9]+(\.[0-9]+)?)\s*
+      captures:
+        '1': { name: constant.numeric.ink }
+
+  stringLiteral:
+    patterns:
+    - begin: \s*(")
+      beginCaptures:
+        '1': { name: punctuation.definition.string.begin.ink }
+      end: (")\s*
+      endCaptures:
+        '1': { name: punctuation.definition.string.end.ink }
+      patterns:
+        - name: constant.character.escape.ink
+          match: '\\.'
+        - include: "#interpolevaluablock"
+        - name: string.quoted.double.ink
+          match: '[\w\s]+'
+# ##############################################################################
+# Label
+# ##############################################################################
+
+  label:
+    patterns:
+      - name: string.label.ink entity.name.label.ink string.quoted.other.ink
+        match: '(\()\s*{{validIdentifier}}\s*(\))'
+        captures:
+          '1': { name: punctuation.definition.string.label.begin.ink punctuation.definition.string.begin.ink }
+          '2': { name: punctuation.definition.string.label.begin.ink punctuation.definition.string.begin.ink }
+
+# ##############################################################################
+# Glue
+# ##############################################################################
+
+  glue:
+    patterns: # <>
+      - name: keyword.glue.ink keyword.other.ink
+        match: '<>'
+
+# ##############################################################################
+# Tag
+# ##############################################################################
+
+  tag:
+    patterns: # # tag content • Cannot exist within a comment.
+    - match: ((?<!\\)\#)(.*)$
+      name: tag.ink string.unquoted.ink
+
+# ##############################################################################
+# Choice
+# ##############################################################################
+
+  choice:
+    patterns: # * (foo) {bar} content [content] content
+    - begin: (?:^)\s*((\s*[\*\+]\s*)+)
+      beginCaptures:
+        '1': { name: keyword.choice.ink keyword.operator.arithmetic.ink }
+      end: (?=(^\s*(\-|\*|\+|\=)))
+      patterns:
+        - include: "#comment"
+        - include: "#label"
+        - include: "#weave"
+        - include: "#divert"
+        - include: '#tag'
+        - include: "#glue"
+        - include: "#logic"
+        - include: "#interpolevaluablock"
+
+  weave:
+    patterns: # [content]
+    - begin: (\[)
+      beginCaptures:
+        '1': { name: keyword.weave.ink keyword.control.ink }
+      end: (\])
+      endCaptures:
+        '1': { name: keyword.weave.ink keyword.control.ink }
+      patterns:
+        - include: "#interpolevaluablock"
+
+# ##############################################################################
+# Logic
+# ##############################################################################
+
+  logic:
+    patterns: # ~ foo = 1 + 2
+    - begin: ^\s*(~)
+      beginCaptures:
+        '1': { name: keyword.logic.ink keyword.operator.arithmetic.ink }
+      end: ($)
+      patterns:
+        - name: keyword.control.ink
+          match: 'return'
+        - name: variable.other
+          match: '{{validIdentifier}}'
+        - include: '#expression'
+
+# ##############################################################################
+# Gather
+# ##############################################################################
+
+  gather:
+    patterns: # -
+    - begin: ^\s*((\s*\-\s*(?!>))+)
+      beginCaptures:
+        '1': { name: keyword.gather.ink keyword.operator.arithmetic.ink }
+      end: (?=^)
+      patterns:
+        - include: "#comment"
+        - include: "#label"
+        - include: "#divert"
+        - include: "#glue"
+        - include: "#logic"
+        - include: '#tag'
+        - include: "#interpolevaluablock"
+
+# ##############################################################################
+# Knot, stitches and functions
+# ##############################################################################
+
+  knot:
+    patterns: # === knot === • === knot(a, b) === • === function knot(a, b) ===
+    - begin: ^\s*(={2,})
+      beginCaptures:
+        '1': { name: storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink }
+      end: ((={2,})|(?=^))
+      endCaptures:
+        '2': { name: storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink }
+      patterns:
+        - include: "#functionDeclaration"
+        - include: "#knotStitchDeclaration"
+
+  stitch:
+    patterns: # = stitch • = stitch(a, b)
+    - begin: ^\s*(=)
+      beginCaptures:
+        '1': { name: storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink }
+      end: (?=^)
+      patterns:
+        - include: "#knotStitchDeclaration"
+
+  knotStitchDeclaration:
+    patterns: # foo • foo(a, b)
+      - begin: \s*({{validIdentifier}})\s*
+        beginCaptures:
+          '1': { name: entity.name.function.ink }
+        end: (?<=\))|(?=$)|(?=\=) # Ending right before the closing parenthesis.
+        patterns:
+          - include: '#functionDeclarationParameters'
+
+  functionDeclaration:
+    patterns: # function foo(a, b)
+      - begin: >-
+          (?x)\s*(function)\s*({{validIdentifier}})\s*
+        beginCaptures:
+          '1': { name: storage.type.ink }
+          '2': { name: entity.name.function.ink }
+        end: (?<=\)) # Ending right before the closing parenthesis.
+        patterns:
+          - include: '#functionDeclarationParameters'
+
+  functionDeclarationParameters:
+    patterns: # (a, b)
+      - begin: (\()
+        beginCaptures:
+          '1': { name: punctuation.section.parens.begin.ink }
+        end: (\))
+        endCaptures:
+          '1': { name: punctuation.section.parens.end.ink }
+        patterns:
+          - include: '#comment'
+          - name: storage.modifier.ref.ink
+            match: 'ref'
+          - name: variable.parameter.function.ink
+            match: '[a-zA-Z0-9_]+'
+          - name: punctuation.separator.ink
+            match: ','
+          - include: '#divert'
+
+  function:
+    patterns: # foo(a, b)
+      - begin: \s*({{standardFunctions}}({{validIdentifier}}))\s*(\()\s*
+        beginCaptures:
+          '1': { name: variable.language.ink }
+          '2': { name: variable.function.ink }
+          '3': { name: meta.parens punctuation.section.parens.begin.ink }
+        end: (\))
+        endCaptures:
+          '1': { name: meta.parens punctuation.section.parens.end.ink }
+        patterns:
+          - include: '#comment'
+          - name: punctuation.separator.ink
+            match: ','
+          - include: '#divert'
+          - include: '#expression'
+
+# ##############################################################################
+# Diverts & Threads
+# ##############################################################################
+
+  divert:
+    patterns: # -> divert • <- content
+    - begin: \s*(->|<-)\s*
+      beginCaptures:
+        '1': { name: keyword.divert.ink keyword.other.ink }
+      end: (?=($|\}|\)|\|))
+      patterns:
+        - include: '#comment'
+        - include: '#function'
+        - include: '#divertStitchIdentifier'
+        - include: '#divertKnotIdentifier'
+        - include: '#tunnel'
+
+  divertKnotIdentifier:
+    patterns: # END • knot
+    - begin: \s*((END|DONE)|({{validIdentifier}}))
+      beginCaptures:
+        '2': { name: support.constant.ink }
+        '3': { name: variable.other.knot.ink }
+      end: (?=($|\}|\)|\|))
+      patterns:
+        - include: "#comment"
+        - include: '#tunnel'
+
+  divertStitchIdentifier:
+    patterns: # END • knot.stitch
+    - begin: \s*((END|DONE)|({{validIdentifier}})(\.)({{validIdentifier}}))
+      beginCaptures:
+        '2': { name: support.constant.ink }
+        '3': { name: variable.other.stitch.ink }
+        '4': { name: punctuation.accessor.ink }
+        '5': { name: variable.other.stitch.ink }
+      end: (?=($|\}|\)|\|))
+      patterns:
+        - include: "#comment"
+        - include: '#tunnel'
+
+  tunnel:
+    patterns: # -> divert • <- content
+    - begin: \s*(->|<-)\s*
+      beginCaptures:
+        '1': { name: keyword.divert.ink keyword.other.ink }
+      end: (?=($|\}|\)|\|))
+      patterns:
+        - include: "#comment"
+        - include: '#divertStitchIdentifier'
+        - include: '#divertKnotIdentifier'
+
+# ##############################################################################
+# interpolevaluablock (anything within {})
+# ##############################################################################
+
+  interpolevaluablock:
+    patterns:
+      - begin: (\{)
+        beginCaptures:
+          '1': { name: keyword.control.ink }
+        end: (\})
+        endCaptures:
+          '1': { name: keyword.control.ink }
+        patterns:
+          - include: '#interpolatedIdentifier'
+          - include: '#probableExpression'
+
+          - include: '#hyphenClause'
+          - include: '#blockAlternative'
+
+          - include: '#conditionalExpressionOrfirstAlternativeItem'
+          - include: '#conditionalElseClauseOrAlternativeItem'
+
+          - include: '#interpolevaluablock'
+
+  conditionalIfClause:
+    patterns:
+      - begin: (?<=\:)
+        beginCaptures:
+          '1': { name: keyword.control.ink }
+        end: (?=\|)|(?=\})
+        patterns:
+          - include: '#comment'
+          - include: '#choice'
+          - include: '#divert'
+          - include: "#glue"
+          - include: "#logic"
+          - include: '#tag'
+          - include: '#hyphenClause'
+          - include: '#interpolevaluablock'
+
+  conditionalElseClauseOrAlternativeItem:
+    patterns:
+      - begin: (\|)
+        beginCaptures:
+          '1': { name: keyword.control.ink }
+        end: (?=\})|(?=\|\s*(?!$))
+        patterns:
+          - include: '#interpolevaluablock'
+          - include: '#divert'
+          - include: '#tag'
+
+  conditionalExpressionOrfirstAlternativeItem:
+    patterns:
+      - begin: (?<=\{)(\s*((&|!|~)?(\|))?(&|!|~)?)
+        beginCaptures:
+          '3': { name: keyword.alternative.ink keyword.operator.arithmetic.ink }
+          '4': { name: keyword.control.ink }
+          '5': { name: keyword.alternative.ink keyword.operator.arithmetic.ink }
+        end: (?=\|\s*(?!$))|(?=\:\s*(?!$))|(?=\})
+        patterns:
+          - include: '#interpolevaluablock'
+          - include: '#colonSuffixed'
+          - include: '#conditionalIfClause'
+          - include: '#hyphenClause'
+          - include: '#divert'
+
+  hyphenClause:
+    patterns:
+      - begin: (?:^)\s*(-)(?!\>)
+        beginCaptures:
+          '1': { name: keyword.control.ink }
+        end: (?=\})|(?=^)
+        patterns:
+          - include: '#comment'
+          - include: '#hyphenElse'
+          - include: '#hyphenExpression'
+          - include: '#hyphenContent'
+
+  hyphenElse:
+    patterns:
+      - match: \s*(else)\s*(:)
+        captures:
+          '1': { name: keyword.control.conditional.ink }
+          '2': { name: keyword.control.ink }
+
+  hyphenExpression:
+    patterns:
+      - begin: (?<=\-)
+        end: (:)
+        endCaptures:
+          '1': { name: keyword.control.ink }
+        patterns:
+          - include: '#comment'
+          - include: '#expression'
+
+  hyphenContent:
+    patterns:
+      - begin: (?<=\:)
+        end: (?=^\s*(\}|(-(?!\>))))
+        patterns:
+          - include: '#clauseContent'
+
+  blockAlternative:
+    patterns:
+      - begin: (?<=\{)\s*(stopping|shuffle|cycle|once)\s*(:)$
+        beginCaptures:
+          '1': { name: keyword.alternative.ink keyword.operator.arithmetic.ink }
+          '2': { name: keyword.control.ink }
+        end: (?=^\s*\})
+        patterns:
+          - include: '#blockAlternativeItem'
+
+  blockAlternativeItem:
+    patterns:
+      - begin: ^\s*(-)(?!\>)
+        beginCaptures:
+          '1': { name: keyword.control.ink }
+        end: (?=^\s*\})|(?=^\s*\-(?!\>))
+        patterns:
+          - include: '#comment'
+          - include: '#tag'
+          - include: '#divert'
+          - include: '#interpolevaluablock'
+
+  blockIfCondition:
+    patterns:
+      - match: (?<=\{)([^\n\r]+)(:)\s*$
+        captures:
+          '1': { name: keyword.control.ink }
+          '2': { name: keyword.control.ink }
+
+  blockIfClause:
+    patterns:
+      - begin: (?<=\{)
+        end: (?=^\s*\})|(?=^\s*\-(?!\>))
+        patterns:
+          - include: '#blockIfCondition'
+          - include: '#clauseContent'
+
+  clauseContent:
+    patterns:
+      - include: '#comment'
+      - include: '#tag'
+      - include: '#divert'
+      - include: '#logic'
+      - include: '#glue'
+      - include: '#interpolevaluablock'
+
+  colonSuffixed:
+    patterns:
+      - match: (?<=\{|\s)([^\{\}\|]+)(:)
+        captures:
+          '1': { name: keyword.control.ink }
+          '2': { name: keyword.control.ink }
+
+  probableExpression:
+    patterns:
+      - match: (?<=\{)(?<!^)([^\|\{\}\:]+)(?!$)(?=\})
+        captures:
+          '1': { name: keyword.control.ink }
+
+# ##############################################################################
+# Expressions
+# ##############################################################################
+
+  expression:
+    patterns:
+      - include: '#comment'
+      - include: '#tempDeclaration'
+      - include: '#function'
+      - include: '#operator'
+      - include: '#languageLiteral'
+      - include: '#stringLiteral'
+      - include: '#expressionIdentifier'
+      - include: '#numberLiteral'
+
+  expressionIdentifier:
+    patterns:
+      - name: variable.other.ink
+        match: >-
+          (?x)
+            ((?<=&&) | (?<=\|\|) |
+             (?<=\=) |
+             (?<=/)  | (?<=%)    | (?<=\*) | (?<=\+) | (?<=\-) |
+             (?<=\?) | (?<=!\?)  | (?<=\^) |
+             (?<=,)  | (?=\)))
+            \s*
+            {{validIdentifier}}
+
+      - name: variable.other.ink
+        match: >-
+          (?x)
+            \s*
+            ((?<=not) | (?<=and) | (?<=or) | (?<=has) | (?<=hasnt) | (?<=mod))
+            {{anyNonIdentifierCharacter}}
+            {{validIdentifier}}
+
+      - name: variable.other.ink
+        match: >-
+          (?x)
+            \s*
+            {{validIdentifier}}
+            \s*
+            ((?=&&) | (?=\|\|) |
+             (?=\=) | (?=!\=)  | (?=\>) | (?=\<) |
+             (?=/)  | (?=%)    | (?=\*) | (?=\+) | (?=\-) |
+             (?=\?) | (?=!\?)  | (?=\^) |
+             (?=,)  | (?=\)))
+
+
+      - name: variable.other.ink
+        match: >-
+          (?x)
+            \s*
+            {{validIdentifier}}
+            {{anyNonIdentifierCharacter}}
+            ((?=not) | (?=and) | (?=or) | (?=has) | (?=hasnt) | (?=mod))
+
+  interpolatedIdentifier:
+    patterns:
+      - name: variable.other.ink
+        match: '(?<=\{)(?<!^)\s*{{validIdentifier}}\s*(?!$)(?=\})'
+
+  operator:
+    patterns:
+    - name: keyword.operator.logical.ink
+      match: >-
+        (?x)
+          !(?!=) |
+          &&     |
+          \|\|
+    - name: keyword.operator.assignment.ink
+      match: >-
+        (?x)
+          =(?!=)
+    - name: keyword.operator.assignment.augmented.ink
+      match: >-
+        (?x)
+          %=   |
+          &=   |
+          \*=  |
+          \+=  |
+          -=   |
+          /=
+    - name: keyword.operator.relational.ink
+      match: >-
+        (?x)
+          <=   |
+          >=   |
+          <    |
+          >
+    - name: keyword.operator.comparison.ink
+      match: >-
+        (?x)
+          ==   |
+          !=
+    - name: keyword.operator.arithmetic.ink
+      match: >-
+        (?x)
+          --   |
+          \+\+ |
+          /    |
+          %    |
+          \*   |
+          \+   |
+          (?<!\n)\s*-\s*
+    - name: keyword.operator.membership.ink
+      match: >-
+        (?x)
+          \?  |
+          !\? |
+          \^
+    - name: keyword.operator.word.ink
+      match: >-
+        (?x)
+          (?<={{anyNonIdentifierCharacter}})not   (?={{anyNonIdentifierCharacter}})   |
+          (?<={{anyNonIdentifierCharacter}})and   (?={{anyNonIdentifierCharacter}})   |
+          (?<={{anyNonIdentifierCharacter}})or    (?={{anyNonIdentifierCharacter}})   |
+          (?<={{anyNonIdentifierCharacter}})has   (?={{anyNonIdentifierCharacter}})   |
+          (?<={{anyNonIdentifierCharacter}})hasnt (?={{anyNonIdentifierCharacter}})   |
+          (?<={{anyNonIdentifierCharacter}})mod   (?={{anyNonIdentifierCharacter}})
+...
