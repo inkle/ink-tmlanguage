@@ -28,7 +28,7 @@
     "watch": "npm run build && chokidar 'grammars/*.YAML-tmLanguage' -c 'npm run build'"
   },
   "files": [
-    "grammar/Ink.tmLanguage"
+    "grammars/Ink.tmLanguage"
   ],
   "devDependencies": {
     "@types/js-yaml": "latest",
