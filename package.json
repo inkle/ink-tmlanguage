@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/ephread/ink-tmlanguage#readme",
   "scripts": {
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "build": "tsc -p build && node build/build.js",
     "watch": "npm run build && chokidar 'grammars/*.YAML-tmLanguage' -c 'npm run build'"
   },
@@ -34,7 +34,7 @@
     "@types/js-yaml": "latest",
     "@types/node": "latest",
     "chokidar": "latest",
-    "chokidar-cli": "latest",
+    "chokidar-cli": "quilicicf/chokidar-cli#master_fixVulnerabilities",
     "js-yaml": "latest",
     "plist": "latest",
     "tslint": "latest",
