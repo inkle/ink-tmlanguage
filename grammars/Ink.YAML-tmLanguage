@@ -95,6 +95,21 @@ repository:
       end: (?=$)
       patterns:
         - include: '#constAssignment'
+    - begin: (?:^)\s*(EXTERNAL)\s*
+      beginCaptures:
+        '1': { name: storage.type.external.ink }
+      end: (?=$)
+      patterns:
+        - include: '#externalFunctionDeclaration'
+
+  externalFunctionDeclaration:
+    patterns: # function foo(a, b)
+      - begin: ({{validIdentifier}})\s*
+        beginCaptures:
+          '1': { name: entity.name.function.ink }
+        end: (?<=\)) # Ending right before the closing parenthesis.
+        patterns:
+          - include: '#functionDeclarationParameters'
 
   assignment: # foo = "bar"
     patterns:
@@ -199,8 +214,11 @@ repository:
 
   tag:
     patterns: # # tag content • Cannot exist within a comment.
-    - match: ((?<!\\)\#)(.*)$
+    - begin: ((?<!\\)\#)
+      end: $
       name: string.tag.ink string.unquoted.ink
+      patterns:
+        - include: '#comment'
 
 # ##############################################################################
 # Choice
