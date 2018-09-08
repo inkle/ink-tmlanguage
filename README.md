@@ -1,9 +1,9 @@
 # ![Ink TMLanguage](https://i.imgur.com/oLMOVfq.png)
 
-[![Build Status](https://travis-ci.org/ephread/ink-tmlanguage.svg?branch=master)](https://travis-ci.org/ephread/ink-tmlanguage)
+[![Build Status](https://travis-ci.org/inkle/ink-tmlanguage.svg?branch=master)](https://travis-ci.org/inkle/ink-tmlanguage)
 [![npm version](https://img.shields.io/npm/v/ink-tmlanguage.svg)](https://www.npmjs.com/package/ink-tmlanguage)
-[![Licence](https://img.shields.io/npm/l/ink-tmlanguage.svg)](https://github.com/ephread/ink-tmlanguage/blob/master/LICENSE)
-[![Dependencies](https://david-dm.org/ephread/ink-tmlanguage/status.svg)](https://david-dm.org/ephread/ink-tmlanguage)
+[![Licence](https://img.shields.io/npm/l/ink-tmlanguage.svg)](https://github.com/inkle/ink-tmlanguage/blob/master/LICENSE)
+[![Dependencies](https://david-dm.org/ephread/ink-tmlanguage/status.svg)](https://david-dm.org/inkle/ink-tmlanguage)
 
 Brings syntax highlighting for inkle's Ink, in your editor of choice (as long as
 it supports TextMate grammars).
