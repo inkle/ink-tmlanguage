@@ -8,7 +8,7 @@
 Brings syntax highlighting for inkle's Ink, in your editor of choice (as long as
 it supports TextMate grammars).
 
-If you're just looking for the plist-based grammar, head over to the [releases](https://github.com/ephread/ink-tmlanguage/releases)!
+If you're just looking for the plist-based grammar, head over to the [releases](https://github.com/inkle/ink-tmlanguage/releases)!
 
 ## Table of contents
 

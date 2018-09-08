@@ -14,14 +14,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ephread/ink-tmlanguage.git"
+    "url": "git+https://github.com/inkle/ink-tmlanguage.git"
   },
   "author": "Frédéric Maquin <fred@ephread.com> (https://ephread.com/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ephread/ink-tmlanguage/issues"
+    "url": "https://github.com/inkle/ink-tmlanguage/issues"
   },
-  "homepage": "https://github.com/ephread/ink-tmlanguage#readme",
+  "homepage": "https://github.com/inkle/ink-tmlanguage#readme",
   "scripts": {
     "prepublishOnly": "npm run build",
     "build": "tsc -p build && node build/build.js",
@@ -34,7 +34,7 @@
     "@types/js-yaml": "latest",
     "@types/node": "latest",
     "chokidar": "latest",
-    "chokidar-cli": "quilicicf/chokidar-cli#master_fixVulnerabilities",
+    "chokidar-cli": "latest",
     "js-yaml": "latest",
     "plist": "latest",
     "tslint": "latest",
