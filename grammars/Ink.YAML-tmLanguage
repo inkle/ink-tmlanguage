@@ -17,7 +17,7 @@ variables:
   anyNonIdentifierCharacter: '[^a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]'
   validIdentifier: '{{indentifierBeginCharacter}}{{indentifierCharacter}}*'
 
-  standardFunctions: 'LIST_COUNT|LIST_MIN|LIST_MAX|LIST_ALL|LIST_INVERT|CHOICE_COUNT|TURNS_SINCE'
+  standardFunctions: 'LIST_COUNT|LIST_MIN|LIST_MAX|LIST_ALL|LIST_INVERT|LIST_RANDOM|CHOICE_COUNT|TURNS_SINCE|LIST_RANGE|TURNS|POW|FLOOR|CEILING|INT|FLOAT'
 
 # Before we dive into the meat, a bit of syntax to remember:
 #
