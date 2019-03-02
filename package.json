@@ -31,14 +31,14 @@
     "grammars/Ink.tmLanguage"
   ],
   "devDependencies": {
-    "@types/js-yaml": "latest",
-    "@types/node": "latest",
-    "chokidar": "latest",
-    "chokidar-cli": "latest",
-    "js-yaml": "latest",
-    "plist": "latest",
-    "tslint": "latest",
-    "tslint-config-prettier": "latest",
-    "typescript": "latest"
+    "@types/js-yaml": "^3.12.0",
+    "@types/node": "^11.10.4",
+    "chokidar": "^2.1.2",
+    "chokidar-cli": "^1.2.2",
+    "js-yaml": "^3.12.2",
+    "plist": "^3.0.1",
+    "tslint": "^5.13.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.3.3333"
   }
 }
