@@ -578,6 +578,66 @@
           </dict>
         </array>
       </dict>
+      <key>choiceInGather</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>begin</key>
+            <string>\s*(((\s*[\*]\s*)+)|((\s*[\+]\s*)+))</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.choice.ink keyword.operator.arithmetic.ink</string>
+              </dict>
+              <key>4</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.choice.sticky.ink keyword.operator.arithmetic.ink</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=(^\s*(\-|\*|\+|\=)))</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#label</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#textSuppression</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#divert</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#tag</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#glue</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#logic</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#interpolevaluablock</string>
+              </dict>
+            </array>
+          </dict>
+        </array>
+      </dict>
       <key>textSuppression</key>
       <dict>
         <key>patterns</key>
@@ -678,6 +738,10 @@
               <dict>
                 <key>include</key>
                 <string>#label</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#choiceInGather</string>
               </dict>
               <dict>
                 <key>include</key>
@@ -817,7 +881,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?&lt;=\))</string>
+            <string>(?&lt;=\))|(?=$)|(?=\=)</string>
             <key>patterns</key>
             <array>
               <dict>

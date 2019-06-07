@@ -241,6 +241,23 @@ repository:
         - include: "#logic"
         - include: "#interpolevaluablock"
 
+  choiceInGather:
+    patterns: # * (foo) {bar} content [content] content
+    - begin: \s*(((\s*[\*]\s*)+)|((\s*[\+]\s*)+))
+      beginCaptures:
+        '2': { name: keyword.choice.ink keyword.operator.arithmetic.ink }
+        '4': { name: keyword.choice.sticky.ink keyword.operator.arithmetic.ink }
+      end: (?=(^\s*(\-|\*|\+|\=)))
+      patterns:
+        - include: "#comment"
+        - include: "#label"
+        - include: "#textSuppression"
+        - include: "#divert"
+        - include: '#tag'
+        - include: "#glue"
+        - include: "#logic"
+        - include: "#interpolevaluablock"
+
   textSuppression:
     patterns: # [content]
     - begin: (\[)
@@ -282,6 +299,7 @@ repository:
       patterns:
         - include: "#comment"
         - include: "#label"
+        - include: '#choiceInGather'
         - include: "#divert"
         - include: "#glue"
         - include: "#logic"
@@ -329,7 +347,7 @@ repository:
         beginCaptures:
           '1': { name: storage.type.ink }
           '2': { name: entity.name.function.ink }
-        end: (?<=\)) # Ending right before the closing parenthesis.
+        end: (?<=\))|(?=$)|(?=\=) # Ending right before the closing parenthesis.
         patterns:
           - include: '#functionDeclarationParameters'
 
