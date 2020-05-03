@@ -7,7 +7,7 @@
 ~ test()
 //<- source.ink keyword.logic.ink keyword.operator.arithmetic.ink
 //<~- source.ink
-//^^^^ source.ink entity.name.function.ink
+//^^^^ source.ink variable.function.ink
 //    ^^ source.ink
 { TURNS_SINCE(-> test) }
 //<- source.ink keyword.control.ink

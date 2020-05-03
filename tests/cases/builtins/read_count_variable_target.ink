@@ -25,7 +25,7 @@ Count start: {READ_COUNT (x)} {READ_COUNT (-> knot)} {knot}
 -> x (1) ->
 //<-- source.ink keyword.divert.ink keyword.other.ink
 //^ source.ink
-// ^ source.ink variable.other.knot.ink
+// ^ source.ink variable.function.ink
 //  ^^^ source.ink
 //     ^ source.ink
 //      ^ source.ink
@@ -33,7 +33,7 @@ Count start: {READ_COUNT (x)} {READ_COUNT (-> knot)} {knot}
 -> x (2) ->
 //<-- source.ink keyword.divert.ink keyword.other.ink
 //^ source.ink
-// ^ source.ink variable.other.knot.ink
+// ^ source.ink variable.function.ink
 //  ^^^ source.ink
 //     ^ source.ink
 //      ^ source.ink
@@ -41,7 +41,7 @@ Count start: {READ_COUNT (x)} {READ_COUNT (-> knot)} {knot}
 -> x (3) ->
 //<-- source.ink keyword.divert.ink keyword.other.ink
 //^ source.ink
-// ^ source.ink variable.other.knot.ink
+// ^ source.ink variable.function.ink
 //  ^^^ source.ink
 //     ^ source.ink
 //      ^ source.ink

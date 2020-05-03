@@ -389,7 +389,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>constant.language.ink</string>
+                <string>constant.language.ink constant.language.boolean.ink</string>
               </dict>
             </dict>
           </dict>
@@ -700,7 +700,7 @@
               </dict>
               <dict>
                 <key>name</key>
-                <string>variable.other</string>
+                <string>variable.other.ink</string>
                 <key>match</key>
                 <string>[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*</string>
               </dict>
@@ -955,20 +955,20 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>\s*(LIST_COUNT|LIST_MIN|LIST_MAX|LIST_ALL|LIST_INVERT|LIST_RANDOM|CHOICE_COUNT|TURNS_SINCE|LIST_RANGE|TURNS|POW|FLOOR|CEILING|INT|FLOAT([a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*))\s*(\()\s*</string>
+            <string>\s*((LIST_COUNT|LIST_MIN|LIST_MAX|LIST_ALL|LIST_INVERT|LIST_RANDOM|CHOICE_COUNT|TURNS_SINCE|LIST_RANGE|TURNS|POW|FLOOR|CEILING|INT|FLOAT)|([a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*))\s*(\()\s*</string>
             <key>beginCaptures</key>
             <dict>
-              <key>1</key>
+              <key>2</key>
               <dict>
                 <key>name</key>
-                <string>variable.language.ink</string>
+                <string>constant.language.ink</string>
               </dict>
-              <key>2</key>
+              <key>3</key>
               <dict>
                 <key>name</key>
                 <string>variable.function.ink</string>
               </dict>
-              <key>3</key>
+              <key>4</key>
               <dict>
                 <key>name</key>
                 <string>meta.parens punctuation.section.parens.begin.ink</string>

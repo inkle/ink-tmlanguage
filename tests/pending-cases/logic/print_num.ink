@@ -4,6 +4,7 @@
 . {print_num(101)} .
 . {print_num(222)} .
 . {print_num(1234)} .
+
 === function print_num(x) ===
 {
     - x >= 1000:

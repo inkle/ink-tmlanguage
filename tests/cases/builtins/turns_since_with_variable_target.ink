@@ -61,7 +61,7 @@
 //   ^ source.ink
 //    ^^^^^^ source.ink keyword.control.ink
 //          ^ source.ink
-//           ^^^^^^^^^^^ source.ink variable.language.ink
+//           ^^^^^^^^^^^ source.ink constant.language.ink
 //                      ^ source.ink meta.parens punctuation.section.parens.begin.ink
 //                       ^ source.ink variable.other.ink
 //                        ^ source.ink meta.parens punctuation.section.parens.end.ink

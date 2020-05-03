@@ -22,11 +22,15 @@
 //   ^ source.ink
 //    ^^^^^^ source.ink keyword.control.ink
 //          ^ source.ink
-//           ^^^^ source.ink variable.other
-//               ^^^ source.ink
+//           ^^^^ source.ink variable.function.ink
+//               ^ source.ink meta.parens punctuation.section.parens.begin.ink
+//                ^ source.ink meta.parens punctuation.section.parens.end.ink
+//                 ^ source.ink
 //                  ^ source.ink keyword.operator.arithmetic.ink
-//                   ^^^^ source.ink variable.other.ink
-//                       ^^ source.ink
+//                   ^ source.ink
+//                    ^^^ source.ink variable.function.ink
+//                       ^ source.ink meta.parens punctuation.section.parens.begin.ink
+//                        ^ source.ink meta.parens punctuation.section.parens.end.ink
 === function four
 //<--- source.ink storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
 // ^ source.ink
@@ -39,11 +43,15 @@
 //   ^ source.ink
 //    ^^^^^^ source.ink keyword.control.ink
 //          ^ source.ink
-//           ^^^ source.ink variable.other
-//              ^^^ source.ink
+//           ^^^ source.ink variable.function.ink
+//              ^ source.ink meta.parens punctuation.section.parens.begin.ink
+//               ^ source.ink meta.parens punctuation.section.parens.end.ink
+//                ^ source.ink
 //                 ^ source.ink keyword.operator.arithmetic.ink
-//                  ^^^^ source.ink variable.other.ink
-//                      ^^ source.ink
+//                  ^ source.ink
+//                   ^^^ source.ink variable.function.ink
+//                      ^ source.ink meta.parens punctuation.section.parens.begin.ink
+//                       ^ source.ink meta.parens punctuation.section.parens.end.ink
 === function two
 //<--- source.ink storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
 // ^ source.ink

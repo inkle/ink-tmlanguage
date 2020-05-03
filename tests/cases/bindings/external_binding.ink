@@ -28,7 +28,7 @@ EXTERNAL times(i,str)
 ~ message("hello world")
 //<~ source.ink keyword.logic.ink keyword.operator.arithmetic.ink
 //<~- source.ink
-//^^^^^^^ source.ink variable.other
+//^^^^^^^ source.ink variable.function.ink
 //       ^ source.ink
 //        ^ source.ink punctuation.definition.string.begin.ink
 //         ^^^^^^^^^^^ source.ink string.quoted.double.ink

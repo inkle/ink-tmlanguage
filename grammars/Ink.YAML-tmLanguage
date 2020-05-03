@@ -165,7 +165,7 @@ repository:
     patterns:
     - match: \s*(false|true)\s*
       captures:
-        '1': { name: constant.language.ink }
+        '1': { name: constant.language.ink constant.language.boolean.ink }
 
   numberLiteral:
     patterns:
@@ -282,7 +282,7 @@ repository:
       patterns:
         - name: keyword.control.ink
           match: 'return'
-        - name: variable.other
+        - name: variable.other.ink
           match: '{{validIdentifier}}'
         - include: '#expression'
 
@@ -371,11 +371,11 @@ repository:
 
   function:
     patterns: # foo(a, b)
-      - begin: \s*({{standardFunctions}}({{validIdentifier}}))\s*(\()\s*
+      - begin: \s*(({{standardFunctions}})|({{validIdentifier}}))\s*(\()\s*
         beginCaptures:
-          '1': { name: variable.language.ink }
-          '2': { name: variable.function.ink }
-          '3': { name: meta.parens punctuation.section.parens.begin.ink }
+          '2': { name: constant.language.ink }
+          '3': { name: variable.function.ink }
+          '4': { name: meta.parens punctuation.section.parens.begin.ink }
         end: (\))
         endCaptures:
           '1': { name: meta.parens punctuation.section.parens.end.ink }

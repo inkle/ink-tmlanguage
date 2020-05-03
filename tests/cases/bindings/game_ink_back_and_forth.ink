@@ -23,9 +23,9 @@ In top external
 //<~- source.ink
 //^^^^^^ source.ink keyword.control.ink
 //      ^ source.ink
-//       ^^^^^^^ source.ink variable.other
+//       ^^^^^^^ source.ink variable.function.ink
 //              ^ source.ink
-//               ^ source.ink variable.other
+//               ^ source.ink variable.other.ink
 //                ^ source.ink
 == function inkInc(x)
 //<-- source.ink storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
