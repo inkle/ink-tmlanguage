@@ -21,6 +21,14 @@
       </dict>
       <dict>
         <key>include</key>
+        <string>#tag</string>
+      </dict>
+      <dict>
+        <key>include</key>
+        <string>#todo</string>
+      </dict>
+      <dict>
+        <key>include</key>
         <string>#import</string>
       </dict>
       <dict>
@@ -54,10 +62,6 @@
       <dict>
         <key>include</key>
         <string>#glue</string>
-      </dict>
-      <dict>
-        <key>include</key>
-        <string>#tag</string>
       </dict>
       <dict>
         <key>include</key>
@@ -109,6 +113,64 @@
             </dict>
             <key>end</key>
             <string>(?=$)</string>
+          </dict>
+        </array>
+      </dict>
+      <key>tag</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>name</key>
+            <string>string.quoted.other.ink entity.tag.ink</string>
+            <key>begin</key>
+            <string>(?&lt;!\\)(\#)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.comment.ink comment.line.ink entity.tag.begin.ink</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=$)</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
+            </array>
+          </dict>
+        </array>
+      </dict>
+      <key>todo</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>name</key>
+            <string>comment.line.ink entity.todo.ink</string>
+            <key>begin</key>
+            <string>(?&lt;=^)(TODO)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>constant.other entity.todo.begin.ink</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=$)</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
+            </array>
           </dict>
         </array>
       </dict>
@@ -220,7 +282,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>([a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)\s*</string>
+            <string>([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)\s*</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -247,7 +309,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>([a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)\s*(=)</string>
+            <string>([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)\s*(=)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -295,7 +357,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>([a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)\s*(=)</string>
+            <string>([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)\s*(=)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -340,11 +402,11 @@
           <dict>
             <key>begin</key>
             <string>(?x)
- ^
+ (?:(?&lt;=^)|(?&lt;=\~))
  \s*
  (temp)
  \s*
- ([a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)
+ ([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)
  \s*
  (=)</string>
             <key>beginCaptures</key>
@@ -468,7 +530,7 @@
             <key>name</key>
             <string>string.label.ink entity.name.label.ink string.quoted.other.ink</string>
             <key>match</key>
-            <string>(\()\s*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*\s*(\))</string>
+            <string>(\()\s*[a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*\s*(\))</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -497,34 +559,13 @@
           </dict>
         </array>
       </dict>
-      <key>tag</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>begin</key>
-            <string>((?&lt;!\\)\#)</string>
-            <key>end</key>
-            <string>$</string>
-            <key>name</key>
-            <string>string.tag.ink string.unquoted.ink</string>
-            <key>patterns</key>
-            <array>
-              <dict>
-                <key>include</key>
-                <string>#comment</string>
-              </dict>
-            </array>
-          </dict>
-        </array>
-      </dict>
       <key>choice</key>
       <dict>
         <key>patterns</key>
         <array>
           <dict>
             <key>begin</key>
-            <string>(?:^)\s*(((\s*[\*]\s*)+)|((\s*[\+]\s*)+))</string>
+            <string>(?:(?&lt;=^)|(?&lt;=\:)|(?&lt;=\-))\s*(((\s*[\*]\s*)+)|((\s*[\+]\s*)+))</string>
             <key>beginCaptures</key>
             <dict>
               <key>2</key>
@@ -539,7 +580,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=(^\s*(\-|\*|\+|\=)))</string>
+            <string>(?=$)</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -679,7 +720,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>^\s*(~)</string>
+            <string>(?:(?&lt;=^)|(?&lt;=\-)|(?&lt;=\:))\s*(~)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -693,16 +734,43 @@
             <key>patterns</key>
             <array>
               <dict>
-                <key>name</key>
-                <string>keyword.control.ink</string>
-                <key>match</key>
-                <string>return</string>
+                <key>include</key>
+                <string>#returnStatement</string>
               </dict>
               <dict>
+                <key>include</key>
+                <string>#tempDeclaration</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#expression</string>
+              </dict>
+            </array>
+          </dict>
+        </array>
+      </dict>
+      <key>returnStatement</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>begin</key>
+            <string>\s*(return)\s*</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
                 <key>name</key>
-                <string>variable.other.ink</string>
-                <key>match</key>
-                <string>[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*</string>
+                <string>keyword.control.ink</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=$)</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#divert</string>
               </dict>
               <dict>
                 <key>include</key>
@@ -783,7 +851,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>((={2,})|(?=^))</string>
+            <string>((={2,})|(?=$))</string>
             <key>endCaptures</key>
             <dict>
               <key>2</key>
@@ -839,7 +907,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>\s*([a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)\s*</string>
+            <string>\s*([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)\s*</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -866,7 +934,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>(?x)\s*(function)\s*([a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)\s*</string>
+            <string>(?x)\s*(function)\s*([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)\s*</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -955,7 +1023,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>\s*((LIST_COUNT|LIST_MIN|LIST_MAX|LIST_ALL|LIST_INVERT|LIST_RANDOM|CHOICE_COUNT|TURNS_SINCE|LIST_RANGE|TURNS|POW|FLOOR|CEILING|INT|FLOAT)|([a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*))\s*(\()\s*</string>
+            <string>\s*((LIST_COUNT|LIST_MIN|LIST_MAX|LIST_ALL|LIST_INVERT|LIST_RANDOM|CHOICE_COUNT|TURNS_SINCE|LIST_RANGE|TURNS|POW|FLOOR|CEILING|INT|FLOAT)|([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*))\s*(\()\s*</string>
             <key>beginCaptures</key>
             <dict>
               <key>2</key>
@@ -1057,7 +1125,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>\s*((END|DONE)|([a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*))</string>
+            <string>\s*((END|DONE)|([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*))</string>
             <key>beginCaptures</key>
             <dict>
               <key>2</key>
@@ -1093,7 +1161,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>\s*((END|DONE)|([a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)(\.)([a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*))</string>
+            <string>\s*((END|DONE)|([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)(\.)([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*))</string>
             <key>beginCaptures</key>
             <dict>
               <key>2</key>
@@ -1197,27 +1265,31 @@
             <array>
               <dict>
                 <key>include</key>
-                <string>#interpolatedIdentifier</string>
+                <string>#divert</string>
               </dict>
               <dict>
                 <key>include</key>
-                <string>#probableExpression</string>
+                <string>#conditionalSubstitution</string>
               </dict>
               <dict>
                 <key>include</key>
-                <string>#hyphenClause</string>
+                <string>#multilineAlternative</string>
               </dict>
               <dict>
                 <key>include</key>
-                <string>#blockAlternative</string>
+                <string>#multilineBlock</string>
               </dict>
               <dict>
                 <key>include</key>
-                <string>#conditionalExpressionOrfirstAlternativeItem</string>
+                <string>#substitution</string>
               </dict>
               <dict>
                 <key>include</key>
-                <string>#conditionalElseClauseOrAlternativeItem</string>
+                <string>#firstAlternativeItem</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#alternativeItem</string>
               </dict>
               <dict>
                 <key>include</key>
@@ -1227,13 +1299,86 @@
           </dict>
         </array>
       </dict>
-      <key>conditionalIfClause</key>
+      <key>substitution</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>match</key>
+            <string>(?&lt;=\{)([^\{\}\:\|]+)(?=\})</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.ink</string>
+              </dict>
+            </dict>
+          </dict>
+        </array>
+      </dict>
+      <key>firstAlternativeItem</key>
       <dict>
         <key>patterns</key>
         <array>
           <dict>
             <key>begin</key>
-            <string>(?&lt;=\:)</string>
+            <string>(?&lt;=\{)\s*(&amp;|!|~)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.ink keyword.alternative.type.ink</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=\|)</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#languageLiteral</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#numberLiteral</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#stringLiteral</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#divert</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#tag</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#conditionalSubstitution</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#interpolevaluablock</string>
+              </dict>
+            </array>
+          </dict>
+        </array>
+      </dict>
+      <key>alternativeItem</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>begin</key>
+            <string>(?&lt;!\\)(\|)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -1243,17 +1388,48 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=\|)|(?=\})</string>
+            <string>(?=\})|(?=\|)</string>
             <key>patterns</key>
             <array>
               <dict>
                 <key>include</key>
-                <string>#comment</string>
+                <string>#interpolevaluablock</string>
               </dict>
               <dict>
                 <key>include</key>
-                <string>#choice</string>
+                <string>#divert</string>
               </dict>
+              <dict>
+                <key>include</key>
+                <string>#tag</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
+            </array>
+          </dict>
+        </array>
+      </dict>
+      <key>conditionalSubstitution</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>begin</key>
+            <string>((?:[^\{\}\|]|\|(?=\|))+\s*\:)\s*(?!$)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.ink</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=\})</string>
+            <key>patterns</key>
+            <array>
               <dict>
                 <key>include</key>
                 <string>#divert</string>
@@ -1264,31 +1440,117 @@
               </dict>
               <dict>
                 <key>include</key>
+                <string>#inlineElseClause</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#interpolevaluablock</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
+            </array>
+          </dict>
+        </array>
+      </dict>
+      <key>inlineElseClause</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>begin</key>
+            <string>(?&lt;!\\)(\|)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.ink</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=\})</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#divert</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#interpolevaluablock</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
+            </array>
+          </dict>
+        </array>
+      </dict>
+      <key>multilineBlock</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>begin</key>
+            <string>([^\{\}]+\s*\:)\s*(?=$)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.ink</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=\})</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#caseClause</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#alternativeClause</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#divert</string>
+              </dict>
+              <dict>
+                <key>include</key>
                 <string>#logic</string>
               </dict>
               <dict>
                 <key>include</key>
-                <string>#tag</string>
+                <string>#choice</string>
               </dict>
               <dict>
                 <key>include</key>
-                <string>#hyphenClause</string>
+                <string>#glue</string>
               </dict>
               <dict>
                 <key>include</key>
                 <string>#interpolevaluablock</string>
               </dict>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
             </array>
           </dict>
         </array>
       </dict>
-      <key>conditionalElseClauseOrAlternativeItem</key>
+      <key>multilineAlternative</key>
       <dict>
         <key>patterns</key>
         <array>
           <dict>
             <key>begin</key>
-            <string>(\|)</string>
+            <string>(?&lt;=\{)\s*$</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -1298,12 +1560,16 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=\})|(?=\|\s*(?!$))</string>
+            <string>(?=\})</string>
             <key>patterns</key>
             <array>
               <dict>
                 <key>include</key>
-                <string>#interpolevaluablock</string>
+                <string>#caseClause</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#alternativeClause</string>
               </dict>
               <dict>
                 <key>include</key>
@@ -1311,39 +1577,51 @@
               </dict>
               <dict>
                 <key>include</key>
-                <string>#tag</string>
+                <string>#logic</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#choice</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#interpolevaluablock</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
               </dict>
             </array>
           </dict>
         </array>
       </dict>
-      <key>conditionalExpressionOrfirstAlternativeItem</key>
+      <key>caseClause</key>
       <dict>
         <key>patterns</key>
         <array>
           <dict>
             <key>begin</key>
-            <string>(?&lt;=\{)(\s*((&amp;|!|~)?(\|))?(&amp;|!|~)?)</string>
+            <string>^\s*(-(?!&gt;))\s?(else|[^\|\{\}]+)\s*(\:)</string>
             <key>beginCaptures</key>
             <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.ink</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.ink</string>
+              </dict>
               <key>3</key>
               <dict>
                 <key>name</key>
-                <string>keyword.alternative.ink keyword.operator.arithmetic.ink</string>
-              </dict>
-              <key>4</key>
-              <dict>
-                <key>name</key>
                 <string>keyword.control.ink</string>
-              </dict>
-              <key>5</key>
-              <dict>
-                <key>name</key>
-                <string>keyword.alternative.ink keyword.operator.arithmetic.ink</string>
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=\|\s*(?!$))|(?=\:\s*(?!$))|(?=\})</string>
+            <string>(?=^)|(?=\})|(?=\-)</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -1352,31 +1630,31 @@
               </dict>
               <dict>
                 <key>include</key>
-                <string>#colonSuffixed</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#conditionalIfClause</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#hyphenClause</string>
-              </dict>
-              <dict>
-                <key>include</key>
                 <string>#divert</string>
               </dict>
+              <dict>
+                <key>include</key>
+                <string>#logic</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#choice</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
             </array>
           </dict>
         </array>
       </dict>
-      <key>hyphenClause</key>
+      <key>alternativeClause</key>
       <dict>
         <key>patterns</key>
         <array>
           <dict>
             <key>begin</key>
-            <string>(?:^)\s*(-)(?!\&gt;)</string>
+            <string>^\s*(-(?!&gt;))</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -1386,287 +1664,30 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=\})|(?=^)</string>
+            <string>(?=^)|(?=\})|(?=\-)</string>
             <key>patterns</key>
             <array>
-              <dict>
-                <key>include</key>
-                <string>#comment</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#hyphenElse</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#hyphenExpression</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#hyphenContent</string>
-              </dict>
-            </array>
-          </dict>
-        </array>
-      </dict>
-      <key>hyphenElse</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>match</key>
-            <string>\s*(else)\s*(:)</string>
-            <key>captures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>keyword.control.conditional.ink</string>
-              </dict>
-              <key>2</key>
-              <dict>
-                <key>name</key>
-                <string>keyword.control.ink</string>
-              </dict>
-            </dict>
-          </dict>
-        </array>
-      </dict>
-      <key>hyphenExpression</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>begin</key>
-            <string>(?&lt;=\-)</string>
-            <key>end</key>
-            <string>(:)</string>
-            <key>endCaptures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>keyword.control.ink</string>
-              </dict>
-            </dict>
-            <key>patterns</key>
-            <array>
-              <dict>
-                <key>include</key>
-                <string>#comment</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#expression</string>
-              </dict>
-            </array>
-          </dict>
-        </array>
-      </dict>
-      <key>hyphenContent</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>begin</key>
-            <string>(?&lt;=\:)</string>
-            <key>end</key>
-            <string>(?=^\s*(\}|(-(?!\&gt;))))</string>
-            <key>patterns</key>
-            <array>
-              <dict>
-                <key>include</key>
-                <string>#clauseContent</string>
-              </dict>
-            </array>
-          </dict>
-        </array>
-      </dict>
-      <key>blockAlternative</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>begin</key>
-            <string>(?&lt;=\{)\s*(stopping|shuffle|cycle|once)\s*(:)$</string>
-            <key>beginCaptures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>keyword.alternative.ink keyword.operator.arithmetic.ink</string>
-              </dict>
-              <key>2</key>
-              <dict>
-                <key>name</key>
-                <string>keyword.control.ink</string>
-              </dict>
-            </dict>
-            <key>end</key>
-            <string>(?=^\s*\})</string>
-            <key>patterns</key>
-            <array>
-              <dict>
-                <key>include</key>
-                <string>#blockAlternativeItem</string>
-              </dict>
-            </array>
-          </dict>
-        </array>
-      </dict>
-      <key>blockAlternativeItem</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>begin</key>
-            <string>^\s*(-)(?!\&gt;)</string>
-            <key>beginCaptures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>keyword.control.ink</string>
-              </dict>
-            </dict>
-            <key>end</key>
-            <string>(?=^\s*\})|(?=^\s*\-(?!\&gt;))</string>
-            <key>patterns</key>
-            <array>
-              <dict>
-                <key>include</key>
-                <string>#comment</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#tag</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#divert</string>
-              </dict>
               <dict>
                 <key>include</key>
                 <string>#interpolevaluablock</string>
               </dict>
-            </array>
-          </dict>
-        </array>
-      </dict>
-      <key>blockIfCondition</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>match</key>
-            <string>(?&lt;=\{)([^\n\r]+)(:)\s*$</string>
-            <key>captures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>keyword.control.ink</string>
-              </dict>
-              <key>2</key>
-              <dict>
-                <key>name</key>
-                <string>keyword.control.ink</string>
-              </dict>
-            </dict>
-          </dict>
-        </array>
-      </dict>
-      <key>blockIfClause</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>begin</key>
-            <string>(?&lt;=\{)</string>
-            <key>end</key>
-            <string>(?=^\s*\})|(?=^\s*\-(?!\&gt;))</string>
-            <key>patterns</key>
-            <array>
               <dict>
                 <key>include</key>
-                <string>#blockIfCondition</string>
+                <string>#divert</string>
               </dict>
               <dict>
                 <key>include</key>
-                <string>#clauseContent</string>
+                <string>#logic</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#choice</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
               </dict>
             </array>
-          </dict>
-        </array>
-      </dict>
-      <key>clauseContent</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>include</key>
-            <string>#comment</string>
-          </dict>
-          <dict>
-            <key>include</key>
-            <string>#tag</string>
-          </dict>
-          <dict>
-            <key>include</key>
-            <string>#divert</string>
-          </dict>
-          <dict>
-            <key>include</key>
-            <string>#logic</string>
-          </dict>
-          <dict>
-            <key>include</key>
-            <string>#glue</string>
-          </dict>
-          <dict>
-            <key>include</key>
-            <string>#interpolevaluablock</string>
-          </dict>
-        </array>
-      </dict>
-      <key>colonSuffixed</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>match</key>
-            <string>(?&lt;=\{|\s)([^\{\}\|]+)(:)</string>
-            <key>captures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>keyword.control.ink</string>
-              </dict>
-              <key>2</key>
-              <dict>
-                <key>name</key>
-                <string>keyword.control.ink</string>
-              </dict>
-            </dict>
-          </dict>
-        </array>
-      </dict>
-      <key>probableExpression</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>match</key>
-            <string>(?&lt;=\{)(?&lt;!^)([^\|\{\}\:]+)(?!$)(?=\})</string>
-            <key>captures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>keyword.control.ink</string>
-              </dict>
-            </dict>
           </dict>
         </array>
       </dict>
@@ -1677,10 +1698,6 @@
           <dict>
             <key>include</key>
             <string>#comment</string>
-          </dict>
-          <dict>
-            <key>include</key>
-            <string>#tempDeclaration</string>
           </dict>
           <dict>
             <key>include</key>
@@ -1723,7 +1740,7 @@
    (?&lt;=\?) | (?&lt;=!\?)  | (?&lt;=\^) |
    (?&lt;=,)  | (?=\)))
   \s*
-  [a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*</string>
+  [a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*</string>
           </dict>
           <dict>
             <key>name</key>
@@ -1733,7 +1750,7 @@
   \s*
   ((?&lt;=not) | (?&lt;=and) | (?&lt;=or) | (?&lt;=has) | (?&lt;=hasnt) | (?&lt;=mod))
   [^a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]
-  [a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*</string>
+  [a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*</string>
           </dict>
           <dict>
             <key>name</key>
@@ -1741,7 +1758,7 @@
             <key>match</key>
             <string>(?x)
   \s*
-  [a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*
+  [a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*
   \s*
   ((?=&amp;&amp;) | (?=\|\|) |
    (?=\=) | (?=!\=)  | (?=\&gt;) | (?=\&lt;) |
@@ -1755,7 +1772,7 @@
             <key>match</key>
             <string>(?x)
   \s*
-  [a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*
+  [a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*
   [^a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]
   ((?=not) | (?=and) | (?=or) | (?=has) | (?=hasnt) | (?=mod))</string>
           </dict>
@@ -1769,7 +1786,7 @@
             <key>name</key>
             <string>variable.other.ink</string>
             <key>match</key>
-            <string>(?&lt;=\{)(?&lt;!^)\s*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*\s*(?!$)(?=\})</string>
+            <string>(?&lt;=\{)(?&lt;!^)\s*[a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*\s*(?!$)(?=\})</string>
           </dict>
         </array>
       </dict>

@@ -11,17 +11,14 @@ VAR x = ->knot
 //        ^^^^ source.ink variable.other.knot.ink
 Count start: {READ_COUNT (x)} {READ_COUNT (-> knot)} {knot}
 //<------------- source.ink
-//           ^ source.ink keyword.control.ink
-//            ^^^^^^^^^^^^^^ source.ink keyword.control.ink
-//                          ^ source.ink keyword.control.ink
+//           ^ keyword.control.ink
+//            ^^^^^^^^^^^^^^^ keyword.control.ink
 //                           ^ source.ink
-//                            ^ source.ink keyword.control.ink
-//                             ^^^^^^^^^^^^^^^^^^^^ source.ink keyword.control.ink
-//                                                 ^ source.ink keyword.control.ink
-//                                                  ^ source.ink
-//                                                   ^ source.ink keyword.control.ink
-//                                                    ^^^^ source.ink variable.other.ink
-//                                                        ^ source.ink keyword.control.ink
+//                            ^^^^^^^^^^^^^^^^^^^^^ keyword.control.ink
+//                                                 ^ keyword.control.ink
+//                                                   ^ keyword.control.ink
+//                                                    ^^^^ keyword.control.ink
+//                                                        ^ keyword.control.ink
 -> x (1) ->
 //<-- source.ink keyword.divert.ink keyword.other.ink
 //^ source.ink
@@ -56,9 +53,9 @@ Count end: {READ_COUNT (x)} {READ_COUNT (-> knot)} {knot}
 //                           ^^^^^^^^^^^^^^^^^^^^ source.ink keyword.control.ink
 //                                               ^ source.ink keyword.control.ink
 //                                                ^ source.ink
-//                                                 ^ source.ink keyword.control.ink
-//                                                  ^^^^ source.ink variable.other.ink
-//                                                      ^ source.ink keyword.control.ink
+//                                                 ^ keyword.control.ink
+//                                                  ^^^^ keyword.control.ink
+//                                                      ^ keyword.control.ink
 -> END
 //<-- source.ink keyword.divert.ink keyword.other.ink
 //^ source.ink
@@ -74,9 +71,9 @@ Count end: {READ_COUNT (x)} {READ_COUNT (-> knot)} {knot}
 //         ^ source.ink
 //          ^^ source.ink storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
 {a}
-//<- source.ink keyword.control.ink
-//<~- source.ink variable.other.ink
-//^ source.ink keyword.control.ink
+//<- keyword.control.ink
+//<~- keyword.control.ink
+//^ keyword.control.ink
 ->->
 //<-- source.ink keyword.divert.ink keyword.other.ink
 //^^ source.ink keyword.divert.ink keyword.other.ink

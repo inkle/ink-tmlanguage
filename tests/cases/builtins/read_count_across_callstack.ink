@@ -12,9 +12,9 @@
 //       ^^ source.ink storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
 1) Seen first {first} times.
 //<-------------- source.ink
-//            ^ source.ink keyword.control.ink
-//             ^^^^^ source.ink variable.other.ink
-//                  ^ source.ink keyword.control.ink
+//            ^ keyword.control.ink
+//            ^^^^^^ keyword.control.ink
+//                  ^ keyword.control.ink
 //                   ^^^^^^^^ source.ink
 -> second ->
 //<-- source.ink keyword.divert.ink keyword.other.ink
@@ -24,9 +24,9 @@
 //        ^^ source.ink keyword.divert.ink keyword.other.ink
 2) Seen first {first} times.
 //<-------------- source.ink
-//            ^ source.ink keyword.control.ink
-//             ^^^^^ source.ink variable.other.ink
-//                  ^ source.ink keyword.control.ink
+//            ^ keyword.control.ink
+//             ^^^^^ keyword.control.ink
+//                  ^ keyword.control.ink
 //                   ^^^^^^^^ source.ink
 -> DONE
 //<-- source.ink keyword.divert.ink keyword.other.ink

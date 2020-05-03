@@ -27,9 +27,7 @@
 //    ^^^^^^^^^ source.ink
         Vaue of local var is: {x}
 //<------------------------------ source.ink
-//                            ^ source.ink keyword.control.ink
-//                             ^ source.ink variable.other.ink
-//                              ^ source.ink keyword.control.ink
+//                            ^^^ keyword.control.ink
         -> END
 //<-------- source.ink
 //      ^^ source.ink keyword.divert.ink keyword.other.ink

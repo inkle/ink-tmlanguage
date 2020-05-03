@@ -21,9 +21,9 @@
  * {false} Impossible choice
 //<- source.ink
 //<~-- source.ink keyword.choice.ink keyword.operator.arithmetic.ink
-// ^ source.ink keyword.control.ink
-//  ^^^^^ source.ink variable.other.ink
-//       ^ source.ink keyword.control.ink
+// ^ keyword.control.ink
+//  ^^^^^ keyword.control.ink
+//       ^ keyword.control.ink
 //        ^^^^^^^^^^^^^^^^^^^ source.ink
  * -> default
 //<- source.ink

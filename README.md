@@ -49,25 +49,20 @@ In these constructs, all the items contained in the first expression (`x == 0:`)
   - else:
   	Hi
 }
+{
+	- x == 0:
+		Hello
+}
+{ window_opts < 2 || learnt(fingerprints_on_glass) || GlassState ? steamed:
+	I looked away from the dreary glass.
+}
 ```
 
 This is not the case in the following example, where all items will be named with their own scopes.
 
 ```ink
-{
-	- x == 0:
-		Hello
-}
 ~ y = (x == 0)
 ~ myFunction(x == 0)
-```
-
-Similarly, the following construct will not be highlighted correctly, as there is an ambiguity between an empty alternative item and the _logical or_ operator (they are both written: `||`).
-
-```ink
-{ window_opts < 2 || learnt(fingerprints_on_glass) || GlassState ? steamed:
-	I looked away from the dreary glass.
-}
 ```
 
 ### Text suppression
@@ -81,7 +76,6 @@ In choice constructs, Ink offer the ability to separate the content in up to thr
 
 In the example above, only `[."]` should be highlighted.
 
-
 ## Building a custom theme
 
 All the captures support the generic scopes recommended by the [Sublime Text documentation](https://www.sublimetext.com/docs/3/scope_naming.html), narrowed down to `.ink`. This means that the grammar will work out of box with existing themes.
@@ -89,7 +83,8 @@ All the captures support the generic scopes recommended by the [Sublime Text doc
 Most of the captures are multi-scoped, with the first scope defined by the theme being used. Some of these multi-scoped captures support ink-specific scopes, which can be implemented by your custom theme. They are described below:
 
 - `string.label.ink` → `(label)`
-- `string.tag.ink` → `#tag`
+- `entity.tag.ink` → `#tag`
+- `entity.todo.ink` → `TODO`
 - `keyword.glue.ink` → `<>`
 - `keyword.choice.ink` → `*`
 - `keyword.choice.sticky.ink` → `+`
