@@ -1,0 +1,27 @@
+name: build
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  test:
+    name: Build & test
+    runs-on: ubuntu-18.04
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run-script build
+
+      - name: Test
+        run: npm test
