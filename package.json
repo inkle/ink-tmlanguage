@@ -12,33 +12,38 @@
     "Grammar",
     "Syntax Highlighting"
   ],
+  "homepage": "https://github.com/inkle/ink-tmlanguage#readme",
+  "bugs": {
+    "url": "https://github.com/inkle/ink-tmlanguage/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/inkle/ink-tmlanguage.git"
   },
-  "author": "Frédéric Maquin <fred@ephread.com> (https://ephread.com/)",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/inkle/ink-tmlanguage/issues"
-  },
-  "homepage": "https://github.com/inkle/ink-tmlanguage#readme",
-  "scripts": {
-    "prepublishOnly": "npm run build",
-    "build": "tsc -p build && node build/build.js",
-    "watch": "npm run build && chokidar 'grammars/*.YAML-tmLanguage' -c 'npm run build'"
-  },
+  "author": "Frédéric Maquin <fred@ephread.com> (https://ephread.com/)",
   "files": [
     "grammars/Ink.tmLanguage"
   ],
+  "scripts": {
+    "build": "tsc -p build && node build/build.js",
+    "prepublishOnly": "npm run build",
+    "watch": "npm run build && chokidar 'grammars/*.YAML-tmLanguage' -c 'npm run build'",
+    "test": "npx vscode-tmgrammar-test -c -s source.ink -g grammars/Ink.tmLanguage -t 'tests/cases/**/*.ink'"
+  },
   "devDependencies": {
+    "@types/jest": "^25.2.1",
     "@types/js-yaml": "^3.12.3",
     "@types/node": "^13.13.4",
     "chokidar": "^3.4.0",
     "chokidar-cli": "^2.1.0",
+    "fs-extra": "^9.0.0",
     "js-yaml": "^3.13.1",
     "plist": "^3.0.1",
     "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "vscode-textmate": "^5.1.1",
+    "vscode-tmgrammar-test": "0.0.9"
   }
 }
