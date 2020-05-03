@@ -1,6 +1,6 @@
 # ![Ink TMLanguage](https://i.imgur.com/oLMOVfq.png)
 
-[![Build Status](https://travis-ci.org/inkle/ink-tmlanguage.svg?branch=master)](https://travis-ci.org/inkle/ink-tmlanguage)
+[![Build Status](https://github.com/inkle/ink-tmlanguage/workflows/build/badge.svg)](https://github.com/inkle/ink-tmlanguage/actions)
 [![npm version](https://img.shields.io/npm/v/ink-tmlanguage.svg)](https://www.npmjs.com/package/ink-tmlanguage)
 [![Licence](https://img.shields.io/npm/l/ink-tmlanguage.svg)](https://github.com/inkle/ink-tmlanguage/blob/master/LICENSE)
 [![Dependencies](https://david-dm.org/ephread/ink-tmlanguage/status.svg)](https://david-dm.org/inkle/ink-tmlanguage)
