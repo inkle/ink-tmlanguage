@@ -23,7 +23,7 @@
 //   ^ source.ink keyword.control.ink
     + A choice
 //<---- source.ink
-//  ^^ source.ink keyword.choice.sticky.ink keyword.operator.arithmetic.ink
+//  ^ source.ink keyword.choice.sticky.ink keyword.operator.arithmetic.ink
 //    ^^^^^^^^^ source.ink
         Vaue of local var is: {x}
 //<------------------------------ source.ink

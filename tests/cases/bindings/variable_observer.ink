@@ -33,7 +33,7 @@ Hello world!
 Hello world 2!
 //<-------------- source.ink
 * choice
-//<-- source.ink keyword.choice.ink keyword.operator.arithmetic.ink
+//<- source.ink keyword.choice.ink keyword.operator.arithmetic.ink
 //^^^^^^^ source.ink
     ~ testVar = 25
 //<---- source.ink

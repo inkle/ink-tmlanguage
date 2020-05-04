@@ -18,7 +18,7 @@
 //            ^ constant.numeric.ink
    *   ->
 //<--- source.ink
-// ^^^^ source.ink keyword.choice.ink keyword.operator.arithmetic.ink
+// ^ source.ink keyword.choice.ink keyword.operator.arithmetic.ink
 //     ^^ source.ink keyword.divert.ink keyword.other.ink
        Should be 1 not 0: {x}.
 //<-------------------------- source.ink

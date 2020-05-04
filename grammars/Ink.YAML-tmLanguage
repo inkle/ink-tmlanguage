@@ -242,38 +242,34 @@ repository:
 # ##############################################################################
 
   choice:
+    # If first line does not contain any text, then the text on the
+    # next line will be grabbed as the choice content. That's why the
+    # end pattern is (?=\S\s*$) -> At least one non whitespace character,
+    # followed by any number of whitespace characters before the end of the line.
+    #
+    # Note that for
     patterns: # * (foo) {bar} content [content] content
-    - begin: (?:(?<=^)|(?<=\:)|(?<=\-))\s*(((\s*[\*]\s*)+)|((\s*[\+]\s*)+))
+    - begin: >-
+        (?x)
+         (?<=^|\:|\-)
+         (?:
+           ((?:\s*[\*])+)
+           |
+           ((?:\s*[\+])+)
+         )
       beginCaptures:
-        '2': { name: keyword.choice.ink keyword.operator.arithmetic.ink }
-        '4': { name: keyword.choice.sticky.ink keyword.operator.arithmetic.ink }
-      end: (?=$)
+        '1': { name: keyword.choice.ink keyword.operator.arithmetic.ink }
+        '2': { name: keyword.choice.sticky.ink keyword.operator.arithmetic.ink }
+      end: (?<=[^\{\}\s])(?=\s*$)
       patterns:
         - include: "#comment"
         - include: "#label"
+        - include: "#inlineCondition"
         - include: "#textSuppression"
         - include: "#divert"
         - include: '#tag'
         - include: "#glue"
         - include: "#logic"
-        - include: "#interpolevaluablock"
-
-  choiceInGather:
-    patterns: # * (foo) {bar} content [content] content
-    - begin: \s*(((\s*[\*]\s*)+)|((\s*[\+]\s*)+))
-      beginCaptures:
-        '2': { name: keyword.choice.ink keyword.operator.arithmetic.ink }
-        '4': { name: keyword.choice.sticky.ink keyword.operator.arithmetic.ink }
-      end: (?=(^\s*(\-|\*|\+|\=)))
-      patterns:
-        - include: "#comment"
-        - include: "#label"
-        - include: "#textSuppression"
-        - include: "#divert"
-        - include: '#tag'
-        - include: "#glue"
-        - include: "#logic"
-        - include: "#interpolevaluablock"
 
   textSuppression:
     patterns: # [content]
@@ -317,14 +313,14 @@ repository:
 
   gather:
     patterns: # -
-    - begin: ^\s*((\s*\-\s*(?!>))+)
+    - begin: (?<=^)\s*((?:\s*\-(?!>))+)
       beginCaptures:
         '1': { name: keyword.gather.ink keyword.operator.arithmetic.ink }
-      end: (?=^)
+      end: (?=$)
       patterns:
         - include: "#comment"
+        - include: '#choice'
         - include: "#label"
-        - include: '#choiceInGather'
         - include: "#divert"
         - include: "#glue"
         - include: "#logic"
@@ -484,6 +480,14 @@ repository:
           - include: '#firstAlternativeItem'
           - include: '#alternativeItem'
           - include: '#interpolevaluablock'
+
+  inlineCondition:
+    patterns:
+      - name: keyword.control.ink
+        match: (\{)[^\{\}]*(\})
+        captures:
+          '1': { name: keyword.control.ink }
+          '2': { name: keyword.control.ink }
 
   substitution:
     patterns:

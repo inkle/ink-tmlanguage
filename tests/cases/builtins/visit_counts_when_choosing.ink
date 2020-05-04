@@ -9,7 +9,7 @@
 this is a test
 //<-------------- source.ink
 + [Next] -> TestKnot2
-//<-- source.ink keyword.choice.sticky.ink keyword.operator.arithmetic.ink
+//<- source.ink keyword.choice.sticky.ink keyword.operator.arithmetic.ink
 //^ source.ink keyword.choice.suppression.ink keyword.control.ink
 // ^^^^ source.ink
 //     ^ source.ink keyword.choice.suppression.ink keyword.control.ink

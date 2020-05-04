@@ -18,7 +18,7 @@
 //                        ^^^^^^ source.ink
     * (then) stuff
 //<---- source.ink
-//  ^^ source.ink keyword.choice.ink keyword.operator.arithmetic.ink
+//  ^  source.ink keyword.choice.ink keyword.operator.arithmetic.ink
 //    ^ source.ink string.label.ink entity.name.label.ink string.quoted.other.ink punctuation.definition.string.label.begin.ink punctuation.definition.string.begin.ink
 //     ^^^^ source.ink string.label.ink entity.name.label.ink string.quoted.other.ink
 //         ^ source.ink string.label.ink entity.name.label.ink string.quoted.other.ink punctuation.definition.string.label.begin.ink punctuation.definition.string.begin.ink
@@ -31,7 +31,7 @@
 //                            ^^^^^ source.ink
         * * (next) more stuff
 //<-------- source.ink
-//      ^^^^ source.ink keyword.choice.ink keyword.operator.arithmetic.ink
+//      ^^^  source.ink keyword.choice.ink keyword.operator.arithmetic.ink
 //          ^ source.ink string.label.ink entity.name.label.ink string.quoted.other.ink punctuation.definition.string.label.begin.ink punctuation.definition.string.begin.ink
 //           ^^^^ source.ink string.label.ink entity.name.label.ink string.quoted.other.ink
 //               ^ source.ink string.label.ink entity.name.label.ink string.quoted.other.ink punctuation.definition.string.label.begin.ink punctuation.definition.string.begin.ink
