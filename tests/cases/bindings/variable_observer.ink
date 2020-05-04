@@ -20,13 +20,13 @@ Hello world!
 //<------------ source.ink
 ~ testVar = 15
 //<- source.ink keyword.logic.ink keyword.operator.arithmetic.ink
-//<~--------- source.ink variable.other.ink
+//<~-------- source.ink variable.other.ink
 //        ^ source.ink keyword.operator.assignment.ink
 //         ^ source.ink
 //          ^^ source.ink constant.numeric.ink
 ~ testVar2 = 100
 //<- source.ink keyword.logic.ink keyword.operator.arithmetic.ink
-//<~---------- source.ink variable.other.ink
+//<~--------- source.ink variable.other.ink
 //         ^ source.ink keyword.operator.assignment.ink
 //          ^ source.ink
 //           ^^^ source.ink constant.numeric.ink
@@ -38,14 +38,14 @@ Hello world 2!
     ~ testVar = 25
 //<---- source.ink
 //  ^ source.ink keyword.logic.ink keyword.operator.arithmetic.ink
-//   ^^^^^^^^^ source.ink variable.other.ink
+//   ^^^^^^^^  source.ink variable.other.ink
 //            ^ source.ink keyword.operator.assignment.ink
 //             ^ source.ink
 //              ^^ source.ink constant.numeric.ink
     ~ testVar2 = 200
 //<---- source.ink
 //  ^ source.ink keyword.logic.ink keyword.operator.arithmetic.ink
-//   ^^^^^^^^^^ source.ink variable.other.ink
+//   ^^^^^^^^^  source.ink variable.other.ink
 //             ^ source.ink keyword.operator.assignment.ink
 //              ^ source.ink
 //               ^^^ source.ink constant.numeric.ink

@@ -157,6 +157,7 @@ repository:
         - include: '#stringLiteral'
         - include: '#divert'
         - include: '#expressionIdentifier'
+        - include: '#expression'
 
   constAssignment: # foo = "bar"
     patterns:
@@ -172,6 +173,7 @@ repository:
         - include: '#stringLiteral'
         - include: '#divert'
         - include: '#expressionIdentifier'
+        - include: '#expression'
 
   tempDeclaration:
     patterns:
@@ -255,7 +257,6 @@ repository:
 # ##############################################################################
 
   choice:
-    # Note that choices can sometimes
     patterns: # * (foo) {bar} content [content] content
     - begin: >-
         (?x)
@@ -268,11 +269,11 @@ repository:
       beginCaptures:
         '1': { name: keyword.choice.ink keyword.operator.arithmetic.ink }
         '2': { name: keyword.choice.sticky.ink keyword.operator.arithmetic.ink }
-      end: (?=$)
+      end: (?=\]|$)
       patterns:
         - include: "#comment"
         - include: "#label"
-        - include: "#inlineCondition"
+        - include: '#inlineConditionalSubstitution'
         - include: "#textSuppression"
         - include: "#divert"
         - include: '#tag'
@@ -307,7 +308,7 @@ repository:
 
   returnStatement:
     patterns: # return
-      - begin: \s*(return)\s+
+      - begin: \s*(return)(?=\s)
         beginCaptures:
           '1': { name: keyword.control.ink }
         end: (?=$)
@@ -353,6 +354,7 @@ repository:
       endCaptures:
         '2': { name: storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink }
       patterns:
+        - include: "#comment"
         - include: "#functionDeclaration"
         - include: "#knotStitchDeclaration"
 
@@ -363,6 +365,7 @@ repository:
         '1': { name: storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink }
       end: (?=^)
       patterns:
+        - include: "#comment"
         - include: "#knotStitchDeclaration"
 
   knotStitchDeclaration:
@@ -370,8 +373,9 @@ repository:
       - begin: \s*({{validIdentifier}})\s*
         beginCaptures:
           '1': { name: entity.name.function.ink }
-        end: (?<=\))|(?=$)|(?=\=) # Ending right before the closing parenthesis.
+        end: (?<=\))|(?=$|\=|\/\/)
         patterns:
+          - include: "#comment"
           - include: '#functionDeclarationParameters'
 
   functionDeclaration:
@@ -383,6 +387,7 @@ repository:
           '2': { name: entity.name.function.ink }
         end: (?<=\))|(?=$)|(?=\=) # Ending right before the closing parenthesis.
         patterns:
+          - include: "#comment"
           - include: '#functionDeclarationParameters'
 
   functionDeclarationParameters:
@@ -485,22 +490,38 @@ repository:
         endCaptures:
           '1': { name: keyword.control.ink }
         patterns:
-          - include: '#divert'
           - include: '#multilineAlternative'
           - include: '#multilineBlock'
           - include: '#conditionalSubstitution'
+          - include: '#divert'
           - include: '#substitution'
           - include: '#firstAlternativeItem'
           - include: '#alternativeItem'
           - include: '#interpolevaluablock'
 
+  # TODO: Refactor the following rules since they are only used in choices.
+  inlineConditionalSubstitution:
+    patterns:
+      - begin: (\{)
+        beginCaptures:
+          '1': { name: keyword.control.ink }
+        end: (\})
+        endCaptures:
+          '1': { name: keyword.control.ink }
+        patterns:
+          - include: '#conditionalSubstitution'
+          - include: '#substitution'
+          - include: '#firstAlternativeItem'
+          - include: '#alternativeItem'
+          - include: '#interpolevaluablock'
+          - include: '#inlineCondition'
+
   inlineCondition:
     patterns:
       - name: keyword.control.ink
-        match: (\{)[^\{\}]*(\})
+        match: ([^\{\}]*)
         captures:
           '1': { name: keyword.control.ink }
-          '2': { name: keyword.control.ink }
 
   substitution:
     patterns:
@@ -641,10 +662,11 @@ repository:
       - name: variable.other.ink
         match: >-
           (?x)
-            ((?<=&&) | (?<=\|\|) |
+            ((?<=return) |
+             (?<=&&) | (?<=\|\|) |
              (?<=\=) |
              (?<=/)  | (?<=%)    | (?<=\*) | (?<=\+) | (?<=\-) |
-             (?<=\?) | (?<=!\?)  | (?<=\^) |
+             (?<=\?) | (?<=!\?)  | (?<=\^) | (?<=\~) |
              (?<=,)  | (?=\)))
             \s*
             {{validIdentifier}}
@@ -692,6 +714,7 @@ repository:
     - name: keyword.operator.logical.ink
       match: >-
         (?x)
+          \~     |
           !(?!=) |
           &&     |
           \|\|

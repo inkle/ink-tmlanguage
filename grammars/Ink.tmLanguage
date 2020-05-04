@@ -363,6 +363,10 @@
                 <key>include</key>
                 <string>#expressionIdentifier</string>
               </dict>
+              <dict>
+                <key>include</key>
+                <string>#expression</string>
+              </dict>
             </array>
           </dict>
         </array>
@@ -414,6 +418,10 @@
               <dict>
                 <key>include</key>
                 <string>#expressionIdentifier</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#expression</string>
               </dict>
             </array>
           </dict>
@@ -638,7 +646,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$)</string>
+            <string>(?=\]|$)</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -651,7 +659,7 @@
               </dict>
               <dict>
                 <key>include</key>
-                <string>#inlineCondition</string>
+                <string>#inlineConditionalSubstitution</string>
               </dict>
               <dict>
                 <key>include</key>
@@ -753,7 +761,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>\s*(return)\s+</string>
+            <string>\s*(return)(?=\s)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -882,6 +890,10 @@
             <array>
               <dict>
                 <key>include</key>
+                <string>#comment</string>
+              </dict>
+              <dict>
+                <key>include</key>
                 <string>#functionDeclaration</string>
               </dict>
               <dict>
@@ -913,6 +925,10 @@
             <array>
               <dict>
                 <key>include</key>
+                <string>#comment</string>
+              </dict>
+              <dict>
+                <key>include</key>
                 <string>#knotStitchDeclaration</string>
               </dict>
             </array>
@@ -935,9 +951,13 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?&lt;=\))|(?=$)|(?=\=)</string>
+            <string>(?&lt;=\))|(?=$|\=|\/\/)</string>
             <key>patterns</key>
             <array>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
               <dict>
                 <key>include</key>
                 <string>#functionDeclarationParameters</string>
@@ -970,6 +990,10 @@
             <string>(?&lt;=\))|(?=$)|(?=\=)</string>
             <key>patterns</key>
             <array>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
               <dict>
                 <key>include</key>
                 <string>#functionDeclarationParameters</string>
@@ -1283,10 +1307,6 @@
             <array>
               <dict>
                 <key>include</key>
-                <string>#divert</string>
-              </dict>
-              <dict>
-                <key>include</key>
                 <string>#multilineAlternative</string>
               </dict>
               <dict>
@@ -1296,6 +1316,10 @@
               <dict>
                 <key>include</key>
                 <string>#conditionalSubstitution</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#divert</string>
               </dict>
               <dict>
                 <key>include</key>
@@ -1317,6 +1341,61 @@
           </dict>
         </array>
       </dict>
+      <key>inlineConditionalSubstitution</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>begin</key>
+            <string>(\{)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.ink</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(\})</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control.ink</string>
+              </dict>
+            </dict>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#conditionalSubstitution</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#substitution</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#firstAlternativeItem</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#alternativeItem</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#interpolevaluablock</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#inlineCondition</string>
+              </dict>
+            </array>
+          </dict>
+        </array>
+      </dict>
       <key>inlineCondition</key>
       <dict>
         <key>patterns</key>
@@ -1325,15 +1404,10 @@
             <key>name</key>
             <string>keyword.control.ink</string>
             <key>match</key>
-            <string>(\{)[^\{\}]*(\})</string>
+            <string>([^\{\}]*)</string>
             <key>captures</key>
             <dict>
               <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>keyword.control.ink</string>
-              </dict>
-              <key>2</key>
               <dict>
                 <key>name</key>
                 <string>keyword.control.ink</string>
@@ -1789,10 +1863,11 @@
             <string>variable.other.ink</string>
             <key>match</key>
             <string>(?x)
-  ((?&lt;=&amp;&amp;) | (?&lt;=\|\|) |
+  ((?&lt;=return) |
+   (?&lt;=&amp;&amp;) | (?&lt;=\|\|) |
    (?&lt;=\=) |
    (?&lt;=/)  | (?&lt;=%)    | (?&lt;=\*) | (?&lt;=\+) | (?&lt;=\-) |
-   (?&lt;=\?) | (?&lt;=!\?)  | (?&lt;=\^) |
+   (?&lt;=\?) | (?&lt;=!\?)  | (?&lt;=\^) | (?&lt;=\~) |
    (?&lt;=,)  | (?=\)))
   \s*
   [a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*
@@ -1858,6 +1933,7 @@
             <string>keyword.operator.logical.ink</string>
             <key>match</key>
             <string>(?x)
+  \~     |
   !(?!=) |
   &amp;&amp;     |
   \|\|</string>
