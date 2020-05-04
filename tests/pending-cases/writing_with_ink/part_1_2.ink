@@ -1,13 +1,23 @@
-"What do you make of this?" she asked.
+Hello world!
+*	Hello back!
+	Nice to hear from you!
 
-// Something unprintable...
+Hello world!
+*	[Hello back!]
+	Nice to hear from you!
 
-"I couldn't possibly comment," I replied.
+Hello world!
+*	Hello [back!] right back to you!
+	Nice to hear from you!
 
-/*
-	... or an unlimited block of text
-*/
+"What's that?" my master asked.
+*	"I am somewhat tired[."]," I repeated.
+	"Really," he responded. "How deleterious."
 
-TODO: Write this section properly!
-
-A line of normal game-text. # colour it blue
+"What's that?" my master asked.
+*	"I am somewhat tired[."]," I repeated.
+	"Really," he responded. "How deleterious."
+*	"Nothing, Monsieur!"[] I replied.
+	"Very good, then."
+*  "I said, this journey is appalling[."] and I want no more of it."
+	"Ah," he replied, not unkindly. "I see you are feeling frustrated. Tomorrow, things will improve."

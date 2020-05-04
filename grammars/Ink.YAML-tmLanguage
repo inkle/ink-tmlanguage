@@ -118,18 +118,21 @@ repository:
       end: (?=$)
       patterns:
         - include: '#assignment'
+        - include: '#comment'
     - begin: (?:^)\s*(CONST)\s*
       beginCaptures:
         '1': { name: storage.type.const.ink }
       end: (?=$)
       patterns:
         - include: '#constAssignment'
+        - include: '#comment'
     - begin: (?:^)\s*(EXTERNAL)\s*
       beginCaptures:
         '1': { name: storage.type.external.ink }
       end: (?=$)
       patterns:
         - include: '#externalFunctionDeclaration'
+        - include: '#comment'
 
   externalFunctionDeclaration:
     patterns: # function foo(a, b)
@@ -148,6 +151,7 @@ repository:
         '2': { name: keyword.operator.assignment.ink }
       end: (?=$)
       patterns:
+        - include: '#comment'
         - include: '#languageLiteral'
         - include: '#numberLiteral'
         - include: '#stringLiteral'
@@ -162,10 +166,12 @@ repository:
         '2': { name: keyword.operator.assignment.ink }
       end: (?=$)
       patterns:
+        - include: '#comment'
         - include: '#languageLiteral'
         - include: '#numberLiteral'
         - include: '#stringLiteral'
         - include: '#divert'
+        - include: '#expressionIdentifier'
 
   tempDeclaration:
     patterns:
@@ -184,7 +190,14 @@ repository:
         '3': { name: keyword.assignment.ink }
       end: (?=$)
       patterns:
+        - include: '#comment'
+        - include: '#function'
+        - include: '#divert'
+        - include: '#languageLiteral'
+        - include: '#stringLiteral'
+        - include: '#expressionIdentifier'
         - include: '#expression'
+        - include: '#numberLiteral'
 
 # ##############################################################################
 # Language literals
@@ -242,12 +255,7 @@ repository:
 # ##############################################################################
 
   choice:
-    # If first line does not contain any text, then the text on the
-    # next line will be grabbed as the choice content. That's why the
-    # end pattern is (?=\S\s*$) -> At least one non whitespace character,
-    # followed by any number of whitespace characters before the end of the line.
-    #
-    # Note that for
+    # Note that choices can sometimes
     patterns: # * (foo) {bar} content [content] content
     - begin: >-
         (?x)
@@ -260,7 +268,7 @@ repository:
       beginCaptures:
         '1': { name: keyword.choice.ink keyword.operator.arithmetic.ink }
         '2': { name: keyword.choice.sticky.ink keyword.operator.arithmetic.ink }
-      end: (?<=[^\{\}\s])(?=\s*$)
+      end: (?=$)
       patterns:
         - include: "#comment"
         - include: "#label"
@@ -291,7 +299,7 @@ repository:
     - begin: (?:(?<=^)|(?<=\-)|(?<=\:))\s*(~)
       beginCaptures:
         '1': { name: keyword.logic.ink keyword.operator.arithmetic.ink }
-      end: ($)
+      end: (?=$)
       patterns:
         - include: '#returnStatement'
         - include: '#tempDeclaration'
@@ -299,13 +307,18 @@ repository:
 
   returnStatement:
     patterns: # return
-      - begin: \s*(return)\s*
+      - begin: \s*(return)\s+
         beginCaptures:
           '1': { name: keyword.control.ink }
         end: (?=$)
         patterns:
+          - include: '#function'
           - include: '#divert'
+          - include: '#languageLiteral'
+          - include: '#stringLiteral'
+          - include: '#expressionIdentifier'
           - include: '#expression'
+          - include: '#numberLiteral'
 
 # ##############################################################################
 # Gather
@@ -416,7 +429,7 @@ repository:
     - begin: \s*(->|<-)\s*
       beginCaptures:
         '1': { name: keyword.divert.ink keyword.other.ink }
-      end: (?=($|\}|\)|\|))
+      end: (?=($|\}|\)|\||\-))
       patterns:
         - include: '#comment'
         - include: '#function'
@@ -473,9 +486,9 @@ repository:
           '1': { name: keyword.control.ink }
         patterns:
           - include: '#divert'
-          - include: '#conditionalSubstitution'
           - include: '#multilineAlternative'
           - include: '#multilineBlock'
+          - include: '#conditionalSubstitution'
           - include: '#substitution'
           - include: '#firstAlternativeItem'
           - include: '#alternativeItem'
@@ -518,10 +531,10 @@ repository:
           '1': { name: keyword.control.ink }
         end: (?=\})|(?=\|)
         patterns:
+          - include: '#comment'
           - include: '#interpolevaluablock'
           - include: '#divert'
           - include: '#tag'
-          - include: '#comment'
 
   conditionalSubstitution:
     patterns:
@@ -530,11 +543,11 @@ repository:
           '1': { name: keyword.control.ink }
         end: (?=\})
         patterns:
+          - include: "#comment"
           - include: '#divert'
           - include: "#glue"
           - include: '#inlineElseClause'
           - include: '#interpolevaluablock'
-          - include: '#comment'
 
   inlineElseClause:
     patterns:
@@ -543,17 +556,18 @@ repository:
           '1': { name: keyword.control.ink }
         end: (?=\})
         patterns:
+          - include: "#comment"
           - include: '#divert'
           - include: '#interpolevaluablock'
-          - include: '#comment'
 
   multilineBlock:
     patterns:
-      - begin: ([^\{\}]+\s*\:)\s*(?=$)
+      - begin: ([^\{\}]+\s*\:)\s*(?=$|\/\/)
         beginCaptures:
           '1': { name: keyword.control.ink }
         end: (?=\})
         patterns:
+          - include: "#comment"
           - include: '#caseClause'
           - include: '#alternativeClause'
           - include: '#divert'
@@ -570,6 +584,7 @@ repository:
           '1': { name: keyword.control.ink }
         end: (?=\})
         patterns:
+          - include: "#comment"
           - include: '#caseClause'
           - include: '#alternativeClause'
           - include: '#divert'
@@ -600,6 +615,7 @@ repository:
           '1': { name: keyword.control.ink }
         end: (?=^)|(?=\})|(?=\-)
         patterns:
+          - include: "#comment"
           - include: '#interpolevaluablock'
           - include: '#divert'
           - include: '#logic'
@@ -632,6 +648,7 @@ repository:
              (?<=,)  | (?=\)))
             \s*
             {{validIdentifier}}
+            (\.{{validIdentifier}})?
 
       - name: variable.other.ink
         match: >-
@@ -640,12 +657,14 @@ repository:
             ((?<=not) | (?<=and) | (?<=or) | (?<=has) | (?<=hasnt) | (?<=mod))
             {{anyNonIdentifierCharacter}}
             {{validIdentifier}}
+            (\.{{validIdentifier}})?
 
       - name: variable.other.ink
         match: >-
           (?x)
             \s*
             {{validIdentifier}}
+            (\.{{validIdentifier}})?
             \s*
             ((?=&&) | (?=\|\|) |
              (?=\=) | (?=!\=)  | (?=\>) | (?=\<) |
@@ -659,13 +678,14 @@ repository:
           (?x)
             \s*
             {{validIdentifier}}
+            (\.{{validIdentifier}})?
             {{anyNonIdentifierCharacter}}
             ((?=not) | (?=and) | (?=or) | (?=has) | (?=hasnt) | (?=mod))
 
   interpolatedIdentifier:
     patterns:
       - name: variable.other.ink
-        match: '(?<=\{)(?<!^)\s*{{validIdentifier}}\s*(?!$)(?=\})'
+        match: '(?<=\{)(?<!^)\s*{{validIdentifier}}(\.{{validIdentifier}})?\s*(?!$)(?=\})'
 
   operator:
     patterns:

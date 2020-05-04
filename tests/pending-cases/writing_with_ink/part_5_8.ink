@@ -1,4 +1,4 @@
-LIST GameEvents = foundSword, openedCasket, metGorgon
+LIST GameEvents = foundSword, openedCasket, metGorgon // Toto
 { GameEvents ? openedCasket }
 { GameEvents ? (foundSword, metGorgon) }
 ~ GameEvents += metGorgon
