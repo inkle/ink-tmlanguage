@@ -153,7 +153,7 @@
             <key>name</key>
             <string>comment.line.ink entity.todo.ink</string>
             <key>begin</key>
-            <string>(?&lt;=^)(TODO)</string>
+            <string>(?&lt;=^|\-)\s*(TODO)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -843,6 +843,10 @@
               </dict>
               <dict>
                 <key>include</key>
+                <string>#todo</string>
+              </dict>
+              <dict>
+                <key>include</key>
                 <string>#glue</string>
               </dict>
               <dict>
@@ -1081,7 +1085,7 @@
               <key>4</key>
               <dict>
                 <key>name</key>
-                <string>meta.parens punctuation.section.parens.begin.ink</string>
+                <string>punctuation.section.parens.begin.ink</string>
               </dict>
             </dict>
             <key>end</key>
@@ -1091,7 +1095,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>meta.parens punctuation.section.parens.end.ink</string>
+                <string>punctuation.section.parens.end.ink</string>
               </dict>
             </dict>
             <key>patterns</key>

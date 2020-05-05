@@ -86,7 +86,7 @@ repository:
   todo:
     patterns: # # tag content • Cannot exist within a comment.
     - name: comment.line.ink entity.todo.ink
-      begin: (?<=^)(TODO)
+      begin: (?<=^|\-)\s*(TODO)
       beginCaptures:
         '1': { name: 'constant.other entity.todo.begin.ink' }
       end: (?=$)
@@ -336,6 +336,7 @@ repository:
         - include: '#choice'
         - include: "#label"
         - include: "#divert"
+        - include: '#todo'
         - include: "#glue"
         - include: "#logic"
         - include: '#tag'
@@ -414,10 +415,10 @@ repository:
         beginCaptures:
           '2': { name: constant.language.ink }
           '3': { name: variable.function.ink }
-          '4': { name: meta.parens punctuation.section.parens.begin.ink }
+          '4': { name: punctuation.section.parens.begin.ink }
         end: (\))
         endCaptures:
-          '1': { name: meta.parens punctuation.section.parens.end.ink }
+          '1': { name: punctuation.section.parens.end.ink }
         patterns:
           - include: '#comment'
           - name: punctuation.separator.ink

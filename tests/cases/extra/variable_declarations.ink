@@ -1,5 +1,7 @@
 // SYNTAX TEST "source.ink"
 
+/** VARIABLES *****************************************************************/
+
 VAR list = (abc, def)
 //<--- storage.type.ink storage.type.var.ink
 // ^ source.ink
@@ -70,6 +72,22 @@ VAR divert = -> target_divert
 //           ^^ keyword.divert.ink keyword.other.ink
 //             ^ source.ink
 //              ^^^^^^^^^^^^^ variable.other.knot.ink
+
+VAR list = (abc, def) // Test comment
+//<--- storage.type.ink storage.type.var.ink
+// ^ source.ink
+//  ^^^^ variable.other.ink
+//      ^ source.ink
+//       ^ keyword.operator.assignment.ink
+//        ^^ source.ink
+//          ^^^ variable.other.ink
+//             ^ source.ink
+//              ^^^^ variable.other.ink
+//                  ^^ source.ink
+//                    ^^ comment.line.ink punctuation.definition.comment.ink
+//                      ^^^^^^^^^^^^^ comment.line.ink
+
+/** CONSTANTS *****************************************************************/
 
 CONST LIST = (abc, def)
 //<----- storage.type.const.ink
@@ -142,19 +160,6 @@ CONST DIVERT = -> target_divert
 //               ^ source.ink
 //                ^^^^^^^^^^^^^ variable.other.knot.ink
 
-VAR list = (abc, def) // Test comment
-//<--- storage.type.ink storage.type.var.ink
-// ^ source.ink
-//  ^^^^ variable.other.ink
-//      ^ source.ink
-//       ^ keyword.operator.assignment.ink
-//        ^^ source.ink
-//          ^^^ variable.other.ink
-//             ^ source.ink
-//              ^^^^ variable.other.ink
-//                  ^^ source.ink
-//                    ^^ comment.line.ink punctuation.definition.comment.ink
-//                      ^^^^^^^^^^^^^ comment.line.ink
 CONST string = "Hello" /*
 //<----- storage.type.const.ink
 //   ^ source.ink
@@ -171,6 +176,8 @@ CONST string = "Hello" /*
 //<---------------- comment.block.ink
 */
 //<-- comment.block.ink punctuation.definition.comment.ink
+
+/** TEMPS *********************************************************************/
 
 ~ temp list = (abc, def)
 //<- keyword.logic.ink keyword.operator.arithmetic.ink
@@ -259,21 +266,21 @@ CONST string = "Hello" /*
 //             ^ keyword.assignment.ink
 //              ^ source.ink
 //               ^^^ variable.function.ink
-//                  ^ meta.parens punctuation.section.parens.begin.ink
+//                  ^  punctuation.section.parens.begin.ink
 //                   ^ variable.other.ink
 //                    ^ punctuation.separator.ink
 //                     ^^ variable.other.ink
-//                       ^ meta.parens punctuation.section.parens.end.ink
+//                       ^  punctuation.section.parens.end.ink
 //                        ^ source.ink
 //                         ^ keyword.operator.arithmetic.ink
 //                          ^ source.ink
 //                           ^^^ variable.function.ink
-//                              ^ meta.parens punctuation.section.parens.begin.ink
+//                              ^  punctuation.section.parens.begin.ink
 //                               ^ constant.numeric.ink
 //                                ^ punctuation.separator.ink
 //                                 ^ source.ink
 //                                  ^ constant.numeric.ink
-//                                   ^ meta.parens punctuation.section.parens.end.ink
+//                                   ^  punctuation.section.parens.end.ink
 //                                    ^ source.ink
 //                                     ^ keyword.operator.arithmetic.ink
 //                                      ^^^^ variable.other.ink
@@ -320,6 +327,8 @@ CONST string = "Hello" /*
 //              ^^ keyword.divert.ink keyword.other.ink
 //                ^ source.ink
 //                 ^^^^^^^^^^^^^ variable.other.knot.ink
+
+/** LISTS *********************************************************************/
 
 LIST DoctorsInSurgery = Adams, Bernard, Cartwright, Denver, Eamonn
 //<---- storage.type.ink storage.type.list.ink

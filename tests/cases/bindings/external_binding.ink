@@ -1,21 +1,21 @@
 // SYNTAX TEST "source.ink"
 
 EXTERNAL message(x)
-//<----- source.ink storage.type.external.ink
+//<----- storage.type.external.ink
 //      ^ source.ink
-//       ^^^^^^^ source.ink entity.name.function.ink
-//              ^ source.ink punctuation.section.parens.begin.ink
-//               ^ source.ink variable.parameter.function.ink
-//                ^ source.ink punctuation.section.parens.end.ink
+//       ^^^^^^^ entity.name.function.ink
+//              ^ punctuation.section.parens.begin.ink
+//               ^ variable.parameter.function.ink
+//                ^ punctuation.section.parens.end.ink
 EXTERNAL multiply(x,y)
-//<----- source.ink storage.type.external.ink
+//<----- storage.type.external.ink
 //      ^ source.ink
-//       ^^^^^^^^ source.ink entity.name.function.ink
-//               ^ source.ink punctuation.section.parens.begin.ink
-//                ^ source.ink variable.parameter.function.ink
-//                 ^ source.ink punctuation.separator.ink
-//                  ^ source.ink variable.parameter.function.ink
-//                   ^ source.ink punctuation.section.parens.end.ink
+//       ^^^^^^^^ entity.name.function.ink
+//               ^ punctuation.section.parens.begin.ink
+//                ^ variable.parameter.function.ink
+//                 ^ punctuation.separator.ink
+//                  ^ variable.parameter.function.ink
+//                   ^ punctuation.section.parens.end.ink
 EXTERNAL times(i,str)
 //<----- source.ink storage.type.external.ink
 //      ^ source.ink
