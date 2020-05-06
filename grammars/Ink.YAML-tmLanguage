@@ -270,7 +270,7 @@ repository:
       beginCaptures:
         '1': { name: keyword.choice.ink keyword.operator.arithmetic.ink }
         '2': { name: keyword.choice.sticky.ink keyword.operator.arithmetic.ink }
-      end: (?=\]|$)
+      end: (?=\#|$)
       patterns:
         - include: "#comment"
         - include: "#label"
@@ -436,7 +436,7 @@ repository:
     - begin: \s*(->|<-)\s*
       beginCaptures:
         '1': { name: keyword.divert.ink keyword.other.ink }
-      end: (?=($|\}|\)|\||\-))
+      end: (?=($|\}|\)|\||\-|\#))
       patterns:
         - include: '#comment'
         - include: '#function'
@@ -470,7 +470,7 @@ repository:
         '4': { name: variable.other.stitch.ink }
         '5': { name: punctuation.accessor.ink }
         '6': { name: variable.other.label.ink }
-      end: (?=($|\}|\)|\|))
+      end: (?=($|\}|\)|\||\#))
       patterns:
         - include: "#comment"
         - include: '#tunnel'
