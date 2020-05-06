@@ -3,10 +3,11 @@
 -> knot.stitch.gather
 //<-- keyword.divert.ink keyword.other.ink
 //^ source.ink
-// ^^^^ variable.other.stitch.ink
+// ^^^^ variable.other.knot.ink
 //     ^ punctuation.accessor.ink
 //      ^^^^^^ variable.other.stitch.ink
-//            ^^^^^^^ source.ink
+//            ^ punctuation.accessor.ink
+//             ^^^^^^ variable.other.label.ink
 == knot ==
 //<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
 //^ source.ink
@@ -48,10 +49,11 @@
 //   ^ source.ink
 //    ^^ keyword.divert.ink keyword.other.ink
 //      ^ source.ink
-//       ^^^^ variable.other.stitch.ink
+//       ^^^^ variable.other.knot.ink
 //           ^ punctuation.accessor.ink
 //            ^^^^^^ variable.other.stitch.ink
-//                  ^^^^^^^ source.ink
+//                  ^ punctuation.accessor.ink
+//                   ^^^^^^ variable.other.label.ink
     - second time round
 //<---- source.ink
 //  ^ keyword.control.ink

@@ -1152,11 +1152,7 @@
               </dict>
               <dict>
                 <key>include</key>
-                <string>#divertStitchIdentifier</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#divertKnotIdentifier</string>
+                <string>#divertIdentifier</string>
               </dict>
               <dict>
                 <key>include</key>
@@ -1166,70 +1162,58 @@
           </dict>
         </array>
       </dict>
-      <key>divertKnotIdentifier</key>
+      <key>divertIdentifier</key>
       <dict>
         <key>patterns</key>
         <array>
           <dict>
             <key>begin</key>
-            <string>\s*((END|DONE)|([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*))</string>
+            <string>(?x) \s* (?:
+  (END|DONE)
+  |
+  (?:
+    ([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)
+    (?:
+      (\.)
+      ([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)
+      (?:
+        (\.)
+        ([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)
+      )?
+    )?
+  )
+)</string>
             <key>beginCaptures</key>
             <dict>
-              <key>2</key>
+              <key>1</key>
               <dict>
                 <key>name</key>
                 <string>support.constant.ink</string>
               </dict>
-              <key>3</key>
+              <key>2</key>
               <dict>
                 <key>name</key>
                 <string>variable.other.knot.ink</string>
               </dict>
-            </dict>
-            <key>end</key>
-            <string>(?=($|\}|\)|\|))</string>
-            <key>patterns</key>
-            <array>
-              <dict>
-                <key>include</key>
-                <string>#comment</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#tunnel</string>
-              </dict>
-            </array>
-          </dict>
-        </array>
-      </dict>
-      <key>divertStitchIdentifier</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>begin</key>
-            <string>\s*((END|DONE)|([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)(\.)([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*))</string>
-            <key>beginCaptures</key>
-            <dict>
-              <key>2</key>
-              <dict>
-                <key>name</key>
-                <string>support.constant.ink</string>
-              </dict>
               <key>3</key>
-              <dict>
-                <key>name</key>
-                <string>variable.other.stitch.ink</string>
-              </dict>
-              <key>4</key>
               <dict>
                 <key>name</key>
                 <string>punctuation.accessor.ink</string>
               </dict>
-              <key>5</key>
+              <key>4</key>
               <dict>
                 <key>name</key>
                 <string>variable.other.stitch.ink</string>
+              </dict>
+              <key>5</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor.ink</string>
+              </dict>
+              <key>6</key>
+              <dict>
+                <key>name</key>
+                <string>variable.other.label.ink</string>
               </dict>
             </dict>
             <key>end</key>
@@ -1277,11 +1261,7 @@
               </dict>
               <dict>
                 <key>include</key>
-                <string>#divertStitchIdentifier</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#divertKnotIdentifier</string>
+                <string>#divertIdentifier</string>
               </dict>
             </array>
           </dict>
@@ -1839,6 +1819,10 @@
           </dict>
           <dict>
             <key>include</key>
+            <string>#parentheses</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#function</string>
           </dict>
           <dict>
@@ -1860,6 +1844,24 @@
           <dict>
             <key>include</key>
             <string>#numberLiteral</string>
+          </dict>
+        </array>
+      </dict>
+      <key>parentheses</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>name</key>
+            <string>punctuation.section.parens.begin.ink</string>
+            <key>match</key>
+            <string>\(</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>punctuation.section.parens.end.ink</string>
+            <key>match</key>
+            <string>\)</string>
           </dict>
         </array>
       </dict>

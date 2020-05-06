@@ -440,29 +440,36 @@ repository:
       patterns:
         - include: '#comment'
         - include: '#function'
-        - include: '#divertStitchIdentifier'
-        - include: '#divertKnotIdentifier'
+        - include: '#divertIdentifier'
         - include: '#tunnel'
 
-  divertKnotIdentifier:
+  divertIdentifier:
     patterns: # END • knot
-    - begin: \s*((END|DONE)|({{validIdentifier}}))
+    - begin: >-
+        (?x)
+        \s*
+        (?:
+          (END|DONE)
+          |
+          (?:
+            ({{validIdentifier}})
+            (?:
+              (\.)
+              ({{validIdentifier}})
+              (?:
+                (\.)
+                ({{validIdentifier}})
+              )?
+            )?
+          )
+        )
       beginCaptures:
-        '2': { name: support.constant.ink }
-        '3': { name: variable.other.knot.ink }
-      end: (?=($|\}|\)|\|))
-      patterns:
-        - include: "#comment"
-        - include: '#tunnel'
-
-  divertStitchIdentifier:
-    patterns: # END • knot.stitch
-    - begin: \s*((END|DONE)|({{validIdentifier}})(\.)({{validIdentifier}}))
-      beginCaptures:
-        '2': { name: support.constant.ink }
-        '3': { name: variable.other.stitch.ink }
-        '4': { name: punctuation.accessor.ink }
-        '5': { name: variable.other.stitch.ink }
+        '1': { name: support.constant.ink }
+        '2': { name: variable.other.knot.ink }
+        '3': { name: punctuation.accessor.ink }
+        '4': { name: variable.other.stitch.ink }
+        '5': { name: punctuation.accessor.ink }
+        '6': { name: variable.other.label.ink }
       end: (?=($|\}|\)|\|))
       patterns:
         - include: "#comment"
@@ -477,8 +484,7 @@ repository:
       patterns:
         - include: "#comment"
         - include: '#function'
-        - include: '#divertStitchIdentifier'
-        - include: '#divertKnotIdentifier'
+        - include: '#divertIdentifier'
 
 # ##############################################################################
 # interpolevaluablock (anything within {})
@@ -653,12 +659,20 @@ repository:
   expression:
     patterns:
       - include: '#comment'
+      - include: '#parentheses'
       - include: '#function'
       - include: '#operator'
       - include: '#languageLiteral'
       - include: '#stringLiteral'
       - include: '#expressionIdentifier'
       - include: '#numberLiteral'
+
+  parentheses:
+    patterns:
+      - name: punctuation.section.parens.begin.ink
+        match: \(
+      - name: punctuation.section.parens.end.ink
+        match: \)
 
   expressionIdentifier:
     patterns:
