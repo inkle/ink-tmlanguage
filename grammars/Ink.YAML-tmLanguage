@@ -261,6 +261,7 @@ repository:
     - begin: >-
         (?x)
          (?<=^|\:|\-)
+         \s*
          (?:
            ((?:\s*[\*])+)
            |
@@ -469,12 +470,13 @@ repository:
 
   tunnel:
     patterns: # -> divert • <- content
-    - begin: \s*(->|<-)\s*
+    - begin: \s*(->(?:->)?|<-)\s*
       beginCaptures:
         '1': { name: keyword.divert.ink keyword.other.ink }
       end: (?=($|\}|\)|\|))
       patterns:
         - include: "#comment"
+        - include: '#function'
         - include: '#divertStitchIdentifier'
         - include: '#divertKnotIdentifier'
 
@@ -660,50 +662,53 @@ repository:
 
   expressionIdentifier:
     patterns:
-      - name: variable.other.ink
-        match: >-
+      - match: >-
           (?x)
-            ((?<=return) |
-             (?<=&&) | (?<=\|\|) |
-             (?<=\=) |
-             (?<=/)  | (?<=%)    | (?<=\*) | (?<=\+) | (?<=\-) |
-             (?<=\?) | (?<=!\?)  | (?<=\^) | (?<=\~) |
-             (?<=,)  | (?=\)))
+            (?:(?<=return) |
+               (?<=&&) | (?<=\|\|) |
+               (?<=\=) |
+               (?<=/)  | (?<=%)    | (?<=\*) | (?<=\+) | (?<=\-) |
+               (?<=\?) | (?<=!\?)  | (?<=\^) | (?<=\~) |
+               (?<=,)  | (?=\)))
             \s*
-            {{validIdentifier}}
-            (\.{{validIdentifier}})?
+            ({{validIdentifier}}
+            (?:\.{{validIdentifier}})?)
+        captures:
+          '1': { name: variable.other.ink }
 
-      - name: variable.other.ink
-        match: >-
+      - match: >-
           (?x)
             \s*
-            ((?<=not) | (?<=and) | (?<=or) | (?<=has) | (?<=hasnt) | (?<=mod))
+            (?:(?<=not) | (?<=and) | (?<=or) | (?<=has) | (?<=hasnt) | (?<=mod))
             {{anyNonIdentifierCharacter}}
-            {{validIdentifier}}
-            (\.{{validIdentifier}})?
+            ({{validIdentifier}}
+            (?:\.{{validIdentifier}})?)
+        captures:
+          '1': { name: variable.other.ink }
 
-      - name: variable.other.ink
-        match: >-
+      - match: >-
           (?x)
             \s*
-            {{validIdentifier}}
-            (\.{{validIdentifier}})?
+            ({{validIdentifier}}
+            (?:\.{{validIdentifier}})?)
             \s*
-            ((?=&&) | (?=\|\|) |
-             (?=\=) | (?=!\=)  | (?=\>) | (?=\<) |
-             (?=/)  | (?=%)    | (?=\*) | (?=\+) | (?=\-) |
-             (?=\?) | (?=!\?)  | (?=\^) |
-             (?=,)  | (?=\)))
+            (?:(?=&&) | (?=\|\|) |
+               (?=\=) | (?=!\=)  | (?=\>) | (?=\<) |
+               (?=/)  | (?=%)    | (?=\*) | (?=\+) | (?=\-) |
+               (?=\?) | (?=!\?)  | (?=\^) |
+               (?=,)  | (?=\)))
+        captures:
+          '1': { name: variable.other.ink }
 
-
-      - name: variable.other.ink
-        match: >-
+      - match: >-
           (?x)
             \s*
-            {{validIdentifier}}
-            (\.{{validIdentifier}})?
+            ({{validIdentifier}}
+            (?:\.{{validIdentifier}})?)
             {{anyNonIdentifierCharacter}}
-            ((?=not) | (?=and) | (?=or) | (?=has) | (?=hasnt) | (?=mod))
+            (?:(?=not) | (?=and) | (?=or) | (?=has) | (?=hasnt) | (?=mod))
+        captures:
+          '1': { name: variable.other.ink }
 
   interpolatedIdentifier:
     patterns:

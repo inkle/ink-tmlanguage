@@ -10,8 +10,8 @@ VAR list = (abc, def)
 //       ^ keyword.operator.assignment.ink
 //        ^^ source.ink
 //          ^^^ variable.other.ink
-//             ^ source.ink
-//              ^^^^ variable.other.ink
+//             ^^ source.ink
+//               ^^^ variable.other.ink
 //                  ^ source.ink
 VAR string = "Hello"
 //<--- storage.type.ink storage.type.var.ink
@@ -61,7 +61,8 @@ VAR previous = string
 //  ^^^^^^^^ variable.other.ink
 //          ^ source.ink
 //           ^ keyword.operator.assignment.ink
-//            ^^^^^^^ variable.other.ink
+//            ^ source.ink
+//             ^^^^^^ variable.other.ink
 VAR divert = -> target_divert
 //<--- storage.type.ink storage.type.var.ink
 // ^ source.ink
@@ -81,8 +82,8 @@ VAR list = (abc, def) // Test comment
 //       ^ keyword.operator.assignment.ink
 //        ^^ source.ink
 //          ^^^ variable.other.ink
-//             ^ source.ink
-//              ^^^^ variable.other.ink
+//             ^^ source.ink
+//               ^^^ variable.other.ink
 //                  ^^ source.ink
 //                    ^^ comment.line.ink punctuation.definition.comment.ink
 //                      ^^^^^^^^^^^^^ comment.line.ink
@@ -97,8 +98,8 @@ CONST LIST = (abc, def)
 //         ^ keyword.operator.assignment.ink
 //          ^^ source.ink
 //            ^^^ variable.other.ink
-//               ^ source.ink
-//                ^^^^ variable.other.ink
+//               ^^ source.ink
+//                 ^^^ variable.other.ink
 //                    ^ source.ink
 CONST STRING = "Hello"
 //<----- storage.type.const.ink
@@ -148,7 +149,8 @@ CONST PREVIOUS = STRING
 //    ^^^^^^^^ variable.other.constant.ink
 //            ^ source.ink
 //             ^ keyword.operator.assignment.ink
-//              ^^^^^^^ variable.other.ink
+//              ^ source.ink
+//               ^^^^^^ variable.other.ink
 CONST DIVERT = -> target_divert
 //<----- storage.type.const.ink
 //   ^ source.ink
@@ -189,8 +191,8 @@ CONST string = "Hello" /*
 //          ^ keyword.assignment.ink
 //           ^^ source.ink
 //             ^^^ variable.other.ink
-//                ^ source.ink
-//                 ^^^^ variable.other.ink
+//                ^^ source.ink
+//                  ^^^ variable.other.ink
 //                     ^ source.ink
 ~ temp string = "Hello"
 //<- keyword.logic.ink keyword.operator.arithmetic.ink
@@ -255,7 +257,8 @@ CONST string = "Hello" /*
 //     ^^^^^^^^ variable.other.stitch.ink
 //             ^ source.ink
 //              ^ keyword.assignment.ink
-//               ^^^^^^^ variable.other.ink
+//               ^ source.ink
+//                ^^^^^^ variable.other.ink
 ~ temp compute = pow(a, b) + max(1, 3) + abc
 //<- keyword.logic.ink keyword.operator.arithmetic.ink
 //<~- source.ink
@@ -269,7 +272,8 @@ CONST string = "Hello" /*
 //                  ^  punctuation.section.parens.begin.ink
 //                   ^ variable.other.ink
 //                    ^ punctuation.separator.ink
-//                     ^^ variable.other.ink
+//                     ^ source.ink
+//                      ^ variable.other.ink
 //                       ^  punctuation.section.parens.end.ink
 //                        ^ source.ink
 //                         ^ keyword.operator.arithmetic.ink
@@ -283,7 +287,8 @@ CONST string = "Hello" /*
 //                                   ^  punctuation.section.parens.end.ink
 //                                    ^ source.ink
 //                                     ^ keyword.operator.arithmetic.ink
-//                                      ^^^^ variable.other.ink
+//                                      ^ source.ink
+//                                       ^^^ variable.other.ink
 ~ temp computed = 987 * 34 + abc / (35 * 0.1) /*
 //<- keyword.logic.ink keyword.operator.arithmetic.ink
 //<~- source.ink
@@ -300,7 +305,8 @@ CONST string = "Hello" /*
 //                      ^^ constant.numeric.ink
 //                        ^ source.ink
 //                         ^ keyword.operator.arithmetic.ink
-//                          ^^^^ variable.other.ink
+//                          ^ source.ink
+//                           ^^^ variable.other.ink
 //                              ^ source.ink
 //                               ^ keyword.operator.arithmetic.ink
 //                                ^^ source.ink
@@ -336,15 +342,20 @@ LIST DoctorsInSurgery = Adams, Bernard, Cartwright, Denver, Eamonn
 //   ^^^^^^^^^^^^^^^^ variable.other.ink
 //                   ^ source.ink
 //                    ^ keyword.operator.assignment.ink
-//                     ^^^^^^ variable.other.ink
+//                     ^ source.ink
+//                      ^^^^^ variable.other.ink
 //                           ^ source.ink
-//                            ^^^^^^^^ variable.other.ink
+//                            ^ source.ink
+//                             ^^^^^^^ variable.other.ink
 //                                    ^ source.ink
-//                                     ^^^^^^^^^^^ variable.other.ink
+//                                     ^ source.ink
+//                                      ^^^^^^^^^^ variable.other.ink
 //                                                ^ source.ink
-//                                                 ^^^^^^^ variable.other.ink
+//                                                 ^ source.ink
+//                                                  ^^^^^^ variable.other.ink
 //                                                        ^ source.ink
-//                                                         ^^^^^^^ variable.other.ink
+//                                                         ^ source.ink
+//                                                          ^^^^^^ variable.other.ink
 LIST DoctorsInSurgery = (Adams), (Bernard), (Cartwright), (Denver), (Eamonn) // Test comment
 //<---- storage.type.ink storage.type.list.ink
 //  ^ source.ink
@@ -373,13 +384,16 @@ LIST DoctorsInSurgery = (Adams), Bernard, (Cartwright), Denver, Eamonn
 //                     ^^ source.ink
 //                       ^^^^^ variable.other.ink
 //                            ^^ source.ink
-//                              ^^^^^^^^ variable.other.ink
+//                              ^ source.ink
+//                               ^^^^^^^ variable.other.ink
 //                                      ^^^ source.ink
 //                                         ^^^^^^^^^^ variable.other.ink
 //                                                   ^^ source.ink
-//                                                     ^^^^^^^ variable.other.ink
+//                                                     ^ source.ink
+//                                                      ^^^^^^ variable.other.ink
 //                                                            ^ source.ink
-//                                                             ^^^^^^^ variable.other.ink
+//                                                             ^ source.ink
+//                                                              ^^^^^^ variable.other.ink
 LIST primeNumbers = (two = 2), (three) = 3, (five = 5) /*
 //<---- storage.type.ink storage.type.list.ink
 //  ^ source.ink
@@ -387,18 +401,21 @@ LIST primeNumbers = (two = 2), (three) = 3, (five = 5) /*
 //               ^ source.ink
 //                ^ keyword.operator.assignment.ink
 //                 ^^ source.ink
-//                   ^^^^ variable.other.ink
-//                       ^ source.ink
+//                   ^^^ variable.other.ink
+//                      ^ source.ink
+//                       ^ keyword.operator.assignment.ink
 //                        ^ source.ink
 //                         ^ constant.numeric.ink
 //                          ^^^^ source.ink
 //                              ^^^^^ variable.other.ink
-//                                   ^^^ source.ink
+//                                   ^^ source.ink
+//                                     ^ keyword.operator.assignment.ink
 //                                      ^ source.ink
 //                                       ^ constant.numeric.ink
 //                                        ^^^ source.ink
-//                                           ^^^^^ variable.other.ink
-//                                                ^ source.ink
+//                                           ^^^^ variable.other.ink
+//                                               ^ source.ink
+//                                                ^ keyword.operator.assignment.ink
 //                                                 ^ source.ink
 //                                                  ^ constant.numeric.ink
 //                                                   ^^ source.ink

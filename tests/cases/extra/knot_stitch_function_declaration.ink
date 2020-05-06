@@ -32,7 +32,7 @@ EXTERNAL times(i, str)
 /** FUNCTIONS *****************************************************************/
 
 == function passthrough(x)
-//<-- source.ink storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
 //^ source.ink
 // ^^^^^^^^ storage.type.ink
 //         ^ source.ink
@@ -50,7 +50,7 @@ In passthrough
 //       ^ variable.other.ink
 
 == function increment(x) ==
-//<-- source.ink storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
 //^ source.ink
 // ^^^^^^^^ storage.type.ink
 //         ^ source.ink
@@ -72,7 +72,7 @@ In passthrough
 //           ^ constant.numeric.ink
 
 ==  function multiply( x ,  abc ) ===
-//<-- source.ink storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
 //^^ source.ink
 //  ^^^^^^^^ storage.type.ink
 //          ^ source.ink

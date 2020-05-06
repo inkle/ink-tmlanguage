@@ -2,66 +2,66 @@
 
     { six() + two() }
 //<---- source.ink
-//  ^ source.ink keyword.control.ink
-//   ^^^^^^^^^^^^^^^ source.ink keyword.control.ink
-//                  ^ source.ink keyword.control.ink
+//  ^ keyword.control.ink
+//   ^^^^^^^^^^^^^^^ keyword.control.ink
+//                  ^ keyword.control.ink
     -> END
 //<---- source.ink
-//  ^^ source.ink keyword.divert.ink keyword.other.ink
+//  ^^ keyword.divert.ink keyword.other.ink
 //    ^ source.ink
-//     ^^^ source.ink support.constant.ink
+//     ^^^ support.constant.ink
 === function six
-//<--- source.ink storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<--- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
 // ^ source.ink
-//  ^^^^^^^^ source.ink storage.type.ink
+//  ^^^^^^^^ storage.type.ink
 //          ^ source.ink
-//           ^^^ source.ink entity.name.function.ink
+//           ^^^ entity.name.function.ink
     ~ return four() + two()
 //<---- source.ink
-//  ^ source.ink keyword.logic.ink keyword.operator.arithmetic.ink
+//  ^ keyword.logic.ink keyword.operator.arithmetic.ink
 //   ^ source.ink
-//    ^^^^^^ source.ink keyword.control.ink
+//    ^^^^^^ keyword.control.ink
 //          ^ source.ink
-//           ^^^^ source.ink variable.function.ink
-//               ^ source.ink  punctuation.section.parens.begin.ink
-//                ^ source.ink  punctuation.section.parens.end.ink
+//           ^^^^ variable.function.ink
+//               ^  punctuation.section.parens.begin.ink
+//                ^  punctuation.section.parens.end.ink
 //                 ^ source.ink
-//                  ^ source.ink keyword.operator.arithmetic.ink
+//                  ^ keyword.operator.arithmetic.ink
 //                   ^ source.ink
-//                    ^^^ source.ink variable.function.ink
-//                       ^ source.ink  punctuation.section.parens.begin.ink
-//                        ^ source.ink  punctuation.section.parens.end.ink
+//                    ^^^ variable.function.ink
+//                       ^  punctuation.section.parens.begin.ink
+//                        ^  punctuation.section.parens.end.ink
 === function four
-//<--- source.ink storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<--- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
 // ^ source.ink
-//  ^^^^^^^^ source.ink storage.type.ink
+//  ^^^^^^^^ storage.type.ink
 //          ^ source.ink
-//           ^^^^ source.ink entity.name.function.ink
+//           ^^^^ entity.name.function.ink
     ~ return two() + two()
 //<---- source.ink
-//  ^ source.ink keyword.logic.ink keyword.operator.arithmetic.ink
+//  ^ keyword.logic.ink keyword.operator.arithmetic.ink
 //   ^ source.ink
-//    ^^^^^^ source.ink keyword.control.ink
+//    ^^^^^^ keyword.control.ink
 //          ^ source.ink
-//           ^^^ source.ink variable.function.ink
-//              ^ source.ink  punctuation.section.parens.begin.ink
-//               ^ source.ink  punctuation.section.parens.end.ink
+//           ^^^ variable.function.ink
+//              ^  punctuation.section.parens.begin.ink
+//               ^  punctuation.section.parens.end.ink
 //                ^ source.ink
-//                 ^ source.ink keyword.operator.arithmetic.ink
+//                 ^ keyword.operator.arithmetic.ink
 //                  ^ source.ink
-//                   ^^^ source.ink variable.function.ink
-//                      ^ source.ink  punctuation.section.parens.begin.ink
-//                       ^ source.ink  punctuation.section.parens.end.ink
+//                   ^^^ variable.function.ink
+//                      ^  punctuation.section.parens.begin.ink
+//                       ^  punctuation.section.parens.end.ink
 === function two
-//<--- source.ink storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<--- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
 // ^ source.ink
-//  ^^^^^^^^ source.ink storage.type.ink
+//  ^^^^^^^^ storage.type.ink
 //          ^ source.ink
-//           ^^^ source.ink entity.name.function.ink
+//           ^^^ entity.name.function.ink
     ~ return 2
 //<---- source.ink
-//  ^ source.ink keyword.logic.ink keyword.operator.arithmetic.ink
+//  ^ keyword.logic.ink keyword.operator.arithmetic.ink
 //   ^ source.ink
-//    ^^^^^^ source.ink keyword.control.ink
+//    ^^^^^^ keyword.control.ink
 //          ^ source.ink
-//           ^ source.ink constant.numeric.ink
+//           ^ constant.numeric.ink
