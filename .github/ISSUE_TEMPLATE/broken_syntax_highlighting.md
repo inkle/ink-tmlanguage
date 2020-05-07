@@ -6,9 +6,6 @@ about: Create a report to help us improve the grammar
 ## Describe where the syntax highlighting breaks
 <!-- A clear and concise description of what causes the syntax highlighting to break -->
 
-## Expected behavior
-<!-- A clear and concise description of what you expected to happen. -->
-
 ## Ink snippet
 <!--
     A quick snippet desmonstrating the issue is critical to fix it.
