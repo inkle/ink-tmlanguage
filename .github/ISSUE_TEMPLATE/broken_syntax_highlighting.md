@@ -23,17 +23,18 @@ about: Create a report to help us improve the grammar
  - Editor (Version): <!-- e.g. Textmate (2.0.0) -->
 
 <!-- Delete non applicable items -->
-    <!--
-        This is only applicable if you imported the grammar manually,
-        if you used an editor extension, see below.
-    -->
+
+<!--
+    This is only applicable if you imported the grammar manually,
+    if you used an editor extension, see below.
+-->
  - Grammar version:
 <!-- ----------------------------------------------------------------------- -->
  - Editor extension:
-    <!--
-        Link to the editor extension and specify its version.
-        e. g. sequitur/ink-vscode 0.1.0
-    -->
+<!--
+    Link to the editor extension and specify its version.
+    e. g. sequitur/ink-vscode 0.1.0
+-->
 
 ## Additional context
 <!-- Add any other context about the problem here. -->
