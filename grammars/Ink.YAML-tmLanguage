@@ -283,10 +283,10 @@ repository:
 
   textSuppression:
     patterns: # [content]
-    - begin: (\[)
+    - begin: (?<!\\)(\[)
       beginCaptures:
         '1': { name: keyword.choice.suppression.ink keyword.control.ink }
-      end: (\])
+      end: (?<!\\)(\])
       endCaptures:
         '1': { name: keyword.choice.suppression.ink keyword.control.ink }
       patterns:
@@ -492,10 +492,10 @@ repository:
 
   interpolevaluablock:
     patterns:
-      - begin: (\{)
+      - begin: (?<!\\)(\{)
         beginCaptures:
           '1': { name: keyword.control.ink }
-        end: (\})
+        end: (?<!\\)(\})
         endCaptures:
           '1': { name: keyword.control.ink }
         patterns:
@@ -511,10 +511,10 @@ repository:
   # TODO: Refactor the following rules since they are only used in choices.
   inlineConditionalSubstitution:
     patterns:
-      - begin: (\{)
+      - begin: (?<!\\)(\{)
         beginCaptures:
           '1': { name: keyword.control.ink }
-        end: (\})
+        end: (?<!\\)(\})
         endCaptures:
           '1': { name: keyword.control.ink }
         patterns:
