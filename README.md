@@ -33,11 +33,15 @@ Building the grammar is easy, you need the latest version of node.js and your fa
 
 ## Limitations
 
-### Ambiguity of `{ }` constructs
+### `{ }` constructs
 
-In Ink, `{ }` can hold a lot of different constructs. In particular, the construct can either be an alternative or a conditional substitution. Due to current limitations, expressions will not be properly highlighted in conditionals, as they lead to false-positives for operators, in the first elements of alternatives.
+In Ink, `{ }` can be an alternative, a sequence, a switch, a conditional, etc.
+Since TextMate grammars can only match one line at a time, there are some small limitations.
 
-In these constructs, all the items contained in the condition (anything beofre `:`) will be named with the same scope.
+#### Expressions
+
+Expressions will not be fully highlighted in conditionals.
+Anything contained in the condition (before `:`) is named with the same scope.
 
 ```ink
 { x == 0: Hello }
@@ -56,19 +60,56 @@ In these constructs, all the items contained in the condition (anything beofre `
 }
 ```
 
-This is not the case in the following example, where all items will be named with their own scopes.
+This is not the case in the following example, where all expression tokens are named with their own scopes.
 
 ```ink
 ~ y = (x == 0)
 ~ myFunction(x == 0)
 ```
 
-### Text suppression
-
-In choice constructs, Ink offer the ability to separate the content in up to three sequences using `[ ]`. While there can only be one `[ ]` per choice, the grammar will still highlight subsequent `[ ]`, even if they are treated as regular text by Ink.
+Additionally, while the following is perfectly valid ink, there's a false positive on both `else:` and `then:`.
 
 ```ink
-* (myChoice) {x == 0} "Hello John Doe[."], I need to tell you something [special]"
+{conditional()}
+{conditional()}
+{conditional()}
+{conditional()}
+
+=== function conditional() ===
+{once:
+  - if condition
+  - then: do this
+  - else: do that
+  - end
+}
+```
+
+This limitation can be worked around by escaping the colon:
+
+```ink
+=== function conditional() ===
+{once:
+  - if condition
+  - then\: do this
+  - else\: do that
+  - end
+}
+```
+
+### Choices
+
+In choice, it's sometimes possible for the content to be expressed on the next line
+if it's preceded by a condition. In the example below, the text supression of
+the first choice will not be highlighted, as it won't be matched as part of the choice.
+The second choice will however be highlighted properly.
+
+```ink
+VAR x = 0
+
+* (firstChoice) {x == 0}
+"Hello John Doe[."], I need to tell you something special"
+
+* (secondChoice) {x != 0} "Hello John Doe[."], I won't say a word"
 ```
 
 ## Building a custom theme

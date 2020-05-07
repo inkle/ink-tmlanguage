@@ -1715,7 +1715,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>^\s*(-(?!&gt;))\s?(else|[^\|\{\}]+)\s*(\:)</string>
+            <string>^\s*(-(?!&gt;))\s?(else|[^\|\{\}]+)\s*(?&lt;!\\)(\:)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>

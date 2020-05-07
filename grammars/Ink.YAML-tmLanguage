@@ -625,7 +625,7 @@ repository:
 
   caseClause:
     patterns:
-      - begin: ^\s*(-(?!>))\s?(else|[^\|\{\}]+)\s*(\:)
+      - begin: ^\s*(-(?!>))\s?(else|[^\|\{\}]+)\s*(?<!\\)(\:)
         beginCaptures:
           '1': { name: keyword.control.ink }
           '2': { name: keyword.control.ink }
