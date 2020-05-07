@@ -33,13 +33,11 @@ Building the grammar is easy, you need the latest version of node.js and your fa
 
 ## Limitations
 
-There are currently a number of limitations in the grammar.
-
 ### Ambiguity of `{ }` constructs
 
-In Ink, `{ }` can hold a lot of different things. In particular, the construct can either be an alternative or a conditional substitution. Due to current limitations, expressions will not be properly highlighted in conditionals, as they lead to false-positives for operators, in the first elements of alternatives.
+In Ink, `{ }` can hold a lot of different constructs. In particular, the construct can either be an alternative or a conditional substitution. Due to current limitations, expressions will not be properly highlighted in conditionals, as they lead to false-positives for operators, in the first elements of alternatives.
 
-In these constructs, all the items contained in the first expression (`x == 0:`) will be named with the same scope.
+In these constructs, all the items contained in the condition (anything beofre `:`) will be named with the same scope.
 
 ```ink
 { x == 0: Hello }
@@ -70,11 +68,8 @@ This is not the case in the following example, where all items will be named wit
 In choice constructs, Ink offer the ability to separate the content in up to three sequences using `[ ]`. While there can only be one `[ ]` per choice, the grammar will still highlight subsequent `[ ]`, even if they are treated as regular text by Ink.
 
 ```ink
-* (myChoice) {x == 0}
-  "Hello John Doe[."], I need to tell you something [special]"
+* (myChoice) {x == 0} "Hello John Doe[."], I need to tell you something [special]"
 ```
-
-In the example above, only `[."]` should be highlighted.
 
 ## Building a custom theme
 
@@ -97,15 +92,14 @@ Most of the captures are multi-scoped, with the first scope defined by the theme
 
 ## Availability through npm
 
-As a convenience, the grammar is also available through the npm registry. If you're building an extension for Atom or VS Code, you may want to depend on this package.
+As a convenience, the grammar is also available through the npm registry.
+If you're building an extension for Atom or VS Code, you may want to depend on this package.
 
 Once installed, the grammar can be found in `node_modules/ink-tmlanguage/grammars/Ink.tmLanguage`.
 
 ## Contributing
 
-If the grammar is missing something, open an issue or fix it and submit a
-pull request!
-
+If the grammar is missing something, open an issue or fix it and submit a pull request!
 When working on the grammar, you may want to use `npm run watch`, which will rebuild the plist grammar on every change.
 
 ## License
