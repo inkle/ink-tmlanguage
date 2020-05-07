@@ -1,6 +1,6 @@
 {
   "name": "ink-tmlanguage",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "TextMate grammar files for Ink. (VS Code, Sublime Text, and Atom)",
   "keywords": [
     "ink",
