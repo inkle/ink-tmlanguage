@@ -1845,6 +1845,10 @@
             <key>include</key>
             <string>#numberLiteral</string>
           </dict>
+          <dict>
+            <key>include</key>
+            <string>#commas</string>
+          </dict>
         </array>
       </dict>
       <key>parentheses</key>
@@ -1862,6 +1866,18 @@
             <string>punctuation.section.parens.end.ink</string>
             <key>match</key>
             <string>\)</string>
+          </dict>
+        </array>
+      </dict>
+      <key>commas</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>name</key>
+            <string>punctuation.separator.ink</string>
+            <key>match</key>
+            <string>\,</string>
           </dict>
         </array>
       </dict>

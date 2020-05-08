@@ -666,6 +666,7 @@ repository:
       - include: '#stringLiteral'
       - include: '#expressionIdentifier'
       - include: '#numberLiteral'
+      - include: '#commas'
 
   parentheses:
     patterns:
@@ -673,6 +674,11 @@ repository:
         match: \(
       - name: punctuation.section.parens.end.ink
         match: \)
+
+  commas:
+    patterns:
+      - name: punctuation.separator.ink
+        match: \,
 
   expressionIdentifier:
     patterns:
