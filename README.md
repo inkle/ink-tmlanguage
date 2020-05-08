@@ -130,6 +130,9 @@ Most of the captures are multi-scoped, with the first scope defined by the theme
 - `keyword.divert.ink` → `->` or `<-`
 - `keyword.alternative.type.ink` → `&` or `~` or `!` inside `{ }`
 - `storage.knot.ink` → Identifier after / between `=`
+- `variable.other.knot.ink` → a knot identifier in a divert
+- `variable.other.stitch.ink` → a stitch identifier in a divert
+- `variable.other.label.ink` → a label identifier in a divert
 
 ## Availability through npm
 

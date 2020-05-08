@@ -147,7 +147,7 @@ repository:
     patterns:
     - begin: ({{validIdentifier}})\s*(=)
       beginCaptures:
-        '1': { name: variable.other.ink }
+        '1': { name: variable.other.ink entity.name.variable.other.ink }
         '2': { name: keyword.operator.assignment.ink }
       end: (?=$)
       patterns:
@@ -163,7 +163,7 @@ repository:
     patterns:
     - begin: ({{validIdentifier}})\s*(=)
       beginCaptures:
-        '1': { name: variable.other.constant.ink }
+        '1': { name: variable.other.constant.ink entity.name.variable.other.constant.ink }
         '2': { name: keyword.operator.assignment.ink }
       end: (?=$)
       patterns:
@@ -188,7 +188,7 @@ repository:
          (=)
       beginCaptures:
         '1': { name: storage.modifier.ink }
-        '2': { name: variable.other.stitch.ink }
+        '2': { name: variable.other.ink entity.name.variable.other.ink }
         '3': { name: keyword.assignment.ink }
       end: (?=$)
       patterns:
@@ -465,11 +465,11 @@ repository:
         )
       beginCaptures:
         '1': { name: support.constant.ink }
-        '2': { name: variable.other.knot.ink }
+        '2': { name: variable.other.knot.ink entity.name.variable.other.knot.ink }
         '3': { name: punctuation.accessor.ink }
-        '4': { name: variable.other.stitch.ink }
+        '4': { name: variable.other.stitch.ink entity.name.variable.other.stitch.ink }
         '5': { name: punctuation.accessor.ink }
-        '6': { name: variable.other.label.ink }
+        '6': { name: variable.other.label.ink entity.name.variable.other.label.ink }
       end: (?=($|\}|\)|\||\#))
       patterns:
         - include: "#comment"
@@ -688,7 +688,7 @@ repository:
             ({{validIdentifier}}
             (?:\.{{validIdentifier}})?)
         captures:
-          '1': { name: variable.other.ink }
+          '1': { name: variable.other.ink entity.name.variable.other.ink }
 
       - match: >-
           (?x)
@@ -698,7 +698,7 @@ repository:
             ({{validIdentifier}}
             (?:\.{{validIdentifier}})?)
         captures:
-          '1': { name: variable.other.ink }
+          '1': { name: variable.other.ink entity.name.variable.other.ink }
 
       - match: >-
           (?x)
@@ -712,7 +712,7 @@ repository:
                (?=\?) | (?=!\?)  | (?=\^) |
                (?=,)  | (?=\)))
         captures:
-          '1': { name: variable.other.ink }
+          '1': { name: variable.other.ink entity.name.variable.other.ink }
 
       - match: >-
           (?x)
@@ -722,11 +722,11 @@ repository:
             {{anyNonIdentifierCharacter}}
             (?:(?=not) | (?=and) | (?=or) | (?=has) | (?=hasnt) | (?=mod))
         captures:
-          '1': { name: variable.other.ink }
+          '1': { name: variable.other.ink entity.name.variable.other.ink }
 
   interpolatedIdentifier:
     patterns:
-      - name: variable.other.ink
+      - name: variable.other.ink entity.name.variable.other.ink
         match: '(?<=\{)(?<!^)\s*{{validIdentifier}}(\.{{validIdentifier}})?\s*(?!$)(?=\})'
 
   operator:

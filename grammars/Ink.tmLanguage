@@ -327,7 +327,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>variable.other.ink</string>
+                <string>variable.other.ink entity.name.variable.other.ink</string>
               </dict>
               <key>2</key>
               <dict>
@@ -383,7 +383,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>variable.other.constant.ink</string>
+                <string>variable.other.constant.ink entity.name.variable.other.constant.ink</string>
               </dict>
               <key>2</key>
               <dict>
@@ -451,7 +451,7 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>variable.other.stitch.ink</string>
+                <string>variable.other.ink entity.name.variable.other.ink</string>
               </dict>
               <key>3</key>
               <dict>
@@ -1193,7 +1193,7 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>variable.other.knot.ink</string>
+                <string>variable.other.knot.ink entity.name.variable.other.knot.ink</string>
               </dict>
               <key>3</key>
               <dict>
@@ -1203,7 +1203,7 @@
               <key>4</key>
               <dict>
                 <key>name</key>
-                <string>variable.other.stitch.ink</string>
+                <string>variable.other.stitch.ink entity.name.variable.other.stitch.ink</string>
               </dict>
               <key>5</key>
               <dict>
@@ -1213,7 +1213,7 @@
               <key>6</key>
               <dict>
                 <key>name</key>
-                <string>variable.other.label.ink</string>
+                <string>variable.other.label.ink entity.name.variable.other.label.ink</string>
               </dict>
             </dict>
             <key>end</key>
@@ -1886,7 +1886,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>variable.other.ink</string>
+                <string>variable.other.ink entity.name.variable.other.ink</string>
               </dict>
             </dict>
           </dict>
@@ -1903,7 +1903,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>variable.other.ink</string>
+                <string>variable.other.ink entity.name.variable.other.ink</string>
               </dict>
             </dict>
           </dict>
@@ -1924,7 +1924,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>variable.other.ink</string>
+                <string>variable.other.ink entity.name.variable.other.ink</string>
               </dict>
             </dict>
           </dict>
@@ -1941,7 +1941,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>variable.other.ink</string>
+                <string>variable.other.ink entity.name.variable.other.ink</string>
               </dict>
             </dict>
           </dict>
@@ -1953,7 +1953,7 @@
         <array>
           <dict>
             <key>name</key>
-            <string>variable.other.ink</string>
+            <string>variable.other.ink entity.name.variable.other.ink</string>
             <key>match</key>
             <string>(?&lt;=\{)(?&lt;!^)\s*[a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*(\.[a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)?\s*(?!$)(?=\})</string>
           </dict>

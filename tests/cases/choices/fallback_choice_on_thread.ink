@@ -13,7 +13,7 @@
 // ^ keyword.logic.ink keyword.operator.arithmetic.ink
 //  ^ source.ink
 //   ^^^^ storage.modifier.ink
-//        ^  variable.other.stitch.ink
+//        ^  variable.other.ink
 //          ^ keyword.assignment.ink
 //            ^ constant.numeric.ink
    *   ->

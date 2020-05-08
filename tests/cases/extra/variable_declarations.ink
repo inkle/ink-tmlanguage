@@ -186,7 +186,7 @@ CONST string = "Hello" /*
 //<~- source.ink
 //^^^^ storage.modifier.ink
 //    ^ source.ink
-//     ^^^^ variable.other.stitch.ink
+//     ^^^^ variable.other.ink
 //         ^ source.ink
 //          ^ keyword.assignment.ink
 //           ^^ source.ink
@@ -199,7 +199,7 @@ CONST string = "Hello" /*
 //<~- source.ink
 //^^^^ storage.modifier.ink
 //    ^ source.ink
-//     ^^^^^^ variable.other.stitch.ink
+//     ^^^^^^ variable.other.ink
 //           ^ source.ink
 //            ^ keyword.assignment.ink
 //             ^ source.ink
@@ -211,7 +211,7 @@ CONST string = "Hello" /*
 //<~- source.ink
 //^^^^ storage.modifier.ink
 //    ^ source.ink
-//     ^^^^^^^^^^^^ variable.other.stitch.ink
+//     ^^^^^^^^^^^^ variable.other.ink
 //                 ^ source.ink
 //                  ^ keyword.assignment.ink
 //                   ^ source.ink
@@ -224,7 +224,7 @@ CONST string = "Hello" /*
 //<~- source.ink
 //^^^^ storage.modifier.ink
 //    ^ source.ink
-//     ^^^^^^ variable.other.stitch.ink
+//     ^^^^^^ variable.other.ink
 //           ^ source.ink
 //            ^ keyword.assignment.ink
 //             ^ source.ink
@@ -234,7 +234,7 @@ CONST string = "Hello" /*
 //<~- source.ink
 //^^^^ storage.modifier.ink
 //    ^ source.ink
-//     ^^^^^^^ variable.other.stitch.ink
+//     ^^^^^^^ variable.other.ink
 //            ^ source.ink
 //             ^ keyword.assignment.ink
 //              ^ source.ink
@@ -244,7 +244,7 @@ CONST string = "Hello" /*
 //<~- source.ink
 //^^^^ storage.modifier.ink
 //    ^ source.ink
-//     ^^^^^^^ variable.other.stitch.ink
+//     ^^^^^^^ variable.other.ink
 //            ^ source.ink
 //             ^ keyword.assignment.ink
 //              ^ source.ink
@@ -254,7 +254,7 @@ CONST string = "Hello" /*
 //<~- source.ink
 //^^^^ storage.modifier.ink
 //    ^ source.ink
-//     ^^^^^^^^ variable.other.stitch.ink
+//     ^^^^^^^^ variable.other.ink
 //             ^ source.ink
 //              ^ keyword.assignment.ink
 //               ^ source.ink
@@ -264,7 +264,7 @@ CONST string = "Hello" /*
 //<~- source.ink
 //^^^^ storage.modifier.ink
 //    ^ source.ink
-//     ^^^^^^^ variable.other.stitch.ink
+//     ^^^^^^^ variable.other.ink
 //            ^ source.ink
 //             ^ keyword.assignment.ink
 //              ^ source.ink
@@ -294,7 +294,7 @@ CONST string = "Hello" /*
 //<~- source.ink
 //^^^^ storage.modifier.ink
 //    ^ source.ink
-//     ^^^^^^^^ variable.other.stitch.ink
+//     ^^^^^^^^ variable.other.ink
 //             ^ source.ink
 //              ^ keyword.assignment.ink
 //               ^ source.ink
@@ -326,7 +326,7 @@ CONST string = "Hello" /*
 //<~- source.ink
 //^^^^ storage.modifier.ink
 //    ^ source.ink
-//     ^^^^^^ variable.other.stitch.ink
+//     ^^^^^^ variable.other.ink
 //           ^ source.ink
 //            ^ keyword.assignment.ink
 //             ^ source.ink
