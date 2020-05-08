@@ -2037,7 +2037,7 @@
   %    |
   \*   |
   \+   |
-  (?&lt;!\n)\s*-\s*</string>
+  (?&lt;!$)\s*-\s*</string>
           </dict>
           <dict>
             <key>name</key>
