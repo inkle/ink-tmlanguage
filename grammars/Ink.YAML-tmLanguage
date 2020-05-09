@@ -18,6 +18,7 @@ variables:
   validIdentifier: '{{indentifierCharacter}}*{{indentifierBeginCharacter}}{{indentifierCharacter}}*'
 
   standardFunctions: 'LIST_COUNT|LIST_MIN|LIST_MAX|LIST_ALL|LIST_INVERT|LIST_RANDOM|CHOICE_COUNT|TURNS_SINCE|LIST_RANGE|TURNS|POW|FLOOR|CEILING|INT|FLOAT'
+  whitespace: '[^\S\n\r]'
 
 # Before we dive into the meat, a bit of syntax to remember:
 #
@@ -86,7 +87,7 @@ repository:
   todo:
     patterns: # # tag content • Cannot exist within a comment.
     - name: comment.line.ink entity.todo.ink
-      begin: (?<=^|\-)\s*(TODO)
+      begin: (?<=^|\-)(?:{{whitespace}})*(TODO)
       beginCaptures:
         '1': { name: 'constant.other entity.todo.begin.ink' }
       end: (?=$)
@@ -99,7 +100,7 @@ repository:
 
   import: # INCLUDE a/b/c.ink
     patterns:
-    - match: (?:^)\s*(INCLUDE)(?:\s*)(.*)$
+    - match: (?:^)(?:{{whitespace}})*(INCLUDE)(?:(?:{{whitespace}})*)(.*)$
       captures:
         '1': { name: keyword.control.import.ink }
         '2': { name: string.quoted.other.ink }
@@ -110,7 +111,7 @@ repository:
 
   declaration: # VAR foo = "bar"
     patterns:
-    - begin: (?:^)\s*((VAR)|(LIST))\s*
+    - begin: (?:^)(?:{{whitespace}})*((VAR)|(LIST))(?:{{whitespace}})*
       beginCaptures:
         '1': { name: storage.type.ink }
         '2': { name: storage.type.var.ink }
@@ -119,14 +120,14 @@ repository:
       patterns:
         - include: '#assignment'
         - include: '#comment'
-    - begin: (?:^)\s*(CONST)\s*
+    - begin: (?:^)(?:{{whitespace}})*(CONST)(?:{{whitespace}})*
       beginCaptures:
         '1': { name: storage.type.const.ink }
       end: (?=$)
       patterns:
         - include: '#constAssignment'
         - include: '#comment'
-    - begin: (?:^)\s*(EXTERNAL)\s*
+    - begin: (?:^)(?:{{whitespace}})*(EXTERNAL)(?:{{whitespace}})*
       beginCaptures:
         '1': { name: storage.type.external.ink }
       end: (?=$)
@@ -136,7 +137,7 @@ repository:
 
   externalFunctionDeclaration:
     patterns: # function foo(a, b)
-      - begin: ({{validIdentifier}})\s*
+      - begin: ({{validIdentifier}})(?:{{whitespace}})*
         beginCaptures:
           '1': { name: entity.name.function.ink }
         end: (?<=\)) # Ending right before the closing parenthesis.
@@ -145,7 +146,7 @@ repository:
 
   assignment: # foo = "bar"
     patterns:
-    - begin: ({{validIdentifier}})\s*(=)
+    - begin: ({{validIdentifier}})(?:{{whitespace}})*(=)
       beginCaptures:
         '1': { name: variable.other.ink entity.name.variable.other.ink }
         '2': { name: keyword.operator.assignment.ink }
@@ -161,7 +162,7 @@ repository:
 
   constAssignment: # foo = "bar"
     patterns:
-    - begin: ({{validIdentifier}})\s*(=)
+    - begin: ({{validIdentifier}})(?:{{whitespace}})*(=)
       beginCaptures:
         '1': { name: variable.other.constant.ink entity.name.variable.other.constant.ink }
         '2': { name: keyword.operator.assignment.ink }
@@ -180,11 +181,11 @@ repository:
     - begin: >-
         (?x)
          (?:(?<=^)|(?<=\~))
-         \s*
+         (?:{{whitespace}})*
          (temp)
-         \s*
+         (?:{{whitespace}})*
          ({{validIdentifier}})
-         \s*
+         (?:{{whitespace}})*
          (=)
       beginCaptures:
         '1': { name: storage.modifier.ink }
@@ -207,22 +208,22 @@ repository:
 
   languageLiteral:
     patterns:
-    - match: \s*(false|true)\s*
+    - match: (?:{{whitespace}})*(false|true)(?:{{whitespace}})*
       captures:
         '1': { name: constant.language.ink constant.language.boolean.ink }
 
   numberLiteral:
     patterns:
-    - match: \s*([0-9]+(\.[0-9]+)?)\s*
+    - match: (?:{{whitespace}})*([0-9]+(\.[0-9]+)?)(?:{{whitespace}})*
       captures:
         '1': { name: constant.numeric.ink }
 
   stringLiteral:
     patterns: # "string"
-    - begin: \s*(")
+    - begin: (?:{{whitespace}})*(")
       beginCaptures:
         '1': { name: punctuation.definition.string.begin.ink }
-      end: (")\s*
+      end: (")(?:{{whitespace}})*
       endCaptures:
         '1': { name: punctuation.definition.string.end.ink }
       patterns:
@@ -230,7 +231,7 @@ repository:
           match: '\\.'
         - include: "#interpolevaluablock"
         - name: string.quoted.double.ink
-          match: '[\w\s]+'
+          match: '[\w(?:{{whitespace}})]+'
 # ##############################################################################
 # Label
 # ##############################################################################
@@ -238,7 +239,7 @@ repository:
   label:
     patterns: # (label)
       - name: string.label.ink entity.name.label.ink string.quoted.other.ink
-        match: '(\()\s*{{validIdentifier}}\s*(\))'
+        match: '(\()(?:{{whitespace}})*{{validIdentifier}}(?:{{whitespace}})*(\))'
         captures:
           '1': { name: punctuation.definition.string.label.begin.ink punctuation.definition.string.begin.ink }
           '2': { name: punctuation.definition.string.label.begin.ink punctuation.definition.string.begin.ink }
@@ -261,11 +262,11 @@ repository:
     - begin: >-
         (?x)
          (?<=^|\:|\-)
-         \s*
+         (?:{{whitespace}})*
          (?:
-           ((?:\s*[\*])+)
+           ((?:(?:{{whitespace}})*[\*])+)
            |
-           ((?:\s*[\+])+)
+           ((?:(?:{{whitespace}})*[\+])+)
          )
       beginCaptures:
         '1': { name: keyword.choice.ink keyword.operator.arithmetic.ink }
@@ -298,7 +299,7 @@ repository:
 
   logic:
     patterns: # ~ foo = 1 + 2
-    - begin: (?:(?<=^)|(?<=\-)|(?<=\:))\s*(~)
+    - begin: (?:(?<=^)|(?<=\-)|(?<=\:))(?:{{whitespace}})*(~)
       beginCaptures:
         '1': { name: keyword.logic.ink keyword.operator.arithmetic.ink }
       end: (?=$)
@@ -309,7 +310,7 @@ repository:
 
   returnStatement:
     patterns: # return
-      - begin: \s*(return)(?=\s)
+      - begin: (?:{{whitespace}})*(return)(?=\s) # Need to match end of line as well -> \s
         beginCaptures:
           '1': { name: keyword.control.ink }
         end: (?=$)
@@ -328,7 +329,7 @@ repository:
 
   gather:
     patterns: # -
-    - begin: (?<=^)\s*((?:\s*\-(?!>))+)
+    - begin: (?<=^)(?:{{whitespace}})*((?:(?:{{whitespace}})*\-(?!>))+)
       beginCaptures:
         '1': { name: keyword.gather.ink keyword.operator.arithmetic.ink }
       end: (?=$)
@@ -349,7 +350,7 @@ repository:
 
   knot:
     patterns: # === knot === • === knot(a, b) === • === function knot(a, b) ===
-    - begin: ^\s*(={2,})
+    - begin: ^(?:{{whitespace}})*(={2,})
       beginCaptures:
         '1': { name: storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink }
       end: ((={2,})|(?=$))
@@ -362,7 +363,7 @@ repository:
 
   stitch:
     patterns: # = stitch • = stitch(a, b)
-    - begin: ^\s*(=)
+    - begin: ^(?:{{whitespace}})*(=)
       beginCaptures:
         '1': { name: storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink }
       end: (?=^)
@@ -372,7 +373,7 @@ repository:
 
   knotStitchDeclaration:
     patterns: # foo • foo(a, b)
-      - begin: \s*({{validIdentifier}})\s*
+      - begin: (?:{{whitespace}})*({{validIdentifier}})(?:{{whitespace}})*
         beginCaptures:
           '1': { name: entity.name.function.ink }
         end: (?<=\))|(?=$|\=|\/\/)
@@ -383,7 +384,7 @@ repository:
   functionDeclaration:
     patterns: # function foo(a, b)
       - begin: >-
-          (?x)\s*(function)\s*({{validIdentifier}})\s*
+          (?x)(?:{{whitespace}})*(function)(?:{{whitespace}})*({{validIdentifier}})(?:{{whitespace}})*
         beginCaptures:
           '1': { name: storage.type.ink }
           '2': { name: entity.name.function.ink }
@@ -412,7 +413,7 @@ repository:
 
   function:
     patterns: # foo(a, b)
-      - begin: \s*(({{standardFunctions}})|({{validIdentifier}}))\s*(\()\s*
+      - begin: (?:{{whitespace}})*(({{standardFunctions}})|({{validIdentifier}}))(?:{{whitespace}})*(\()(?:{{whitespace}})*
         beginCaptures:
           '2': { name: constant.language.ink }
           '3': { name: variable.function.ink }
@@ -433,7 +434,7 @@ repository:
 
   divert:
     patterns: # -> divert • <- content
-    - begin: \s*(->|<-)\s*
+    - begin: (?:{{whitespace}})*(->|<-)(?:{{whitespace}})*
       beginCaptures:
         '1': { name: keyword.divert.ink keyword.other.ink }
       end: (?=($|\}|\)|\||\-|\#))
@@ -447,7 +448,7 @@ repository:
     patterns: # END • knot
     - begin: >-
         (?x)
-        \s*
+        (?:{{whitespace}})*
         (?:
           (END|DONE)
           |
@@ -477,7 +478,7 @@ repository:
 
   tunnel:
     patterns: # -> divert • <- content
-    - begin: \s*(->(?:->)?|<-)\s*
+    - begin: (?:{{whitespace}})*(->(?:->)?|<-)(?:{{whitespace}})*
       beginCaptures:
         '1': { name: keyword.divert.ink keyword.other.ink }
       end: (?=($|\}|\)|\|))
@@ -540,7 +541,7 @@ repository:
 
   firstAlternativeItem:
       patterns:
-      - begin: (?<=\{)\s*(&|!|~)
+      - begin: (?<=\{)(?:{{whitespace}})*(&|!|~)
         beginCaptures:
           '1': { name: keyword.control.ink keyword.alternative.type.ink }
         end: (?=\|)
@@ -568,7 +569,7 @@ repository:
 
   conditionalSubstitution:
     patterns:
-      - begin: ((?:[^\{\}\|]|\|(?=\|))+\s*\:)\s*(?!$)
+      - begin: ((?:[^\{\}\|]|\|(?=\|))+(?:{{whitespace}})*\:)(?:{{whitespace}})*(?!$)
         beginCaptures:
           '1': { name: keyword.control.ink }
         end: (?=\})
@@ -592,7 +593,7 @@ repository:
 
   multilineBlock:
     patterns:
-      - begin: ([^\{\}]+\s*\:)\s*(?=$|\/\/)
+      - begin: ([^\{\}]+(?:{{whitespace}})*\:)(?:{{whitespace}})*(?=$|\/\/)
         beginCaptures:
           '1': { name: keyword.control.ink }
         end: (?=\})
@@ -609,7 +610,7 @@ repository:
 
   multilineAlternative:
     patterns:
-      - begin: (?<=\{)\s*$
+      - begin: (?<=\{)(?:{{whitespace}})*$
         beginCaptures:
           '1': { name: keyword.control.ink }
         end: (?=\})
@@ -620,12 +621,13 @@ repository:
           - include: '#divert'
           - include: '#logic'
           - include: '#choice'
+          - include: '#glue'
           - include: '#interpolevaluablock'
           - include: '#comment'
 
   caseClause:
     patterns:
-      - begin: ^\s*(-(?!>))\s?(else|[^\|\{\}]+)\s*(?<!\\)(\:)
+      - begin: ^(?:{{whitespace}})*(-(?!>))(?:{{whitespace}})?(else|[^\|\{\}]+)(?:{{whitespace}})*(?<!\\)(\:)
         beginCaptures:
           '1': { name: keyword.control.ink }
           '2': { name: keyword.control.ink }
@@ -635,12 +637,13 @@ repository:
           - include: '#interpolevaluablock'
           - include: '#divert'
           - include: '#logic'
+          - include: '#glue'
           - include: '#choice'
           - include: '#comment'
 
   alternativeClause:
     patterns:
-      - begin: ^\s*(-(?!>))
+      - begin: ^(?:{{whitespace}})*(-(?!>))
         beginCaptures:
           '1': { name: keyword.control.ink }
         end: (?=^)|(?=\})|(?=\-)
@@ -690,7 +693,7 @@ repository:
                (?<=/)  | (?<=%)    | (?<=\*) | (?<=\+) | (?<=\-) |
                (?<=\?) | (?<=!\?)  | (?<=\^) | (?<=\~) |
                (?<=,)  | (?=\)))
-            \s*
+            (?:{{whitespace}})*
             ({{validIdentifier}}
             (?:\.{{validIdentifier}})?)
         captures:
@@ -698,7 +701,7 @@ repository:
 
       - match: >-
           (?x)
-            \s*
+            (?:{{whitespace}})*
             (?:(?<=not) | (?<=and) | (?<=or) | (?<=has) | (?<=hasnt) | (?<=mod))
             {{anyNonIdentifierCharacter}}
             ({{validIdentifier}}
@@ -708,10 +711,10 @@ repository:
 
       - match: >-
           (?x)
-            \s*
+            (?:{{whitespace}})*
             ({{validIdentifier}}
             (?:\.{{validIdentifier}})?)
-            \s*
+            (?:{{whitespace}})*
             (?:(?=&&) | (?=\|\|) |
                (?=\=) | (?=!\=)  | (?=\>) | (?=\<) |
                (?=/)  | (?=%)    | (?=\*) | (?=\+) | (?=\-) |
@@ -722,7 +725,7 @@ repository:
 
       - match: >-
           (?x)
-            \s*
+            (?:{{whitespace}})*
             ({{validIdentifier}}
             (?:\.{{validIdentifier}})?)
             {{anyNonIdentifierCharacter}}
@@ -733,7 +736,7 @@ repository:
   interpolatedIdentifier:
     patterns:
       - name: variable.other.ink entity.name.variable.other.ink
-        match: '(?<=\{)(?<!^)\s*{{validIdentifier}}(\.{{validIdentifier}})?\s*(?!$)(?=\})'
+        match: '(?<=\{)(?<!^)(?:{{whitespace}})*{{validIdentifier}}(\.{{validIdentifier}})?(?:{{whitespace}})*(?!$)(?=\})'
 
   operator:
     patterns:
@@ -751,11 +754,11 @@ repository:
     - name: keyword.operator.assignment.augmented.ink
       match: >-
         (?x)
-          %=   |
-          &=   |
-          \*=  |
-          \+=  |
-          -=   |
+          %=  |
+          &=  |
+          \*= |
+          \+= |
+          \-= |
           /=
     - name: keyword.operator.relational.ink
       match: >-
@@ -778,7 +781,7 @@ repository:
           %    |
           \*   |
           \+   |
-          (?<!$)\s*-\s*
+          (?<!$)(?:{{whitespace}})*-(?:{{whitespace}})*(?!=)
     - name: keyword.operator.membership.ink
       match: >-
         (?x)

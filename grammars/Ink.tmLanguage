@@ -153,7 +153,7 @@
             <key>name</key>
             <string>comment.line.ink entity.todo.ink</string>
             <key>begin</key>
-            <string>(?&lt;=^|\-)\s*(TODO)</string>
+            <string>(?&lt;=^|\-)(?:[^\S\n\r])*(TODO)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -180,7 +180,7 @@
         <array>
           <dict>
             <key>match</key>
-            <string>(?:^)\s*(INCLUDE)(?:\s*)(.*)$</string>
+            <string>(?:^)(?:[^\S\n\r])*(INCLUDE)(?:(?:[^\S\n\r])*)(.*)$</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -203,7 +203,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>(?:^)\s*((VAR)|(LIST))\s*</string>
+            <string>(?:^)(?:[^\S\n\r])*((VAR)|(LIST))(?:[^\S\n\r])*</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -238,7 +238,7 @@
           </dict>
           <dict>
             <key>begin</key>
-            <string>(?:^)\s*(CONST)\s*</string>
+            <string>(?:^)(?:[^\S\n\r])*(CONST)(?:[^\S\n\r])*</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -263,7 +263,7 @@
           </dict>
           <dict>
             <key>begin</key>
-            <string>(?:^)\s*(EXTERNAL)\s*</string>
+            <string>(?:^)(?:[^\S\n\r])*(EXTERNAL)(?:[^\S\n\r])*</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -294,7 +294,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)\s*</string>
+            <string>([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)(?:[^\S\n\r])*</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -321,7 +321,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)\s*(=)</string>
+            <string>([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)(?:[^\S\n\r])*(=)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -377,7 +377,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)\s*(=)</string>
+            <string>([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)(?:[^\S\n\r])*(=)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -435,11 +435,11 @@
             <key>begin</key>
             <string>(?x)
  (?:(?&lt;=^)|(?&lt;=\~))
- \s*
+ (?:[^\S\n\r])*
  (temp)
- \s*
+ (?:[^\S\n\r])*
  ([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)
- \s*
+ (?:[^\S\n\r])*
  (=)</string>
             <key>beginCaptures</key>
             <dict>
@@ -505,7 +505,7 @@
         <array>
           <dict>
             <key>match</key>
-            <string>\s*(false|true)\s*</string>
+            <string>(?:[^\S\n\r])*(false|true)(?:[^\S\n\r])*</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -523,7 +523,7 @@
         <array>
           <dict>
             <key>match</key>
-            <string>\s*([0-9]+(\.[0-9]+)?)\s*</string>
+            <string>(?:[^\S\n\r])*([0-9]+(\.[0-9]+)?)(?:[^\S\n\r])*</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -541,7 +541,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>\s*(")</string>
+            <string>(?:[^\S\n\r])*(")</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -551,7 +551,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(")\s*</string>
+            <string>(")(?:[^\S\n\r])*</string>
             <key>endCaptures</key>
             <dict>
               <key>1</key>
@@ -576,7 +576,7 @@
                 <key>name</key>
                 <string>string.quoted.double.ink</string>
                 <key>match</key>
-                <string>[\w\s]+</string>
+                <string>[\w(?:[^\S\n\r])]+</string>
               </dict>
             </array>
           </dict>
@@ -590,7 +590,7 @@
             <key>name</key>
             <string>string.label.ink entity.name.label.ink string.quoted.other.ink</string>
             <key>match</key>
-            <string>(\()\s*[a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*\s*(\))</string>
+            <string>(\()(?:[^\S\n\r])*[a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*(?:[^\S\n\r])*(\))</string>
             <key>captures</key>
             <dict>
               <key>1</key>
@@ -627,11 +627,11 @@
             <key>begin</key>
             <string>(?x)
  (?&lt;=^|\:|\-)
- \s*
+ (?:[^\S\n\r])*
  (?:
-   ((?:\s*[\*])+)
+   ((?:(?:[^\S\n\r])*[\*])+)
    |
-   ((?:\s*[\+])+)
+   ((?:(?:[^\S\n\r])*[\+])+)
  )</string>
             <key>beginCaptures</key>
             <dict>
@@ -727,7 +727,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>(?:(?&lt;=^)|(?&lt;=\-)|(?&lt;=\:))\s*(~)</string>
+            <string>(?:(?&lt;=^)|(?&lt;=\-)|(?&lt;=\:))(?:[^\S\n\r])*(~)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -762,7 +762,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>\s*(return)(?=\s)</string>
+            <string>(?:[^\S\n\r])*(return)(?=\s)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -813,7 +813,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>(?&lt;=^)\s*((?:\s*\-(?!&gt;))+)</string>
+            <string>(?&lt;=^)(?:[^\S\n\r])*((?:(?:[^\S\n\r])*\-(?!&gt;))+)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -872,7 +872,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>^\s*(={2,})</string>
+            <string>^(?:[^\S\n\r])*(={2,})</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -915,7 +915,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>^\s*(=)</string>
+            <string>^(?:[^\S\n\r])*(=)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -946,7 +946,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>\s*([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)\s*</string>
+            <string>(?:[^\S\n\r])*([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)(?:[^\S\n\r])*</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -977,7 +977,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>(?x)\s*(function)\s*([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)\s*</string>
+            <string>(?x)(?:[^\S\n\r])*(function)(?:[^\S\n\r])*([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)(?:[^\S\n\r])*</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -1070,7 +1070,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>\s*((LIST_COUNT|LIST_MIN|LIST_MAX|LIST_ALL|LIST_INVERT|LIST_RANDOM|CHOICE_COUNT|TURNS_SINCE|LIST_RANGE|TURNS|POW|FLOOR|CEILING|INT|FLOAT)|([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*))\s*(\()\s*</string>
+            <string>(?:[^\S\n\r])*((LIST_COUNT|LIST_MIN|LIST_MAX|LIST_ALL|LIST_INVERT|LIST_RANDOM|CHOICE_COUNT|TURNS_SINCE|LIST_RANGE|TURNS|POW|FLOOR|CEILING|INT|FLOAT)|([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*))(?:[^\S\n\r])*(\()(?:[^\S\n\r])*</string>
             <key>beginCaptures</key>
             <dict>
               <key>2</key>
@@ -1129,7 +1129,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>\s*(-&gt;|&lt;-)\s*</string>
+            <string>(?:[^\S\n\r])*(-&gt;|&lt;-)(?:[^\S\n\r])*</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -1168,7 +1168,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>(?x) \s* (?:
+            <string>(?x) (?:[^\S\n\r])* (?:
   (END|DONE)
   |
   (?:
@@ -1238,7 +1238,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>\s*(-&gt;(?:-&gt;)?|&lt;-)\s*</string>
+            <string>(?:[^\S\n\r])*(-&gt;(?:-&gt;)?|&lt;-)(?:[^\S\n\r])*</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -1429,7 +1429,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>(?&lt;=\{)\s*(&amp;|!|~)</string>
+            <string>(?&lt;=\{)(?:[^\S\n\r])*(&amp;|!|~)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -1523,7 +1523,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>((?:[^\{\}\|]|\|(?=\|))+\s*\:)\s*(?!$)</string>
+            <string>((?:[^\{\}\|]|\|(?=\|))+(?:[^\S\n\r])*\:)(?:[^\S\n\r])*(?!$)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -1601,7 +1601,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>([^\{\}]+\s*\:)\s*(?=$|\/\/)</string>
+            <string>([^\{\}]+(?:[^\S\n\r])*\:)(?:[^\S\n\r])*(?=$|\/\/)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -1660,7 +1660,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>(?&lt;=\{)\s*$</string>
+            <string>(?&lt;=\{)(?:[^\S\n\r])*$</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -1699,6 +1699,10 @@
               </dict>
               <dict>
                 <key>include</key>
+                <string>#glue</string>
+              </dict>
+              <dict>
+                <key>include</key>
                 <string>#interpolevaluablock</string>
               </dict>
               <dict>
@@ -1715,7 +1719,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>^\s*(-(?!&gt;))\s?(else|[^\|\{\}]+)\s*(?&lt;!\\)(\:)</string>
+            <string>^(?:[^\S\n\r])*(-(?!&gt;))(?:[^\S\n\r])?(else|[^\|\{\}]+)(?:[^\S\n\r])*(?&lt;!\\)(\:)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -1752,6 +1756,10 @@
               </dict>
               <dict>
                 <key>include</key>
+                <string>#glue</string>
+              </dict>
+              <dict>
+                <key>include</key>
                 <string>#choice</string>
               </dict>
               <dict>
@@ -1768,7 +1776,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>^\s*(-(?!&gt;))</string>
+            <string>^(?:[^\S\n\r])*(-(?!&gt;))</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -1894,7 +1902,7 @@
      (?&lt;=/)  | (?&lt;=%)    | (?&lt;=\*) | (?&lt;=\+) | (?&lt;=\-) |
      (?&lt;=\?) | (?&lt;=!\?)  | (?&lt;=\^) | (?&lt;=\~) |
      (?&lt;=,)  | (?=\)))
-  \s*
+  (?:[^\S\n\r])*
   ([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*
   (?:\.[a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)?)</string>
             <key>captures</key>
@@ -1909,7 +1917,7 @@
           <dict>
             <key>match</key>
             <string>(?x)
-  \s*
+  (?:[^\S\n\r])*
   (?:(?&lt;=not) | (?&lt;=and) | (?&lt;=or) | (?&lt;=has) | (?&lt;=hasnt) | (?&lt;=mod))
   [^a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]
   ([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*
@@ -1926,10 +1934,10 @@
           <dict>
             <key>match</key>
             <string>(?x)
-  \s*
+  (?:[^\S\n\r])*
   ([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*
   (?:\.[a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)?)
-  \s*
+  (?:[^\S\n\r])*
   (?:(?=&amp;&amp;) | (?=\|\|) |
      (?=\=) | (?=!\=)  | (?=\&gt;) | (?=\&lt;) |
      (?=/)  | (?=%)    | (?=\*) | (?=\+) | (?=\-) |
@@ -1947,7 +1955,7 @@
           <dict>
             <key>match</key>
             <string>(?x)
-  \s*
+  (?:[^\S\n\r])*
   ([a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*
   (?:\.[a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)?)
   [^a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]
@@ -1971,7 +1979,7 @@
             <key>name</key>
             <string>variable.other.ink entity.name.variable.other.ink</string>
             <key>match</key>
-            <string>(?&lt;=\{)(?&lt;!^)\s*[a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*(\.[a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)?\s*(?!$)(?=\})</string>
+            <string>(?&lt;=\{)(?&lt;!^)(?:[^\S\n\r])*[a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*(\.[a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)?(?:[^\S\n\r])*(?!$)(?=\})</string>
           </dict>
         </array>
       </dict>
@@ -2001,11 +2009,11 @@
             <string>keyword.operator.assignment.augmented.ink</string>
             <key>match</key>
             <string>(?x)
-  %=   |
-  &amp;=   |
-  \*=  |
-  \+=  |
-  -=   |
+  %=  |
+  &amp;=  |
+  \*= |
+  \+= |
+  \-= |
   /=</string>
           </dict>
           <dict>
@@ -2037,7 +2045,7 @@
   %    |
   \*   |
   \+   |
-  (?&lt;!$)\s*-\s*</string>
+  (?&lt;!$)(?:[^\S\n\r])*-(?:[^\S\n\r])*(?!=)</string>
           </dict>
           <dict>
             <key>name</key>
