@@ -605,6 +605,7 @@ repository:
           - include: '#logic'
           - include: '#choice'
           - include: '#glue'
+          - include: '#todo'
           - include: '#interpolevaluablock'
           - include: '#comment'
 
@@ -622,6 +623,7 @@ repository:
           - include: '#logic'
           - include: '#choice'
           - include: '#glue'
+          - include: '#todo'
           - include: '#interpolevaluablock'
           - include: '#comment'
 
