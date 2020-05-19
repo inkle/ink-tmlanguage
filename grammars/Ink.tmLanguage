@@ -511,7 +511,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>constant.language.ink constant.language.boolean.ink</string>
+                <string>constant.language.boolean.ink constant.language.ink</string>
               </dict>
             </dict>
           </dict>
@@ -569,14 +569,10 @@
                 <string>\\.</string>
               </dict>
               <dict>
-                <key>include</key>
-                <string>#interpolevaluablock</string>
-              </dict>
-              <dict>
                 <key>name</key>
                 <string>string.quoted.double.ink</string>
                 <key>match</key>
-                <string>[\w(?:[^\S\n\r])]+</string>
+                <string>[^\n\r\"]+</string>
               </dict>
             </array>
           </dict>
@@ -638,12 +634,12 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>keyword.choice.ink keyword.operator.arithmetic.ink</string>
+                <string>keyword.choice.ink</string>
               </dict>
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>keyword.choice.sticky.ink keyword.operator.arithmetic.ink</string>
+                <string>keyword.choice.sticky.ink</string>
               </dict>
             </dict>
             <key>end</key>
@@ -733,7 +729,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>keyword.logic.ink keyword.operator.arithmetic.ink</string>
+                <string>keyword.logic.ink</string>
               </dict>
             </dict>
             <key>end</key>
@@ -819,7 +815,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>keyword.gather.ink keyword.operator.arithmetic.ink</string>
+                <string>keyword.gather.ink</string>
               </dict>
             </dict>
             <key>end</key>
@@ -878,17 +874,17 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink</string>
+                <string>storage.knot.ink storage.type.ink</string>
               </dict>
             </dict>
             <key>end</key>
-            <string>((={2,})|(?=$))</string>
+            <string>(={2,})|(?=$)</string>
             <key>endCaptures</key>
             <dict>
-              <key>2</key>
+              <key>1</key>
               <dict>
                 <key>name</key>
-                <string>storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink</string>
+                <string>storage.knot.ink storage.type.ink</string>
               </dict>
             </dict>
             <key>patterns</key>
@@ -921,7 +917,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink</string>
+                <string>storage.knot.ink storage.type.ink</string>
               </dict>
             </dict>
             <key>end</key>
@@ -1081,7 +1077,7 @@
               <key>3</key>
               <dict>
                 <key>name</key>
-                <string>variable.function.ink</string>
+                <string>entity.name.function.ink</string>
               </dict>
               <key>4</key>
               <dict>
@@ -1188,7 +1184,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>support.constant.ink</string>
+                <string>support.constant.ink constant.language.divert constant.language.ink</string>
               </dict>
               <key>2</key>
               <dict>
@@ -1497,6 +1493,18 @@
             <string>(?=\})|(?=\|)</string>
             <key>patterns</key>
             <array>
+              <dict>
+                <key>include</key>
+                <string>#languageLiteral</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#numberLiteral</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#stringLiteral</string>
+              </dict>
               <dict>
                 <key>include</key>
                 <string>#comment</string>
@@ -2047,7 +2055,7 @@
             <string>keyword.operator.arithmetic.ink</string>
             <key>match</key>
             <string>(?x)
-  --   |
+  \-\- |
   \+\+ |
   /    |
   %    |

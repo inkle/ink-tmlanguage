@@ -210,7 +210,7 @@ repository:
     patterns:
     - match: (?:{{whitespace}})*(false|true)(?:{{whitespace}})*
       captures:
-        '1': { name: constant.language.ink constant.language.boolean.ink }
+        '1': { name: constant.language.boolean.ink constant.language.ink  }
 
   numberLiteral:
     patterns:
@@ -229,9 +229,8 @@ repository:
       patterns:
         - name: constant.character.escape.ink
           match: '\\.'
-        - include: "#interpolevaluablock"
         - name: string.quoted.double.ink
-          match: '[\w(?:{{whitespace}})]+'
+          match: '[^\n\r\"]+'
 # ##############################################################################
 # Label
 # ##############################################################################
@@ -269,8 +268,8 @@ repository:
            ((?:(?:{{whitespace}})*[\+])+)
          )
       beginCaptures:
-        '1': { name: keyword.choice.ink keyword.operator.arithmetic.ink }
-        '2': { name: keyword.choice.sticky.ink keyword.operator.arithmetic.ink }
+        '1': { name: keyword.choice.ink }
+        '2': { name: keyword.choice.sticky.ink }
       end: (?=\#|$)
       patterns:
         - include: "#comment"
@@ -301,7 +300,7 @@ repository:
     patterns: # ~ foo = 1 + 2
     - begin: (?:(?<=^)|(?<=\-)|(?<=\:))(?:{{whitespace}})*(~)
       beginCaptures:
-        '1': { name: keyword.logic.ink keyword.operator.arithmetic.ink }
+        '1': { name: keyword.logic.ink }
       end: (?=$)
       patterns:
         - include: '#returnStatement'
@@ -331,7 +330,7 @@ repository:
     patterns: # -
     - begin: (?<=^)(?:{{whitespace}})*((?:(?:{{whitespace}})*\-(?!>))+)
       beginCaptures:
-        '1': { name: keyword.gather.ink keyword.operator.arithmetic.ink }
+        '1': { name: keyword.gather.ink }
       end: (?=$)
       patterns:
         - include: "#comment"
@@ -352,10 +351,10 @@ repository:
     patterns: # === knot === • === knot(a, b) === • === function knot(a, b) ===
     - begin: ^(?:{{whitespace}})*(={2,})
       beginCaptures:
-        '1': { name: storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink }
-      end: ((={2,})|(?=$))
+        '1': { name: storage.knot.ink storage.type.ink }
+      end: (={2,})|(?=$)
       endCaptures:
-        '2': { name: storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink }
+        '1': { name: storage.knot.ink storage.type.ink }
       patterns:
         - include: "#comment"
         - include: "#functionDeclaration"
@@ -365,7 +364,7 @@ repository:
     patterns: # = stitch • = stitch(a, b)
     - begin: ^(?:{{whitespace}})*(=)
       beginCaptures:
-        '1': { name: storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink }
+        '1': { name: storage.knot.ink storage.type.ink }
       end: (?=^)
       patterns:
         - include: "#comment"
@@ -416,7 +415,7 @@ repository:
       - begin: (?:{{whitespace}})*(({{standardFunctions}})|({{validIdentifier}}))(?:{{whitespace}})*(\()(?:{{whitespace}})*
         beginCaptures:
           '2': { name: constant.language.ink }
-          '3': { name: variable.function.ink }
+          '3': { name: variable.function.ink entity.name.function.ink }
           '4': { name: punctuation.section.parens.begin.ink }
         end: (\))
         endCaptures:
@@ -465,7 +464,7 @@ repository:
           )
         )
       beginCaptures:
-        '1': { name: support.constant.ink }
+        '1': { name: support.constant.ink constant.language.divert constant.language.ink }
         '2': { name: variable.other.knot.ink entity.name.variable.other.knot.ink }
         '3': { name: punctuation.accessor.ink }
         '4': { name: variable.other.stitch.ink entity.name.variable.other.stitch.ink }
@@ -562,6 +561,9 @@ repository:
           '1': { name: keyword.control.ink }
         end: (?=\})|(?=\|)
         patterns:
+          - include: '#languageLiteral'
+          - include: '#numberLiteral'
+          - include: '#stringLiteral'
           - include: '#comment'
           - include: '#interpolevaluablock'
           - include: '#divert'
@@ -777,7 +779,7 @@ repository:
     - name: keyword.operator.arithmetic.ink
       match: >-
         (?x)
-          --   |
+          \-\- |
           \+\+ |
           /    |
           %    |
