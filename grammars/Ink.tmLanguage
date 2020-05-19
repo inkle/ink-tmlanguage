@@ -134,12 +134,16 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(?=$)</string>
+            <string>(?=$|\#)</string>
             <key>patterns</key>
             <array>
               <dict>
                 <key>include</key>
                 <string>#comment</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#tag</string>
               </dict>
             </array>
           </dict>
@@ -541,7 +545,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>(?:[^\S\n\r])*(")</string>
+            <string>(?:[^\S\n\r]*)(\")</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -551,7 +555,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(")(?:[^\S\n\r])*</string>
+            <string>(\")(?:[^\S\n\r]*)</string>
             <key>endCaptures</key>
             <dict>
               <key>1</key>
@@ -622,7 +626,7 @@
           <dict>
             <key>begin</key>
             <string>(?x)
- (?&lt;=^|\:|\-)
+ (?&lt;=^|\-)
  (?:[^\S\n\r])*
  (?:
    ((?:(?:[^\S\n\r])*[\*])+)
@@ -637,6 +641,73 @@
                 <string>keyword.choice.ink</string>
               </dict>
               <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.choice.sticky.ink</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=\#|$)</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#label</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#inlineConditionalSubstitution</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#textSuppression</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#divert</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#tag</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#glue</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#logic</string>
+              </dict>
+            </array>
+          </dict>
+        </array>
+      </dict>
+      <key>choiceInClause</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>begin</key>
+            <string>(?x)
+ (?&lt;=^|\-|\:)
+ (?:[^\S\n\r])*
+ (?:
+   ((?:(?:[^\S\n\r])*[\*])+)
+   |
+   ((?:(?:[^\S\n\r])*[\+])+)
+ )</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.choice.ink</string>
+              </dict>
+              <key>3</key>
               <dict>
                 <key>name</key>
                 <string>keyword.choice.sticky.ink</string>
@@ -1077,7 +1148,7 @@
               <key>3</key>
               <dict>
                 <key>name</key>
-                <string>entity.name.function.ink</string>
+                <string>variable.function.ink entity.name.function.ink</string>
               </dict>
               <key>4</key>
               <dict>
@@ -1735,7 +1806,7 @@
         <array>
           <dict>
             <key>begin</key>
-            <string>^(?:[^\S\n\r])*(-(?!&gt;))(?:[^\S\n\r])?(else|[^\|\{\}]+)(?:[^\S\n\r])*(?&lt;!\\)(\:)</string>
+            <string>^(?:[^\S\n\r])*(-(?!&gt;))(?:[^\S\n\r])?(else|[^\|\{\}\:]+)(?:[^\S\n\r])*(?&lt;!\\)(\:)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -1776,7 +1847,11 @@
               </dict>
               <dict>
                 <key>include</key>
-                <string>#choice</string>
+                <string>#choiceInClause</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#tag</string>
               </dict>
               <dict>
                 <key>include</key>

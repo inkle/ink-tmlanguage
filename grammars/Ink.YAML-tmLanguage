@@ -76,9 +76,10 @@ repository:
       begin: (?<!\\)(\#)
       beginCaptures:
         '1': { name: 'punctuation.definition.comment.ink comment.line.ink entity.tag.begin.ink' }
-      end: (?=$)
+      end: (?=$|\#)
       patterns:
         - include: '#comment'
+        - include: '#tag'
 
 # ##############################################################################
 # Tag
@@ -220,10 +221,10 @@ repository:
 
   stringLiteral:
     patterns: # "string"
-    - begin: (?:{{whitespace}})*(")
+    - begin: (?:{{whitespace}}*)(\")
       beginCaptures:
         '1': { name: punctuation.definition.string.begin.ink }
-      end: (")(?:{{whitespace}})*
+      end: (\")(?:{{whitespace}}*)
       endCaptures:
         '1': { name: punctuation.definition.string.end.ink }
       patterns:
@@ -260,7 +261,7 @@ repository:
     patterns: # * (foo) {bar} content [content] content
     - begin: >-
         (?x)
-         (?<=^|\:|\-)
+         (?<=^|\-)
          (?:{{whitespace}})*
          (?:
            ((?:(?:{{whitespace}})*[\*])+)
@@ -268,8 +269,33 @@ repository:
            ((?:(?:{{whitespace}})*[\+])+)
          )
       beginCaptures:
-        '1': { name: keyword.choice.ink }
-        '2': { name: keyword.choice.sticky.ink }
+        '1': { name: keyword.choice.ink}
+        '2': { name: keyword.choice.sticky.ink}
+      end: (?=\#|$)
+      patterns:
+        - include: "#comment"
+        - include: "#label"
+        - include: '#inlineConditionalSubstitution'
+        - include: "#textSuppression"
+        - include: "#divert"
+        - include: '#tag'
+        - include: "#glue"
+        - include: "#logic"
+
+  choiceInClause:
+    patterns: # * (foo) {bar} content [content] content
+    - begin: >-
+        (?x)
+         (?<=^|\-|\:)
+         (?:{{whitespace}})*
+         (?:
+           ((?:(?:{{whitespace}})*[\*])+)
+           |
+           ((?:(?:{{whitespace}})*[\+])+)
+         )
+      beginCaptures:
+        '2': { name: keyword.choice.ink }
+        '3': { name: keyword.choice.sticky.ink }
       end: (?=\#|$)
       patterns:
         - include: "#comment"
@@ -631,7 +657,7 @@ repository:
 
   caseClause:
     patterns:
-      - begin: ^(?:{{whitespace}})*(-(?!>))(?:{{whitespace}})?(else|[^\|\{\}]+)(?:{{whitespace}})*(?<!\\)(\:)
+      - begin: ^(?:{{whitespace}})*(-(?!>))(?:{{whitespace}})?(else|[^\|\{\}\:]+)(?:{{whitespace}})*(?<!\\)(\:)
         beginCaptures:
           '1': { name: keyword.control.ink }
           '2': { name: keyword.control.ink }
@@ -642,7 +668,8 @@ repository:
           - include: '#divert'
           - include: '#logic'
           - include: '#glue'
-          - include: '#choice'
+          - include: '#choiceInClause'
+          - include: '#tag'
           - include: '#comment'
 
   alternativeClause:
