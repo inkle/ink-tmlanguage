@@ -1148,7 +1148,7 @@
               <key>3</key>
               <dict>
                 <key>name</key>
-                <string>variable.function.ink</string>
+                <string>entity.name.function.ink</string>
               </dict>
               <key>4</key>
               <dict>
@@ -2001,7 +2001,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>variable.other.ink</string>
+                <string>entity.name.variable.other.ink</string>
               </dict>
             </dict>
           </dict>
@@ -2018,7 +2018,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>variable.other.ink</string>
+                <string>entity.name.variable.other.ink</string>
               </dict>
             </dict>
           </dict>
@@ -2039,7 +2039,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>variable.other.ink</string>
+                <string>entity.name.variable.other.ink</string>
               </dict>
             </dict>
           </dict>
@@ -2056,7 +2056,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>variable.other.ink</string>
+                <string>entity.name.variable.other.ink</string>
               </dict>
             </dict>
           </dict>
@@ -2068,7 +2068,7 @@
         <array>
           <dict>
             <key>name</key>
-            <string>variable.other.ink</string>
+            <string>entity.name.variable.other.ink</string>
             <key>match</key>
             <string>(?&lt;=\{)(?&lt;!^)(?:[^\S\n\r])*[a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*(\.[a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*[a-zA-Z_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}][a-zA-Z0-9_\x{0100}-\x{017F}\x{0180}-\x{024F}\x{0600}-\x{06FF}\x{0530}-\x{058F}\x{0400}-\x{04FF}\x{0370}-\x{03FF}\x{0590}-\x{05FF}]*)?(?:[^\S\n\r])*(?!$)(?=\})</string>
           </dict>
