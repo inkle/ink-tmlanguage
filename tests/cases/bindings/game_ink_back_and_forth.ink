@@ -7,7 +7,7 @@ EXTERNAL gameInc(x)
 //               ^ variable.parameter.function.ink
 //                ^ punctuation.section.parens.end.ink
 == function topExternal(x)
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 // ^^^^^^^^ storage.type.ink
 //          ^^^^^^^^^^^ entity.name.function.ink
 //                     ^ punctuation.section.parens.begin.ink
@@ -16,7 +16,7 @@ EXTERNAL gameInc(x)
 In top external
 //<---------------- source.ink
 ~ return gameInc(x)
-//<- keyword.logic.ink keyword.operator.arithmetic.ink
+//<- keyword.logic.ink
 //<~- source.ink
 //^^^^^^ keyword.control.ink
 //       ^^^^^^^ variable.function.ink
@@ -24,14 +24,14 @@ In top external
 //               ^ variable.other.ink
 //                ^ source.ink
 == function inkInc(x)
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 // ^^^^^^^^ storage.type.ink
 //          ^^^^^^ entity.name.function.ink
 //                ^ punctuation.section.parens.begin.ink
 //                 ^ variable.parameter.function.ink
 //                  ^ punctuation.section.parens.end.ink
 ~ return x + 1
-//<- keyword.logic.ink keyword.operator.arithmetic.ink
+//<- keyword.logic.ink
 //<~- source.ink
 //^^^^^^ keyword.control.ink
 //       ^  variable.other.ink

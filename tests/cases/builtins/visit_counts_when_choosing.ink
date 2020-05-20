@@ -1,15 +1,15 @@
 // SYNTAX TEST "source.ink"
 
 == TestKnot ==
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^^^^^^^^ entity.name.function.ink
 //         ^ source.ink
-//          ^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//          ^^ storage.knot.ink storage.type.ink
 this is a test
 //<-------------- source.ink
 + [Next] -> TestKnot2
-//<- keyword.choice.sticky.ink keyword.operator.arithmetic.ink
+//<- keyword.choice.sticky.ink
 //^ keyword.choice.suppression.ink keyword.control.ink
 // ^^^^ source.ink
 //     ^ keyword.choice.suppression.ink keyword.control.ink
@@ -18,11 +18,11 @@ this is a test
 //         ^ source.ink
 //          ^^^^^^^^^ variable.other.knot.ink
 == TestKnot2 ==
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^^^^^^^^^ entity.name.function.ink
 //          ^ source.ink
-//           ^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//           ^^ storage.knot.ink storage.type.ink
 this is the end
 //<--------------- source.ink
 -> END

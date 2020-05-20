@@ -26,7 +26,7 @@ EXTERNAL times(i,str)
 //               ^^^ variable.parameter.function.ink
 //                  ^ punctuation.section.parens.end.ink
 ~ message("hello world")
-//<~ keyword.logic.ink keyword.operator.arithmetic.ink
+//<~ keyword.logic.ink
 //<~- source.ink
 //^^^^^^^ variable.function.ink
 //       ^ source.ink

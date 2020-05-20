@@ -13,13 +13,13 @@ VAR times = 3
 //^ source.ink
 // ^^^^ variable.other.knot.ink
 == home ==
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^^^^ entity.name.function.ink
 //     ^ source.ink
-//      ^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//      ^^ storage.knot.ink storage.type.ink
 ~ times = times - 1
-//<- keyword.logic.ink keyword.operator.arithmetic.ink
+//<- keyword.logic.ink
 //<~- source.ink
 //^^^^^ variable.other.ink
 //     ^ source.ink
@@ -42,11 +42,11 @@ I've finished eating now.
 //^ source.ink
 // ^^^ support.constant.ink
 == eat ==
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^^^ entity.name.function.ink
 //    ^ source.ink
-//     ^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//     ^^ storage.knot.ink storage.type.ink
 This is the {first|second|third} time.
 //<------------ source.ink
 //          ^ keyword.control.ink
@@ -58,22 +58,22 @@ This is the {first|second|third} time.
 //                             ^ keyword.control.ink
 //                              ^^^^^^^ source.ink
 * Eat ice-cream[]
-//<- keyword.choice.ink keyword.operator.arithmetic.ink
+//<- keyword.choice.ink
 //<~------------- source.ink
 //             ^ keyword.choice.suppression.ink keyword.control.ink
 //              ^ keyword.choice.suppression.ink keyword.control.ink
 * Drink coke[]
-//<- keyword.choice.ink keyword.operator.arithmetic.ink
+//<- keyword.choice.ink
 //<~---------- source.ink
 //          ^ keyword.choice.suppression.ink keyword.control.ink
 //           ^ keyword.choice.suppression.ink keyword.control.ink
 * Munch cookies[]
-//<- keyword.choice.ink keyword.operator.arithmetic.ink
+//<- keyword.choice.ink
 //<~------------- source.ink
 //             ^ keyword.choice.suppression.ink keyword.control.ink
 //              ^ keyword.choice.suppression.ink keyword.control.ink
 -
-//<- keyword.gather.ink keyword.operator.arithmetic.ink
+//<- keyword.gather.ink
 -> home
 //<-- keyword.divert.ink keyword.other.ink
 //^ source.ink

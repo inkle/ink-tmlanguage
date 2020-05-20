@@ -9,21 +9,21 @@
 //                   ^ source.ink
 //                    ^^ keyword.divert.ink keyword.other.ink
 == generate_choice(x) ==
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^^^^^^^^^^^^^^^ entity.name.function.ink
 //                ^ punctuation.section.parens.begin.ink
 //                 ^ variable.parameter.function.ink
 //                  ^ punctuation.section.parens.end.ink
 //                   ^ source.ink
-//                    ^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//                    ^^ storage.knot.ink storage.type.ink
 {true:
 //<- keyword.control.ink
 //<~---- keyword.control.ink
 //   ^ keyword.control.ink
     + A choice
 //<---- source.ink
-//  ^ keyword.choice.sticky.ink keyword.operator.arithmetic.ink
+//  ^ keyword.choice.sticky.ink
 //    ^^^^^^^^^ source.ink
         Vaue of local var is: {x}
 //<------------------------------ source.ink

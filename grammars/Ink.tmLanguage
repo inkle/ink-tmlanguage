@@ -331,7 +331,7 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>entity.name.variable.other.ink</string>
+                <string>variable.other.ink</string>
               </dict>
               <key>2</key>
               <dict>
@@ -455,7 +455,7 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>entity.name.variable.other.ink</string>
+                <string>variable.other.ink</string>
               </dict>
               <key>3</key>
               <dict>

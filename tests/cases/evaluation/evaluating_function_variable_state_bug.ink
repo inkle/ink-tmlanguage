@@ -15,18 +15,18 @@ End
 //^ source.ink
 // ^^^ support.constant.ink
 == tunnel ==
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^^^^^^ entity.name.function.ink
 //       ^ source.ink
-//        ^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//        ^^ storage.knot.ink storage.type.ink
 In tunnel.
 //<---------- source.ink
 ->->
 //<-- keyword.divert.ink keyword.other.ink
 //^^ keyword.divert.ink keyword.other.ink
 === function function_to_evaluate() ===
-//<--- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<--- storage.knot.ink storage.type.ink
 // ^ source.ink
 //  ^^^^^^^^ storage.type.ink
 //          ^ source.ink
@@ -34,14 +34,14 @@ In tunnel.
 //                               ^ punctuation.section.parens.begin.ink
 //                                ^ punctuation.section.parens.end.ink
 //                                 ^ source.ink
-//                                  ^^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//                                  ^^^ storage.knot.ink storage.type.ink
     { zero_equals_(1):
 //<---- source.ink
 //  ^ keyword.control.ink
 //   ^^^^^^^^^^^^^^^^^ keyword.control.ink
         ~ return "WRONG"
 //<-------- source.ink
-//      ^ keyword.logic.ink keyword.operator.arithmetic.ink
+//      ^ keyword.logic.ink
 //       ^ source.ink
 //        ^^^^^^ keyword.control.ink
 //              ^ source.ink
@@ -56,7 +56,7 @@ In tunnel.
 //        ^ keyword.control.ink
         ~ return "RIGHT"
 //<-------- source.ink
-//      ^ keyword.logic.ink keyword.operator.arithmetic.ink
+//      ^ keyword.logic.ink
 //       ^ source.ink
 //        ^^^^^^ keyword.control.ink
 //              ^ source.ink
@@ -67,7 +67,7 @@ In tunnel.
 //<---- source.ink
 //  ^ keyword.control.ink
 === function zero_equals_(k) ===
-//<--- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<--- storage.knot.ink storage.type.ink
 // ^ source.ink
 //  ^^^^^^^^ storage.type.ink
 //          ^ source.ink
@@ -76,10 +76,10 @@ In tunnel.
 //                        ^ variable.parameter.function.ink
 //                         ^ punctuation.section.parens.end.ink
 //                          ^ source.ink
-//                           ^^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//                           ^^^ storage.knot.ink storage.type.ink
     ~ do_nothing(0)
 //<---- source.ink
-//  ^ keyword.logic.ink keyword.operator.arithmetic.ink
+//  ^ keyword.logic.ink
 //   ^ source.ink
 //    ^^^^^^^^^^ variable.function.ink
 //              ^ punctuation.section.parens.begin.ink
@@ -87,7 +87,7 @@ In tunnel.
 //                ^ punctuation.section.parens.end.ink
     ~ return  (0 == k)
 //<---- source.ink
-//  ^ keyword.logic.ink keyword.operator.arithmetic.ink
+//  ^ keyword.logic.ink
 //   ^ source.ink
 //    ^^^^^^ keyword.control.ink
 //          ^^ source.ink
@@ -99,7 +99,7 @@ In tunnel.
 //                  ^ variable.other.ink
 //                   ^ punctuation.section.parens.end.ink
 === function do_nothing(k)
-//<--- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<--- storage.knot.ink storage.type.ink
 // ^ source.ink
 //  ^^^^^^^^ storage.type.ink
 //          ^ source.ink
@@ -109,7 +109,7 @@ In tunnel.
 //                       ^ punctuation.section.parens.end.ink
     ~ return 0
 //<---- source.ink
-//  ^ keyword.logic.ink keyword.operator.arithmetic.ink
+//  ^ keyword.logic.ink
 //   ^ source.ink
 //    ^^^^^^ keyword.control.ink
 //          ^ source.ink

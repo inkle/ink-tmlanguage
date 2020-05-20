@@ -9,7 +9,7 @@
 //<---------------- keyword.control.ink
 //               ^ keyword.control.ink
 = end
-//<- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<- storage.knot.ink storage.type.ink
 //<~- source.ink
 //^^^ entity.name.function.ink
 -> END
@@ -17,18 +17,18 @@
 //^ source.ink
 // ^^^ support.constant.ink
 = choices
-//<- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<- storage.knot.ink storage.type.ink
 //<~- source.ink
 //^^^^^^^ entity.name.function.ink
 * one -> end
-//<- keyword.choice.ink keyword.operator.arithmetic.ink
+//<- keyword.choice.ink
 //^^^ source.ink
 //   ^ source.ink
 //    ^^ keyword.divert.ink keyword.other.ink
 //      ^ source.ink
 //       ^^^ variable.other.knot.ink
 * two -> end
-//<- keyword.choice.ink keyword.operator.arithmetic.ink
+//<- keyword.choice.ink
 //^^^ source.ink
 //   ^ source.ink
 //    ^^ keyword.divert.ink keyword.other.ink

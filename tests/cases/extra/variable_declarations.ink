@@ -46,7 +46,7 @@ VAR boolean = false
 //         ^ source.ink
 //          ^ keyword.operator.assignment.ink
 //           ^ source.ink
-//            ^^^^^ constant.language.ink constant.language.boolean.ink
+//            ^^^^^ constant.language.boolean.ink constant.language.ink
 VAR boolean = true
 //<--- storage.type.ink storage.type.var.ink
 // ^ source.ink
@@ -54,7 +54,7 @@ VAR boolean = true
 //         ^ source.ink
 //          ^ keyword.operator.assignment.ink
 //           ^ source.ink
-//            ^^^^ constant.language.ink constant.language.boolean.ink
+//            ^^^^ constant.language.boolean.ink constant.language.ink
 VAR previous = string
 //<--- storage.type.ink storage.type.var.ink
 // ^ source.ink
@@ -134,7 +134,7 @@ CONST BOOLEAN = false
 //           ^ source.ink
 //            ^ keyword.operator.assignment.ink
 //             ^ source.ink
-//              ^^^^^ constant.language.ink constant.language.boolean.ink
+//              ^^^^^ constant.language.boolean.ink constant.language.ink
 CONST BOOLEAN = true
 //<----- storage.type.const.ink
 //   ^ source.ink
@@ -142,7 +142,7 @@ CONST BOOLEAN = true
 //           ^ source.ink
 //            ^ keyword.operator.assignment.ink
 //             ^ source.ink
-//              ^^^^ constant.language.ink constant.language.boolean.ink
+//              ^^^^ constant.language.boolean.ink constant.language.ink
 CONST PREVIOUS = STRING
 //<----- storage.type.const.ink
 //   ^ source.ink
@@ -182,7 +182,7 @@ CONST string = "Hello" /*
 /** TEMPS *********************************************************************/
 
 ~ temp list = (abc, def)
-//<- keyword.logic.ink keyword.operator.arithmetic.ink
+//<- keyword.logic.ink
 //<~- source.ink
 //^^^^ storage.modifier.ink
 //    ^ source.ink
@@ -195,7 +195,7 @@ CONST string = "Hello" /*
 //                  ^^^ variable.other.ink
 //                     ^ source.ink
 ~ temp string = "Hello"
-//<- keyword.logic.ink keyword.operator.arithmetic.ink
+//<- keyword.logic.ink
 //<~- source.ink
 //^^^^ storage.modifier.ink
 //    ^ source.ink
@@ -207,7 +207,7 @@ CONST string = "Hello" /*
 //               ^^^^^ string.quoted.double.ink
 //                    ^ punctuation.definition.string.end.ink
 ~ temp 987r_tr5xc09 = 10 // Test comment
-//<- keyword.logic.ink keyword.operator.arithmetic.ink
+//<- keyword.logic.ink
 //<~- source.ink
 //^^^^ storage.modifier.ink
 //    ^ source.ink
@@ -220,7 +220,7 @@ CONST string = "Hello" /*
 //                       ^^ comment.line.ink punctuation.definition.comment.ink
 //                         ^^^^^^^^^^^^^ comment.line.ink
 ~ temp number = 0.7
-//<- keyword.logic.ink keyword.operator.arithmetic.ink
+//<- keyword.logic.ink
 //<~- source.ink
 //^^^^ storage.modifier.ink
 //    ^ source.ink
@@ -230,7 +230,7 @@ CONST string = "Hello" /*
 //             ^ source.ink
 //              ^^^ constant.numeric.ink
 ~ temp boolean = false
-//<- keyword.logic.ink keyword.operator.arithmetic.ink
+//<- keyword.logic.ink
 //<~- source.ink
 //^^^^ storage.modifier.ink
 //    ^ source.ink
@@ -238,9 +238,9 @@ CONST string = "Hello" /*
 //            ^ source.ink
 //             ^ keyword.assignment.ink
 //              ^ source.ink
-//               ^^^^^ constant.language.ink constant.language.boolean.ink
+//               ^^^^^ constant.language.boolean.ink constant.language.ink
 ~ temp boolean = true
-//<- keyword.logic.ink keyword.operator.arithmetic.ink
+//<- keyword.logic.ink
 //<~- source.ink
 //^^^^ storage.modifier.ink
 //    ^ source.ink
@@ -248,9 +248,9 @@ CONST string = "Hello" /*
 //            ^ source.ink
 //             ^ keyword.assignment.ink
 //              ^ source.ink
-//               ^^^^ constant.language.ink constant.language.boolean.ink
+//               ^^^^ constant.language.boolean.ink constant.language.ink
 ~ temp previous = string
-//<- keyword.logic.ink keyword.operator.arithmetic.ink
+//<- keyword.logic.ink
 //<~- source.ink
 //^^^^ storage.modifier.ink
 //    ^ source.ink
@@ -260,7 +260,7 @@ CONST string = "Hello" /*
 //               ^ source.ink
 //                ^^^^^^ variable.other.ink
 ~ temp compute = pow(a, b) + max(1, 3) + abc
-//<- keyword.logic.ink keyword.operator.arithmetic.ink
+//<- keyword.logic.ink
 //<~- source.ink
 //^^^^ storage.modifier.ink
 //    ^ source.ink
@@ -290,7 +290,7 @@ CONST string = "Hello" /*
 //                                      ^ source.ink
 //                                       ^^^ variable.other.ink
 ~ temp computed = 987 * 34 + abc / (35 * 0.1) /*
-//<- keyword.logic.ink keyword.operator.arithmetic.ink
+//<- keyword.logic.ink
 //<~- source.ink
 //^^^^ storage.modifier.ink
 //    ^ source.ink
@@ -322,7 +322,7 @@ CONST string = "Hello" /*
 */
 //<-- comment.block.ink punctuation.definition.comment.ink
 ~ temp divert = -> target_divert
-//<- keyword.logic.ink keyword.operator.arithmetic.ink
+//<- keyword.logic.ink
 //<~- source.ink
 //^^^^ storage.modifier.ink
 //    ^ source.ink

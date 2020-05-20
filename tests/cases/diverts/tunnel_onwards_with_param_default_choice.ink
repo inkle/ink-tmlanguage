@@ -7,13 +7,13 @@
 //       ^ source.ink
 //        ^^ keyword.divert.ink keyword.other.ink
 == tunnel ==
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^^^^^^ entity.name.function.ink
 //       ^ source.ink
-//        ^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//        ^^ storage.knot.ink storage.type.ink
 * ->-> elsewhere (8)
-//<- keyword.choice.ink keyword.operator.arithmetic.ink
+//<- keyword.choice.ink
 //<~- source.ink
 //^^ keyword.divert.ink keyword.other.ink
 //  ^^ keyword.divert.ink keyword.other.ink
@@ -24,7 +24,7 @@
 //                ^ constant.numeric.ink
 //                 ^ punctuation.section.parens.end.ink
 == elsewhere (x) ==
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^^^^^^^^^ entity.name.function.ink
 //          ^ source.ink
@@ -32,7 +32,7 @@
 //            ^ variable.parameter.function.ink
 //             ^ punctuation.section.parens.end.ink
 //              ^ source.ink
-//               ^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//               ^^ storage.knot.ink storage.type.ink
 {x}
 //<- keyword.control.ink
 //<~- keyword.control.ink

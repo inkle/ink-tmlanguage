@@ -1,7 +1,7 @@
 // SYNTAX TEST "source.ink"
 
 * [Hi] Hello -> END #hey
-//<- keyword.choice.ink keyword.operator.arithmetic.ink
+//<- keyword.choice.ink
 //<~- source.ink
 //^ keyword.choice.suppression.ink keyword.control.ink
 // ^^ source.ink
@@ -16,7 +16,7 @@
 //                   ^^^ string.quoted.other.ink entity.tag.ink
 
 * { test } visible choice #hey
-//<- keyword.choice.ink keyword.operator.arithmetic.ink
+//<- keyword.choice.ink
 //<~- source.ink
 //^ keyword.control.ink
 // ^^^^^^ keyword.control.ink
@@ -27,7 +27,7 @@
 //                         ^^^ string.quoted.other.ink entity.tag.ink
 
 *   (firstOpt) [First choice]   #tag
-//<- keyword.choice.ink keyword.operator.arithmetic.ink
+//<- keyword.choice.ink
 //<~--- source.ink
 //  ^ string.label.ink entity.name.label.ink string.quoted.other.ink punctuation.definition.string.label.begin.ink punctuation.definition.string.begin.ink
 //   ^^^^^^^^ string.label.ink entity.name.label.ink string.quoted.other.ink
@@ -57,11 +57,11 @@ VAR x = 2
 This is the content
 //<------------------- source.ink
 == knot ==
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^^^^ entity.name.function.ink
 //     ^ source.ink
-//      ^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//      ^^ storage.knot.ink storage.type.ink
 # knot tag
 //<- string.quoted.other.ink entity.tag.ink punctuation.definition.comment.ink comment.line.ink entity.tag.begin.ink
 //<--------- string.quoted.other.ink entity.tag.ink
@@ -75,7 +75,7 @@ Knot content
 //^ source.ink
 // ^^^ support.constant.ink
 = stitch
-//<- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<- storage.knot.ink storage.type.ink
 //<~- source.ink
 //^^^^^^ entity.name.function.ink
 # stitch tag

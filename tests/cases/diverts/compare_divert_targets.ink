@@ -63,7 +63,7 @@ VAR to_two = -> two
 //                           ^^^^^^^^^^^^^^ source.ink
 //                                         ^ keyword.control.ink
 == one
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^^^ entity.name.function.ink
     One
@@ -74,7 +74,7 @@ VAR to_two = -> two
 //    ^ source.ink
 //     ^^^^ support.constant.ink
 === two
-//<--- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<--- storage.knot.ink storage.type.ink
 // ^ source.ink
 //  ^^^ entity.name.function.ink
     Two

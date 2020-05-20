@@ -1,11 +1,11 @@
 // SYNTAX TEST "source.ink"
 
 === intro
-//<--- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<--- storage.knot.ink storage.type.ink
 // ^ source.ink
 //  ^^^^^ entity.name.function.ink
 = top
-//<- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<- storage.knot.ink storage.type.ink
 //<~- source.ink
 //^^^ entity.name.function.ink
     { main: -> done }
@@ -24,7 +24,7 @@
 //    ^ source.ink
 //     ^^^ support.constant.ink
 = main
-//<- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<- storage.knot.ink storage.type.ink
 //<~- source.ink
 //^^^^ entity.name.function.ink
     -> top
@@ -33,7 +33,7 @@
 //    ^ source.ink
 //     ^^^ variable.other.knot.ink
 = done
-//<- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<- storage.knot.ink storage.type.ink
 //<~- source.ink
 //^^^^ entity.name.function.ink
     -> END

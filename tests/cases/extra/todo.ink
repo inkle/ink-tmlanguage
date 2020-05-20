@@ -5,13 +5,13 @@ TODO: Lorem ipsum
 //  ^^^^^^^^^^^^^ comment.line.ink entity.todo.ink
 
 === knot ===
-//<--- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<--- storage.knot.ink storage.type.ink
 // ^ source.ink
 //  ^^^^ entity.name.function.ink
 //      ^ source.ink
-//       ^^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//       ^^^ storage.knot.ink storage.type.ink
 = stitch
-//<- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<- storage.knot.ink storage.type.ink
 //<~- source.ink
 //^^^^^^ entity.name.function.ink
     {
@@ -52,7 +52,7 @@ TODO: Lorem ipsum
 //  ^^^^^^^^^^^^^ comment.line.ink entity.todo.ink
 
 * (label) {condition} [Hello] Choice
-//<- keyword.choice.ink keyword.operator.arithmetic.ink
+//<- keyword.choice.ink
 //<~- source.ink
 //^ string.label.ink entity.name.label.ink string.quoted.other.ink punctuation.definition.string.label.begin.ink punctuation.definition.string.begin.ink
 // ^^^^^ string.label.ink entity.name.label.ink string.quoted.other.ink

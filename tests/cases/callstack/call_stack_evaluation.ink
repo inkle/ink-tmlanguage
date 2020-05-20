@@ -11,14 +11,14 @@
 //    ^ source.ink
 //     ^^^ support.constant.ink
 === function six
-//<--- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<--- storage.knot.ink storage.type.ink
 // ^ source.ink
 //  ^^^^^^^^ storage.type.ink
 //          ^ source.ink
 //           ^^^ entity.name.function.ink
     ~ return four() + two()
 //<---- source.ink
-//  ^ keyword.logic.ink keyword.operator.arithmetic.ink
+//  ^ keyword.logic.ink
 //   ^ source.ink
 //    ^^^^^^ keyword.control.ink
 //          ^ source.ink
@@ -32,14 +32,14 @@
 //                       ^  punctuation.section.parens.begin.ink
 //                        ^  punctuation.section.parens.end.ink
 === function four
-//<--- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<--- storage.knot.ink storage.type.ink
 // ^ source.ink
 //  ^^^^^^^^ storage.type.ink
 //          ^ source.ink
 //           ^^^^ entity.name.function.ink
     ~ return two() + two()
 //<---- source.ink
-//  ^ keyword.logic.ink keyword.operator.arithmetic.ink
+//  ^ keyword.logic.ink
 //   ^ source.ink
 //    ^^^^^^ keyword.control.ink
 //          ^ source.ink
@@ -53,14 +53,14 @@
 //                      ^  punctuation.section.parens.begin.ink
 //                       ^  punctuation.section.parens.end.ink
 === function two
-//<--- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<--- storage.knot.ink storage.type.ink
 // ^ source.ink
 //  ^^^^^^^^ storage.type.ink
 //          ^ source.ink
 //           ^^^ entity.name.function.ink
     ~ return 2
 //<---- source.ink
-//  ^ keyword.logic.ink keyword.operator.arithmetic.ink
+//  ^ keyword.logic.ink
 //   ^ source.ink
 //    ^^^^^^ keyword.control.ink
 //          ^ source.ink

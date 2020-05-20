@@ -19,14 +19,14 @@ VAR testVar2 = 10
 Hello world!
 //<------------ source.ink
 ~ testVar = 15
-//<- keyword.logic.ink keyword.operator.arithmetic.ink
+//<- keyword.logic.ink
 //<~- source.ink
 //^^^^^^^ variable.other.ink
 //        ^ keyword.operator.assignment.ink
 //         ^ source.ink
 //          ^^ constant.numeric.ink
 ~ testVar2 = 100
-//<- keyword.logic.ink keyword.operator.arithmetic.ink
+//<- keyword.logic.ink
 //<~- source.ink
 //^^^^^^^^ variable.other.ink
 //         ^ keyword.operator.assignment.ink
@@ -35,11 +35,11 @@ Hello world!
 Hello world 2!
 //<-------------- source.ink
 * choice
-//<- keyword.choice.ink keyword.operator.arithmetic.ink
+//<- keyword.choice.ink
 //^^^^^^^ source.ink
     ~ testVar = 25
 //<---- source.ink
-//  ^ keyword.logic.ink keyword.operator.arithmetic.ink
+//  ^ keyword.logic.ink
 //   ^ source.ink
 //    ^^^^^^^  variable.other.ink
 //            ^ keyword.operator.assignment.ink
@@ -47,7 +47,7 @@ Hello world 2!
 //              ^^ constant.numeric.ink
     ~ testVar2 = 200
 //<---- source.ink
-//  ^ keyword.logic.ink keyword.operator.arithmetic.ink
+//  ^ keyword.logic.ink
 //   ^ source.ink
 //    ^^^^^^^^  variable.other.ink
 //             ^ keyword.operator.assignment.ink

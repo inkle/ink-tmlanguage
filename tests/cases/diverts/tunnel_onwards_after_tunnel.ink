@@ -13,11 +13,11 @@ The End.
 //^ source.ink
 // ^^^ support.constant.ink
 == tunnel1 ==
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^^^^^^^ entity.name.function.ink
 //        ^ source.ink
-//         ^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//         ^^ storage.knot.ink storage.type.ink
 Hello...
 //<-------- source.ink
 -> tunnel2 ->->
@@ -28,11 +28,11 @@ Hello...
 //         ^^ keyword.divert.ink keyword.other.ink
 //           ^^ keyword.divert.ink keyword.other.ink
 == tunnel2 ==
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^^^^^^^ entity.name.function.ink
 //        ^ source.ink
-//         ^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//         ^^ storage.knot.ink storage.type.ink
 ...world.
 //<--------- source.ink
 ->->

@@ -5,12 +5,12 @@
 //^ source.ink
 // ^^^^ variable.other.knot.ink
 == knot
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^^^^ entity.name.function.ink
    ~ temp x = 1
 //<--- source.ink
-// ^ keyword.logic.ink keyword.operator.arithmetic.ink
+// ^ keyword.logic.ink
 //  ^ source.ink
 //   ^^^^ storage.modifier.ink
 //        ^  variable.other.ink
@@ -18,7 +18,7 @@
 //            ^ constant.numeric.ink
    *   ->
 //<--- source.ink
-// ^ keyword.choice.ink keyword.operator.arithmetic.ink
+// ^ keyword.choice.ink
 //     ^^ keyword.divert.ink keyword.other.ink
        Should be 1 not 0: {x}.
 //<-------------------------- source.ink

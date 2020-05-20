@@ -9,11 +9,11 @@
 We will never return to here!
 //<----------------------------- source.ink
 == A ==
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^ entity.name.function.ink
 //  ^ source.ink
-//   ^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//   ^^ storage.knot.ink storage.type.ink
 This is A
 //<--------- source.ink
 ->-> B
@@ -22,11 +22,11 @@ This is A
 //  ^ source.ink
 //   ^ variable.other.knot.ink
 == B ==
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^ entity.name.function.ink
 //  ^ source.ink
-//   ^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//   ^^ storage.knot.ink storage.type.ink
 Now in B.
 //<--------- source.ink
 -> END

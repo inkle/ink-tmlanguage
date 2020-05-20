@@ -7,7 +7,7 @@
 //^ source.ink
 // ^^^^ variable.other.knot.ink
 === knot
-//<--- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<--- storage.knot.ink storage.type.ink
 // ^ source.ink
 //  ^^^^ entity.name.function.ink
 -> knot.gather
@@ -17,7 +17,7 @@
 //     ^ punctuation.accessor.ink
 //      ^^^^^^ variable.other.stitch.ink
 - (gather) g
-//<- keyword.gather.ink keyword.operator.arithmetic.ink
+//<- keyword.gather.ink
 //<~- source.ink
 //^ string.label.ink entity.name.label.ink string.quoted.other.ink punctuation.definition.string.label.begin.ink punctuation.definition.string.begin.ink
 // ^^^^^^ string.label.ink entity.name.label.ink string.quoted.other.ink
@@ -51,7 +51,7 @@ VAR stitchCount = 0
 //                  ^ source.ink
 //                   ^^ keyword.divert.ink keyword.other.ink
 ~ knotCount = 0
-//<- keyword.logic.ink keyword.operator.arithmetic.ink
+//<- keyword.logic.ink
 //<~- source.ink
 //^^^^^^^^^ variable.other.ink
 //         ^ source.ink
@@ -65,7 +65,7 @@ VAR stitchCount = 0
 //                ^ source.ink
 //                 ^^ keyword.divert.ink keyword.other.ink
 ~ knotCount = 0
-//<- keyword.logic.ink keyword.operator.arithmetic.ink
+//<- keyword.logic.ink
 //<~- source.ink
 //^^^^^^^^^ variable.other.ink
 //         ^ source.ink
@@ -85,11 +85,11 @@ VAR stitchCount = 0
 //                  ^ source.ink
 //                   ^^ keyword.divert.ink keyword.other.ink
 == gather_count_test ==
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^^^^^^^^^^^^^^^^^ entity.name.function.ink
 //                  ^ source.ink
-//                   ^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//                   ^^ storage.knot.ink storage.type.ink
 VAR gatherCount = 0
 //<--- storage.type.ink storage.type.var.ink
 // ^ source.ink
@@ -99,13 +99,13 @@ VAR gatherCount = 0
 //               ^ source.ink
 //                ^ constant.numeric.ink
 - (loop)
-//<- keyword.gather.ink keyword.operator.arithmetic.ink
+//<- keyword.gather.ink
 //<~- source.ink
 //^ string.label.ink entity.name.label.ink string.quoted.other.ink punctuation.definition.string.label.begin.ink punctuation.definition.string.begin.ink
 // ^^^^ string.label.ink entity.name.label.ink string.quoted.other.ink
 //     ^ string.label.ink entity.name.label.ink string.quoted.other.ink punctuation.definition.string.label.begin.ink punctuation.definition.string.begin.ink
 ~ gatherCount++
-//<- keyword.logic.ink keyword.operator.arithmetic.ink
+//<- keyword.logic.ink
 //<~- source.ink
 //^^^^^^^^^^^ variable.other.ink
 //           ^^ keyword.operator.arithmetic.ink
@@ -127,13 +127,13 @@ VAR gatherCount = 0
 //<-- keyword.divert.ink keyword.other.ink
 //^^ keyword.divert.ink keyword.other.ink
 == knot_count_test ==
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^^^^^^^^^^^^^^^ entity.name.function.ink
 //                ^ source.ink
-//                 ^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//                 ^^ storage.knot.ink storage.type.ink
 ~ knotCount++
-//<- keyword.logic.ink keyword.operator.arithmetic.ink
+//<- keyword.logic.ink
 //<~- source.ink
 //^^^^^^^^^ variable.other.ink
 //         ^^ keyword.operator.arithmetic.ink
@@ -155,13 +155,13 @@ VAR gatherCount = 0
 //<-- keyword.divert.ink keyword.other.ink
 //^^ keyword.divert.ink keyword.other.ink
 == stitch_count_test ==
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^^^^^^^^^^^^^^^^^ entity.name.function.ink
 //                  ^ source.ink
-//                   ^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//                   ^^ storage.knot.ink storage.type.ink
 ~ stitchCount = 0
-//<- keyword.logic.ink keyword.operator.arithmetic.ink
+//<- keyword.logic.ink
 //<~- source.ink
 //^^^^^^^^^^^ variable.other.ink
 //           ^ source.ink
@@ -175,7 +175,7 @@ VAR gatherCount = 0
 //       ^ source.ink
 //        ^^ keyword.divert.ink keyword.other.ink
 ~ stitchCount = 0
-//<- keyword.logic.ink keyword.operator.arithmetic.ink
+//<- keyword.logic.ink
 //<~- source.ink
 //^^^^^^^^^^^ variable.other.ink
 //           ^ source.ink
@@ -192,11 +192,11 @@ VAR gatherCount = 0
 //<-- keyword.divert.ink keyword.other.ink
 //^^ keyword.divert.ink keyword.other.ink
 = stitch
-//<- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<- storage.knot.ink storage.type.ink
 //<~- source.ink
 //^^^^^^ entity.name.function.ink
 ~ stitchCount++
-//<- keyword.logic.ink keyword.operator.arithmetic.ink
+//<- keyword.logic.ink
 //<~- source.ink
 //^^^^^^^^^^^ variable.other.ink
 //           ^^ keyword.operator.arithmetic.ink
@@ -223,7 +223,7 @@ VAR gatherCount = 0
 //^ source.ink
 // ^^^^ variable.other.knot.ink
 === knot
-//<--- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<--- storage.knot.ink storage.type.ink
 // ^ source.ink
 //  ^^^^ entity.name.function.ink
     <- threadA
@@ -239,7 +239,7 @@ VAR gatherCount = 0
 //    ^ source.ink
 //     ^^^^ support.constant.ink
 === threadA
-//<--- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<--- storage.knot.ink storage.type.ink
 // ^ source.ink
 //  ^^^^^^^ entity.name.function.ink
     -> tunnel ->
@@ -257,20 +257,20 @@ VAR gatherCount = 0
 //    ^ source.ink
 //     ^^^^ support.constant.ink
 === tunnel
-//<--- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<--- storage.knot.ink storage.type.ink
 // ^ source.ink
 //  ^^^^^^ entity.name.function.ink
     -   I’m in a tunnel
 //<---- source.ink
-//  ^ keyword.gather.ink keyword.operator.arithmetic.ink
+//  ^ keyword.gather.ink
 //   ^^^^^^^^^^^^^^^^^^ source.ink
     *   I’m an option
 //<---- source.ink
-//  ^ keyword.choice.ink keyword.operator.arithmetic.ink
+//  ^ keyword.choice.ink
 //   ^^^^^^^^^^^^^^^^ source.ink
     -   ->->
 //<---- source.ink
-//  ^ keyword.gather.ink keyword.operator.arithmetic.ink
+//  ^ keyword.gather.ink
 //   ^^^ source.ink
 //      ^^ keyword.divert.ink keyword.other.ink
 //        ^^ keyword.divert.ink keyword.other.ink
@@ -280,7 +280,7 @@ VAR gatherCount = 0
 //^ source.ink
 // ^^^^ variable.other.knot.ink
 === knot
-//<--- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<--- storage.knot.ink storage.type.ink
 // ^ source.ink
 //  ^^^^ entity.name.function.ink
     <- threadB
@@ -303,34 +303,34 @@ VAR gatherCount = 0
 //    ^ source.ink
 //     ^^^ support.constant.ink
 === tunnel
-//<--- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<--- storage.knot.ink storage.type.ink
 // ^ source.ink
 //  ^^^^^^ entity.name.function.ink
     - blah blah
 //<--- source.ink
-//  ^ keyword.gather.ink keyword.operator.arithmetic.ink
+//  ^ keyword.gather.ink
 //   ^^^^^^^^^^ source.ink
     * wigwag
 //<--- source.ink
-//  ^ keyword.choice.ink keyword.operator.arithmetic.ink
+//  ^ keyword.choice.ink
 //   ^^^^^^^ source.ink
     - ->->
 //<---- source.ink
-//  ^ keyword.gather.ink keyword.operator.arithmetic.ink
+//  ^ keyword.gather.ink
 //   ^ source.ink
 //    ^^ keyword.divert.ink keyword.other.ink
 //      ^^ keyword.divert.ink keyword.other.ink
 === threadB
-//<--- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<--- storage.knot.ink storage.type.ink
 // ^ source.ink
 //  ^^^^^^^ entity.name.function.ink
     *   option
 //<---- source.ink
-//  ^ keyword.choice.ink keyword.operator.arithmetic.ink
+//  ^ keyword.choice.ink
 //   ^^^^^^^^^ source.ink
     -   something
 //<---- source.ink
-//  ^ keyword.gather.ink keyword.operator.arithmetic.ink
+//  ^ keyword.gather.ink
 //   ^^^^^^^^^^^^ source.ink
         -> DONE
 //<-------- source.ink
@@ -348,7 +348,7 @@ VAR gatherCount = 0
 //                    ^^^^^^ variable.other.knot.ink
 //                          ^ punctuation.section.parens.end.ink
 === one_then_tother(-> x) ===
-//<--- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<--- storage.knot.ink storage.type.ink
 // ^ source.ink
 //  ^^^^^^^^^^^^^^^ entity.name.function.ink
 //                 ^ punctuation.section.parens.begin.ink
@@ -357,7 +357,7 @@ VAR gatherCount = 0
 //                     ^ variable.other.knot.ink
 //                      ^ punctuation.section.parens.end.ink
 //                       ^ source.ink
-//                        ^^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//                        ^^^ storage.knot.ink storage.type.ink
     -> x -> end
 //<---- source.ink
 //  ^^ keyword.divert.ink keyword.other.ink
@@ -368,11 +368,11 @@ VAR gatherCount = 0
 //         ^ source.ink
 //          ^^^ variable.other.knot.ink
 === tunnel ===
-//<--- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<--- storage.knot.ink storage.type.ink
 // ^ source.ink
 //  ^^^^^^ entity.name.function.ink
 //        ^ source.ink
-//         ^^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//         ^^^ storage.knot.ink storage.type.ink
     STUFF
 //<--------- source.ink
     ->->
@@ -380,11 +380,11 @@ VAR gatherCount = 0
 //  ^^ keyword.divert.ink keyword.other.ink
 //    ^^ keyword.divert.ink keyword.other.ink
 === end ===
-//<--- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<--- storage.knot.ink storage.type.ink
 // ^ source.ink
 //  ^^^ entity.name.function.ink
 //     ^ source.ink
-//      ^^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//      ^^^ storage.knot.ink storage.type.ink
     -> END
 //<---- source.ink
 //  ^^ keyword.divert.ink keyword.other.ink

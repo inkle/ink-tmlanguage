@@ -20,14 +20,14 @@
 three (3)
 //<--------- source.ink
 == one(num) ==
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^^^ entity.name.function.ink
 //    ^ punctuation.section.parens.begin.ink
 //     ^^^ variable.parameter.function.ink
 //        ^ punctuation.section.parens.end.ink
 //         ^ source.ink
-//          ^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//          ^^ storage.knot.ink storage.type.ink
 one ({num})
 //<----- source.ink
 //   ^ keyword.control.ink
@@ -48,14 +48,14 @@ one ({num})
 //<-- keyword.divert.ink keyword.other.ink
 //^^ keyword.divert.ink keyword.other.ink
 == oneAndAHalf(num) ==
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^^^^^^^^^^^ entity.name.function.ink
 //            ^ punctuation.section.parens.begin.ink
 //             ^^^ variable.parameter.function.ink
 //                ^ punctuation.section.parens.end.ink
 //                 ^ source.ink
-//                  ^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//                  ^^ storage.knot.ink storage.type.ink
 one and a half ({num})
 //<---------------- source.ink
 //              ^ keyword.control.ink
@@ -66,7 +66,7 @@ one and a half ({num})
 //<-- keyword.divert.ink keyword.other.ink
 //^^ keyword.divert.ink keyword.other.ink
 == two (num) ==
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^^^ entity.name.function.ink
 //    ^ source.ink
@@ -74,7 +74,7 @@ one and a half ({num})
 //      ^^^ variable.parameter.function.ink
 //         ^ punctuation.section.parens.end.ink
 //          ^ source.ink
-//           ^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//           ^^ storage.knot.ink storage.type.ink
 two ({num})
 //<----- source.ink
 //   ^ keyword.control.ink

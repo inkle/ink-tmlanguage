@@ -23,13 +23,13 @@
 //<-------------------- keyword.control.ink
 //                   ^ keyword.control.ink
 == hi ==
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^^ entity.name.function.ink
 //   ^ source.ink
-//    ^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//    ^^ storage.knot.ink storage.type.ink
 = stitch_to_count
-//<- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<- storage.knot.ink storage.type.ink
 //<~- source.ink
 //^^^^^^^^^^^^^^^ entity.name.function.ink
 hi

@@ -10,11 +10,11 @@
 //<-- keyword.glue.ink keyword.other.ink
 //^^^^^^^ source.ink
 == f ==
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^ entity.name.function.ink
 //  ^ source.ink
-//   ^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//   ^^ storage.knot.ink storage.type.ink
 Hello
 //<----- source.ink
 ->->

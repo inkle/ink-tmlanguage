@@ -61,7 +61,7 @@ Count end: {READ_COUNT (x)} {READ_COUNT (-> knot)} {knot}
 //^ source.ink
 // ^^^ support.constant.ink
 == knot (a) ==
-//<-- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<-- storage.knot.ink storage.type.ink
 //^ source.ink
 // ^^^^ entity.name.function.ink
 //     ^ source.ink
@@ -69,7 +69,7 @@ Count end: {READ_COUNT (x)} {READ_COUNT (-> knot)} {knot}
 //       ^ variable.parameter.function.ink
 //        ^ punctuation.section.parens.end.ink
 //         ^ source.ink
-//          ^^ storage.knot.ink punctuation.definition.generic.end.ink storage.type.ink
+//          ^^ storage.knot.ink storage.type.ink
 {a}
 //<- keyword.control.ink
 //<~- keyword.control.ink

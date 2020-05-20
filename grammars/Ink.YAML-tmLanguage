@@ -149,7 +149,7 @@ repository:
     patterns:
     - begin: ({{validIdentifier}})(?:{{whitespace}})*(=)
       beginCaptures:
-        '1': { name: entity.name.variable.other.ink }
+        '1': { name: variable.other.ink }
         '2': { name: keyword.operator.assignment.ink }
       end: (?=$)
       patterns:
@@ -190,7 +190,7 @@ repository:
          (=)
       beginCaptures:
         '1': { name: storage.modifier.ink }
-        '2': { name: entity.name.variable.other.ink }
+        '2': { name: variable.other.ink }
         '3': { name: keyword.assignment.ink }
       end: (?=$)
       patterns:

@@ -6,7 +6,7 @@
 //    ^ source.ink
 //     ^^^ variable.other.knot.ink
 = top
-//<- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<- storage.knot.ink storage.type.ink
 //<~- source.ink
 //^^^ entity.name.function.ink
     {top}
@@ -27,19 +27,19 @@
 //    ^ source.ink
 //     ^^^^ support.constant.ink
 = aside
-//<- storage.knot.ink punctuation.definition.generic.begin.ink storage.type.ink
+//<- storage.knot.ink storage.type.ink
 //<~- source.ink
 //^^^^^ entity.name.function.ink
     * {false} DONE
 //<---- source.ink
-//  ^  keyword.choice.ink keyword.operator.arithmetic.ink
+//  ^  keyword.choice.ink
 //    ^ keyword.control.ink
 //     ^^^^^ keyword.control.ink
 //          ^ keyword.control.ink
 //           ^^^^^^ source.ink
     - -> DONE
 //<---- source.ink
-//  ^  keyword.gather.ink keyword.operator.arithmetic.ink
+//  ^  keyword.gather.ink
 //    ^^ keyword.divert.ink keyword.other.ink
 //      ^ source.ink
 //       ^^^^ support.constant.ink
