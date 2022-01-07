@@ -32,17 +32,15 @@
     "test": "npx vscode-tmgrammar-test -c -s source.ink -g grammars/Ink.tmLanguage -t 'tests/cases/**/*.ink'"
   },
   "devDependencies": {
-    "@types/jest": "^25.2.1",
-    "@types/js-yaml": "^3.12.3",
-    "@types/node": "^14.0.1",
-    "chokidar": "^3.4.0",
-    "chokidar-cli": "^2.1.0",
-    "js-yaml": "^3.13.1",
-    "plist": "^3.0.1",
-    "tslint": "^6.1.2",
-    "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.9.2",
-    "vscode-textmate": "^5.1.1",
-    "vscode-tmgrammar-test": "0.0.10"
+    "@types/jest": "^27.4.0",
+    "@types/js-yaml": "^4.0.5",
+    "@types/node": "^17.0.8",
+    "chokidar": "^3.5.2",
+    "chokidar-cli": "^3.0.0",
+    "js-yaml": "^4.1.0",
+    "plist": "^3.0.4",
+    "typescript": "^4.5.4",
+    "vscode-textmate": "^6.0.0",
+    "vscode-tmgrammar-test": "0.0.11"
   }
 }

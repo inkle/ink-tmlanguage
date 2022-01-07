@@ -49,14 +49,7 @@ Shuffle once: {f_shuffle_once()} {f_shuffle_once()} {f_shuffle_once()} {f_shuffl
 }
 
 == function f_shuffle_stopping_abbreviated ==
-{~$:
-    - one
-    - two
-    - final
-}
+{~$: one|two|final}
 
 == function f_shuffle_once_abbreviated ==
-{~!:
-    - one
-    - two
-}
+{~!: one|two}

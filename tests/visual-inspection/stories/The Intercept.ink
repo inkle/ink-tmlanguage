@@ -2,7 +2,6 @@
 VAR forceful = 0
 VAR evasive = 0
 
-
 // Inventory Items
 VAR teacup = false
 VAR gotcomponent = false
@@ -41,6 +40,7 @@ VAR throwncomponentaway = false
 VAR piecereturned = false
 VAR longgrasshooperframe = false
 
+EXTERNAL hello_world(a, b)
 
 // DEBUG mode adds a few shortcuts - remember to set to false in release!
 VAR DEBUG = false
@@ -64,6 +64,9 @@ VAR DEBUG = false
 
  === function raise(ref x)
  	~ x = x + 1
+
+=== function came_from(a, b)
+	~ return hello_world(a, b)
 
 /*--------------------------------------------------------------------------------
 
