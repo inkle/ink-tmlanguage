@@ -52,7 +52,7 @@ function writePlistFile(grammar: TmGrammar | TmTheme, fileName: string) {
  */
 function readYaml(fileName: string) {
   const text = Fs.readFileSync(fileName, "utf8");
-  return Yaml.safeLoad(text);
+  return Yaml.load(text);
 }
 
 /**

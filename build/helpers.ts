@@ -27,7 +27,6 @@ export function updateGrammarVariables(
 ) {
   // Keep a copy of the variable for later use and delete them from the grammar.
   const variables = grammar.variables;
-  delete grammar.variables;
 
   const variableReplacers: VariableReplacer[] = [];
   for (const variableName in variables) {
